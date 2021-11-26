@@ -1,8 +1,6 @@
-<p align="center">
-  <a href="https://metaplex.com">
-    <img alt="Metaplex" src="https://metaplex.com/static/logos/metaplex.svg" width="250" />
-  </a>
-</p>
+**NFT PLATE Project
+
+
 
 Metaplex is a protocol built on top of Solana that allows:
 
