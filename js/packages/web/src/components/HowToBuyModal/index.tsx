@@ -15,23 +15,23 @@ export const HowToBuyModal: React.FC<HowToBuyModalProps> = ({
   return (
     <InstructionsModal
       buttonClassName={buttonClassName}
-      buttonText="How to Buy"
+      buttonText="¿Como comprar?"
       modalTitle={`Buying NFTs on ${LABELS.STORE_NAME}`}
       cardProps={[
         {
-          title: 'Create a SOL wallet',
+          title: 'Crea tu billetera de Solana (SOL)',
           imgSrc: '/modals/how-to-buy-1.svg',
-          description: `SOL is the cryptocurrency we use for purchases on ${LABELS.STORE_NAME}. To keep your SOL safe, you’ll need a crypto wallet—we recommend using one called Phantom. Just head to Phantom’s site, install the Chrome extension, and create an account.`,
+          description: `SOL es la cryptomoneda que usamos para comprar en ${LABELS.STORE_NAME}. Para mantener tus SOL seguros, necesitamos una billetra de cryptomendas nosotros recomendamos Phantom. solo debes descargar  la extension de Chrome y crear una cuenta.`,
         },
         {
-          title: 'Add funds to your wallet',
+          title: 'Deposita fondos en tu Billetera',
           imgSrc: '/modals/how-to-buy-2.svg',
-          description: `To fund your wallet, you’ll need to purchase SOL tokens. The easiest way is with a credit card on FTX Pay—a service that’s already part of your new Phantom wallet. Open your wallet, tap “Deposit SOL”, and select “Deposit from FTX”. A new window will open where you can create an FTX account and purchase SOL.`,
+          description: `Para depositar fondos en tu billetera lo unico que necesitas es adquirir SOL. la forma mas facil es con tarjeta de credito por medio de FTX Pay un servicio que ya es parte de tu nueva billetera Phantom. Abre tu Billetera y selecciona "Depositar SOL", y selecciona "Depositar desde FTX". una nueva ventana se abrira donde podras crearte una cuenta en FTX y comprar SOL.`,
         },
         {
-          title: `Connect your wallet to ${LABELS.STORE_NAME}.`,
+          title: `Conecta tu billetera a ${LABELS.STORE_NAME}.`,
           imgSrc: '/modals/how-to-buy-3.jpg',
-          description: `To connect your wallet, tap “Connect Wallet” here on the site. Select the Phantom option, and your wallet will connect. After that, you can start bidding on NFTs.`,
+          description: `Para conectar tu billetera, pulsa "Conectar Billetera" en nuestro sistio. Selecciona la opcion Phantom y tu billetera se conectara. Despues de eso ya puedes empezar a ofertar por NFTs.`,
           endElement: <ConnectButton className={'secondary-btn'} />,
         },
       ]}
