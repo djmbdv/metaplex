@@ -716,7 +716,7 @@ const CategoryStep = (props: {
       <Row className="call-to-action">
         <h2>List an item</h2>
         <p>
-          First time listing on Metaplex? <a>Read our sellers' guide.</a>
+         ¿Primera vez listando en NFT Plate? <a>Lee nuestra guía.</a>
         </p>
       </Row>
       <Row justify={width < 768 ? 'center' : 'start'}>
@@ -728,9 +728,9 @@ const CategoryStep = (props: {
               onClick={() => props.confirm(AuctionCategory.InstantSale)}
             >
               <div>
-                <div>Instant Sale</div>
+                <div>Venta instantanea</div>
                 <div className="type-btn-description">
-                  At a fixed price, sell a single Master NFT or copies of it
+                  Selecciona un precio fijo, vende un NFT Maestro o copias de el
                 </div>
               </div>
             </Button>
@@ -742,9 +742,9 @@ const CategoryStep = (props: {
               onClick={() => props.confirm(AuctionCategory.Limited)}
             >
               <div>
-                <div>Limited Edition</div>
+                <div>Edición Limitada</div>
                 <div className="type-btn-description">
-                  Sell a limited copy or copies of a single Master NFT
+                  Vende una cantidad limitada de copias de un NFT Maestro
                 </div>
               </div>
             </Button>
@@ -756,9 +756,9 @@ const CategoryStep = (props: {
               onClick={() => props.confirm(AuctionCategory.Open)}
             >
               <div>
-                <div>Open Edition</div>
+                <div>Edición Abierta</div>
                 <div className="type-btn-description">
-                  Sell unlimited copies of a single Master NFT
+                  Vende copias ilimitadas de un NFT Maestro
                 </div>
               </div>
             </Button>
@@ -785,10 +785,9 @@ const CategoryStep = (props: {
               onClick={() => props.confirm(AuctionCategory.Single)}
             >
               <div>
-                <div>Sell an Existing Item</div>
+                <div>Vende un Item Existente</div>
                 <div className="type-btn-description">
-                  Sell an existing item in your NFT collection, including Master
-                  NFTs
+                  Vende un item existente en tu coleccion de NFT incluyendo el NFT maestro.
                 </div>
               </div>
             </Button>
@@ -2020,9 +2019,9 @@ const WaitingStep = (props: {
     >
       <Progress type="circle" percent={progress} />
       <div className="waiting-title">
-        Your creation is being listed with Metaplex...
+        Tu creacion esta siendo listada en NFT Plate...
       </div>
-      <div className="waiting-subtitle">This can take up to 30 seconds.</div>
+      <div className="waiting-subtitle">Esto puede demorar hasta 30 segundos.</div>
     </div>
   );
 };
