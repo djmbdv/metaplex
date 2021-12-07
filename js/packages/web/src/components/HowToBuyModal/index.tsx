@@ -16,7 +16,7 @@ export const HowToBuyModal: React.FC<HowToBuyModalProps> = ({
     <InstructionsModal
       buttonClassName={buttonClassName}
       buttonText="¿Como comprar?"
-      modalTitle={`Buying NFTs on ${LABELS.STORE_NAME}`}
+      modalTitle={`Comprar NFTs en ${LABELS.STORE_NAME}`}
       cardProps={[
         {
           title: 'Crea tu billetera de Solana (SOL)',
