@@ -2037,13 +2037,13 @@ const Congrats = (props: {
 
   const newTweetURL = () => {
     const params = {
-      text: "I've created a new NFT auction on Metaplex, check it out!",
+      text: "He cread un nuevo NFT en NFT Plate, No se lo pierdan!",
       url: `${
         window.location.origin
       }/#/auction/${props.auction?.auction.toString()}`,
-      hashtags: 'NFT,Crypto,Metaplex',
-      // via: "Metaplex",
-      related: 'Metaplex,Solana',
+      hashtags: 'NFT,Crypto,nftplate',
+      // via: "NFTPLATE",
+      related: 'nftplate,Solana',
     };
     const queryParams = new URLSearchParams(params).toString();
     return `https://twitter.com/intent/tweet?${queryParams}`;
@@ -2060,14 +2060,14 @@ const Congrats = (props: {
         }}
       >
         <div className="waiting-title">
-          Congratulations! Your auction is now live.
+          Felicitaciones! Tu subasta esta Activa.
         </div>
         <div className="congrats-button-container">
           <Button
             className="metaplex-button"
             onClick={_ => window.open(newTweetURL(), '_blank')}
           >
-            <span>Share it on Twitter</span>
+            <span>Compartir en Twitter</span>
             <span>&gt;</span>
           </Button>
           <Button
@@ -2076,7 +2076,7 @@ const Congrats = (props: {
               history.push(`/auction/${props.auction?.auction.toString()}`)
             }
           >
-            <span>See it in your auctions</span>
+            <span>Ver en tus Ventas</span>
             <span>&gt;</span>
           </Button>
         </div>
