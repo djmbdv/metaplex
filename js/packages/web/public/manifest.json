@@ -1,6 +1,6 @@
 {
-  "name": "Metaplex NFT Marketplace",
-  "short_name": "Metaplex NFT Marketplace",
+  "name": "NFT Plate",
+  "short_name": "NFT Plate",
   "display": "standalone",
   "start_url": "./",
   "theme_color": "#002140",
