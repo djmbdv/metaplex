@@ -54,7 +54,7 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
                   }}
                   className="black-btn"
                 >
-                  Create
+                  Crear
                 </Button>
               </Link>
             )}
@@ -65,7 +65,7 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
                 }}
                 className="black-btn"
               >
-                Sell
+                Vender
               </Button>
             </Link>
           </div>
@@ -79,7 +79,7 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
               <>
                 <Link to={`/art/create`} style={{ width: '100%' }}>
                   <Button className="metaplex-button-default" style={btnStyle}>
-                    Create
+                    Crear
                   </Button>
                 </Link>
                 &nbsp;&nbsp;
@@ -87,7 +87,7 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
             )}
             <Link to={`/auction/create/0`} style={{ width: '100%' }}>
               <Button className="metaplex-button-default" style={btnStyle}>
-                Sell
+                Vender
               </Button>
             </Link>
           </div>
@@ -299,7 +299,7 @@ export const CurrentUserBadge = (props: {
                     onClick={() => setShowAddFundsModal(true)}
                     style={btnStyle}
                   >
-                    Add Funds
+                    Agregar Fondos
                   </Button>
                   &nbsp;&nbsp;
                   <Button
@@ -307,7 +307,7 @@ export const CurrentUserBadge = (props: {
                     onClick={disconnect}
                     style={btnStyle}
                   >
-                    Disconnect
+                    Desconectar
                   </Button>
                 </div>
                 <UserActions />
@@ -408,7 +408,7 @@ export const Cog = () => {
               style={btnStyle}
               onClick={open}
             >
-              Change wallet
+              Cambiar de Wallet
             </Button>
           </div>
         }
@@ -498,7 +498,7 @@ export const CurrentUserBadgeMobile = (props: {
             setShowAddFundsModal(true);
           }}
         >
-          Add Funds
+          Agregar Fondos
         </Button>
         &nbsp;&nbsp;
         <Button className="black-btn" onClick={disconnect}>
