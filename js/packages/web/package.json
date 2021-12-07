@@ -72,7 +72,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/metaplex-foundation/metaplex"
+    "url": "https://github.com/djmbdv/metaplex"
   },
   "homepage": ".",
   "devDependencies": {
@@ -96,6 +96,9 @@
     "typescript": "^4.1.3",
     "webpack-dev-server": "3.11.0",
     "use-media-antd-query": "^1.1.0"
+  },
+  "resolutions": {
+    "terser": "3.14.1"
   },
   "peerDependencies": {
     "next": "*",
