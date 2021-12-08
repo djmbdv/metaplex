@@ -30,7 +30,7 @@ module.exports = withPlugins(plugins, {
 
   env: {
     NEXT_PUBLIC_STORE_OWNER_ADDRESS:
-      "HkEeKc2ES73tNNaTNycw7iDR6XeYqbfqBuAiGZj7HFAB" ||
+      //"HkEeKc2ES73tNNaTNycw7iDR6XeYqbfqBuAiGZj7HFAB" ||
       process.env.REACT_APP_STORE_OWNER_ADDRESS_ADDRESS,
     NEXT_PUBLIC_STORE_ADDRESS: process.env.STORE_ADDRESS,
     NEXT_PUBLIC_BIG_STORE: process.env.REACT_APP_BIG_STORE,
