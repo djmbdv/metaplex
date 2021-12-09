@@ -21,7 +21,7 @@ export const HowToBuyModal: React.FC<HowToBuyModalProps> = ({
         {
           title: 'Crea tu billetera de Solana (SOL)',
           imgSrc: '/modals/how-to-buy-1.svg',
-          description: `SOL es la cryptomoneda que usamos para comprar en ${LABELS.STORE_NAME}. Para mantener tus SOL seguros, necesitamos una billetra de cryptomendas nosotros recomendamos Phantom. solo debes descargar  la extension de Chrome y crear una cuenta.`,
+          description: `SOL es la cryptomoneda que usamos para comprar en ${LABELS.STORE_NAME}. Para mantener tus SOL seguros, necesitas una billetera de cryptomendas nosotros recomendamos Phantom. solo debes descargar  la extension de Chrome y crear una cuenta.`,
         },
         {
           title: 'Deposita fondos en tu Billetera',
