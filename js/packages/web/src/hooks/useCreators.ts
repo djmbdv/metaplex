@@ -26,15 +26,20 @@ export const useCreators = (auction?: AuctionView) => {
           .values(),
       ].map((creator, index, arr) => {
         const knownCreator = whitelistedCreatorsByCreator[creator];
-
+        let creatorOfDatabase: Artist | void;
+        fetch('localhost/creator/' + creator)
+          .then(response => response.json())
+          .then(data => {
+            creatorOfDatabase = data;
+          });
         return {
           address: creator,
           verified: true,
           // not exact share of royalties
           share: (1 / arr.length) * 100,
-          image: knownCreator?.info.image || '',
-          name: knownCreator?.info.name || '',
-          link: knownCreator?.info.twitter || '',
+          image: knownCreator?.info.image || (creatorOfDatabase?.image ?? ''),
+          name: knownCreator?.info.name || (creatorOfDatabase?.name ?? ''),
+          link: knownCreator?.info.twitter || (creatorOfDatabase?.link ?? ''),
         } as Artist;
       }),
     [auction, whitelistedCreatorsByCreator],
