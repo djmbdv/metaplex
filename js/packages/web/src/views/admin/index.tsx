@@ -119,6 +119,7 @@ function ArtistModal({
 }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalAddress, setModalAddress] = useState<string>('');
+  const [modalName, setModalName] = useState<string>('')
   return (
     <>
       <Modal
@@ -157,9 +158,17 @@ function ArtistModal({
         }}
         onCancel={() => {
           setModalAddress('');
+          setModalName('')
           setModalOpen(false);
         }}
       >
+      <label>Name</label>
+        <Input
+          value={modalName}
+          onChange={e => setModalName(e.target.value)}
+        />
+
+      <label>WalletAddress</label>
         <Input
           value={modalAddress}
           onChange={e => setModalAddress(e.target.value)}
