@@ -2,6 +2,7 @@
 members = [
   "nft-candy-machine/",
   "fair-launch/",
+  "token-entangler/",
   "auction/program",
   "metaplex/program",
   "auction-house/",
@@ -10,6 +11,7 @@ members = [
   "metaplex/test",
   "token-vault/test",
   "token-metadata/test",
+  "gumdrop/",
 ]
 exclude = [
 ]
