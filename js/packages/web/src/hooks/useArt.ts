@@ -64,7 +64,7 @@ export const metadataToArt = (
           verified: creator.verified,
           share: creator.share,
           image: knownCreator?.info.image || '',
-          name: knownCreator?.info.name || '',
+          name: 'DAVID',
           link: knownCreator?.info.twitter || '',
         } as Artist;
       })

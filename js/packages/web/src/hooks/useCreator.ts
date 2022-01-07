@@ -7,5 +7,6 @@ export const useCreator = (id?: StringPublicKey) => {
   const creator = Object.values(whitelistedCreatorsByCreator).find(
     creator => creator.info.address === key,
   );
+  console.log('creator', creator);
   return creator;
 };

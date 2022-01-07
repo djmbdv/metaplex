@@ -12,6 +12,7 @@ import {
   AuctionView,
   HomeView,
   StaticPageView,
+  LoginView,
 } from './views';
 import { AdminView } from './views/admin';
 import { PackView } from './views/pack';
@@ -37,6 +38,11 @@ export function Routes() {
               exact
               path="/analytics"
               component={() => <AnalyticsView />}
+            />
+            <Route
+              exact
+              path="/login"
+              component={() => <LoginView />}
             />
             <Route
               exact

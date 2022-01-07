@@ -16,8 +16,11 @@ export const ArtistsView = () => {
     700: 2,
     500: 1,
   };
-
+  
   const items = Object.values(whitelistedCreatorsByCreator);
+  const artists = items.map(artist => {
+    
+  })
   const artistGrid = (
     <Masonry
       breakpointCols={breakpointColumnsObj}
@@ -32,7 +35,8 @@ export const ArtistsView = () => {
               key={id}
               artist={{
                 address: m.info.address,
-                name: m.info.name || '',
+   //             name: m.info.name || '',
+                name: "david",
                 image: m.info.image || '',
                 link: m.info.twitter || '',
                 background: m.info.background || '',
