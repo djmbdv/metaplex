@@ -241,7 +241,7 @@ const CategoryStep = (props: {
       <Row className="call-to-action">
         <h2>Create a new item</h2>
         <p>
-          First time creating on Metaplex?{' '}
+          First time creating on NFT Plate{' '}
           <a href="#">Read our creators’ guide.</a>
         </p>
       </Row>

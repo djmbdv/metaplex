@@ -12,22 +12,22 @@ export const HowAuctionsWorkModal: React.FC<HowAuctionsWorkModalProps> = ({
   return (
     <InstructionsModal
       buttonClassName={buttonClassName}
-      buttonText="How Auctions Work"
-      modalTitle="How Auctions Work"
+      buttonText="Como funiconan las Subastas"
+      modalTitle="Como funiconan las Subastas"
       cardProps={[
         {
-          title: 'Placing a Bid',
-          description: `Once you find an NFT you’d like to own, place a bid on the auction page. Keep in mind the amount of SOL you bid will be locked in your wallet for the remainder of the auction.`,
+          title: 'Haz una oferta',
+          description: `Una vez que encuentres que te gustaria poseer, haz una oferta en la pagina de subasta. ten en cuenta que la cantidad de SOL ofrecida se mantendra bloqueada en tu billetera hasta que finalice la subasta`,
           imgSrc: '/modals/how-auctions-work-1.jpg',
         },
         {
-          title: 'Winning an Auction',
-          description: `Keep an eye on the auctions page (and your notifications) to know when you’ve been outbid, and how the sale is progressing.`,
+          title: 'Gana la subasta',
+          description: `Mantente alerta en la pagina de subasta (y en tus notificaciones) para saber si tu oferta a sido superada, y como la venta esta progresando.`,
           imgSrc: '/modals/how-auctions-work-2.jpg',
         },
         {
-          title: 'Redeeming your NFT',
-          description: `If you’re lucky enough to win your NFT auction, you’ll have to redeem it to add it to your wallet. This can be done from the auction, winning notification, or your profile on ${LABELS.STORE_NAME}.`,
+          title: 'Redime tu NFT',
+          description: `Si eres lo suficiente mente afortunado para ganar la subasta por tu NFT, debes redimirlo y agregarlo a tu wallet. esto puede ser realizado desde la pagina de subasta, la notificacion de ganar, o en tu perfil en ${LABELS.STORE_NAME}.`,
           imgSrc: '/modals/how-auctions-work-3.jpg',
         },
       ]}
