@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useWallet } from '@solana/wallet-adapter-react';
@@ -209,7 +209,7 @@ export const CurrentUserBadge = (props: {
   const { account } = useNativeAccount();
   const solPrice = useSolPrice();
   const [showAddFundsModal, setShowAddFundsModal] = useState<Boolean>(false);
-
+  const [knowedName,setKnowedName] = useState<string>('');
   if (!wallet || !publicKey) {
     return null;
   }
@@ -234,6 +234,16 @@ export const CurrentUserBadge = (props: {
     image = <img src={unknownWallet.image} style={iconStyle} />;
   }
 
+/*
+  useEffect(
+    () => {
+      fetch('https://apinft.proit.stdio/solana/' + publicKey ).then(res => {
+        const data = res.json();
+        console.log(data);
+      }  
+      )
+    },[knowedName]
+  )*/
   return (
     <div className="wallet-wrapper">
       {props.showBalance && (
@@ -307,7 +317,7 @@ export const CurrentUserBadge = (props: {
                     onClick={disconnect}
                     style={btnStyle}
                   >
-                    Disconnect
+                    Desconectar
                   </Button>
                 </div>
                 <UserActions />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardProps } from 'antd';
 import { ArtContent } from '../ArtContent';
-import { AuctionView, useArt, useCreators } from '../../hooks';
+import { AuctionView, useArt, useCreators, useCreadores } from '../../hooks';
 import { AmountLabel } from '../AmountLabel';
 import { MetaAvatar } from '../MetaAvatar';
 import { AuctionCountdown } from '../AuctionNumbers';
@@ -24,30 +24,31 @@ export const AuctionRenderCard = (props: AuctionCard) => {
   const { status, amount } = useAuctionStatus(auctionView);
 
   const card = (
-    <Card hoverable={true} className={`auction-render-card`} bordered={false}>
+    <Card hoverable={true} className={`auction-render-card`} bordered={true}>
       <div className={'card-art-info'}>
         <div className={'card-artist-info'}>
-          <MetaAvatar creators={creators.length ? [creators[0]] : undefined} />
+
+
+         <MetaAvatar creators={creators.length ? [creators[0]] : undefined} />
           <span className={'artist-name'}>
             {creators[0]?.name ||
               creators[0]?.address?.substr(0, 6) ||
-              'Go to auction'}
-            ...
+              'Ir a subasta'}
           </span>
         </div>
         <div className={'art-content-wrapper'}>
           <ArtContent
             className="auction-image no-events"
-            preview={false}
+            preview={true}
             pubkey={id}
             allowMeshRender={false}
           />
         </div>
         <div className={'art-name'}>{name}</div>
-        <div className={'art-auction-info'}>
+        {/*<div className={'art-auction-info'}>
           <span className={'info-message'}>ENDING IN</span>
-          <AuctionCountdown auctionView={auctionView} labels={false} />
-        </div>
+          <AuctionCountdown auctionView={auctionView} labels={true} />
+        </div>*/}
       </div>
       <div className="card-bid-info">
         <span className={'text-uppercase info-message'}>{status}</span>

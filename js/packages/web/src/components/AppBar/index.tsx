@@ -138,8 +138,8 @@ export const AppBar = () => {
           {connected && (
             <>
               <CurrentUserBadge
-                showBalance={false}
-                showAddress={false}
+                showBalance={true}
+                showAddress={true}
                 iconSize={24}
               />
               <Notifications />
