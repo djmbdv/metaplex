@@ -206,6 +206,7 @@ export const CurrentUserBadge = (props: {
   iconSize?: number;
 }) => {
   const { wallet, publicKey, disconnect } = useWallet();
+  console.log(wallet)
   const { account } = useNativeAccount();
   const solPrice = useSolPrice();
   const [showAddFundsModal, setShowAddFundsModal] = useState<Boolean>(false);
@@ -224,8 +225,10 @@ export const CurrentUserBadge = (props: {
 
   let name = props.showAddress ? shortenAddress(`${publicKey}`) : '';
   const unknownWallet = wallet as any;
+  name = "Felipe D' Onofrio"
   if (unknownWallet.name && !props.showAddress) {
     name = unknownWallet.name;
+
   }
 
   let image = <Identicon address={publicKey?.toBase58()} style={iconStyle} />;
@@ -234,16 +237,13 @@ export const CurrentUserBadge = (props: {
     image = <img src={unknownWallet.image} style={iconStyle} />;
   }
 
-/*
-  useEffect(
-    () => {
-      fetch('https://apinft.proit.stdio/solana/' + publicKey ).then(res => {
+
+  fetch('https://apinft.proit.stdio/solana/' + publicKey ).then(res => {
         const data = res.json();
         console.log(data);
-      }  
-      )
-    },[knowedName]
-  )*/
+  }  
+  )
+ 
   return (
     <div className="wallet-wrapper">
       {props.showBalance && (

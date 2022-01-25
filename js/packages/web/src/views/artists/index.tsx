@@ -1,45 +1,65 @@
 import { Col, Layout } from 'antd';
 import React from 'react';
+import {useState,useEffect } from 'react'
 import Masonry from 'react-masonry-css';
 import { Link } from 'react-router-dom';
 import { ArtistCard } from '../../components/ArtistCard';
-import { useMeta } from '../../contexts';
-
+import { useMeta} from '../../contexts';
+import {useCreadores} from '../../hooks/useCreator'
+import {Artist} from '../../types'
 const { Content } = Layout;
 
 export const ArtistsView = () => {
   const { whitelistedCreatorsByCreator } = useMeta();
+  const [arrayArtist,setArrayArtist] =useState <Artist[]>(Object.values(whitelistedCreatorsByCreator).map(a =>{
 
+return {
+                address: a.info.address,
+                name: a.info.name || '',
+                
+                image: a.info.image || '',
+                link: a.info.twitter || '',
+                background: a.info.background || '',
+              }
+
+  }))
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
     700: 2,
     500: 1,
   };
-  
+ 
   const items = Object.values(whitelistedCreatorsByCreator);
-  const artists = items.map(artist => {
-    
-  })
+//  const [creadores, loading] = useCreadores()
+  useEffect(()=>{
+    fetch("https://apinft.proit.studio/").then(async r=>{
+      let its = (await r.json()).map(i => i as Artist)
+      setArrayArtist(its)
+    })
+
+  },[arrayArtist])
+
+  
   const artistGrid = (
     <Masonry
       breakpointCols={breakpointColumnsObj}
       className="my-masonry-grid artists-masonry"
       columnClassName="my-masonry-grid_column"
     >
-      {items.map((m, idx) => {
-        const id = m.info.address;
+      {arrayArtist.map((m, idx) => {
+        const id = m.address;
         return (
           <Link to={`/artists/${id}`} key={idx}>
             <ArtistCard
               key={id}
               artist={{
-                address: m.info.address,
-   //             name: m.info.name || '',
-                name: "david",
-                image: m.info.image || '',
-                link: m.info.twitter || '',
-                background: m.info.background || '',
+                address: m.address,
+                name: m.name || '',
+                
+                image: m.image || '',
+                link: m.link || '',
+                background: m.background || '',
               }}
             />
           </Link>
