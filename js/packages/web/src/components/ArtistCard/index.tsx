@@ -16,7 +16,7 @@ export const ArtistCard = ({ artist }: { artist: Artist }) => {
           {artist.background ? <img src={artist.background} /> : null}
         </div>
       }
-      bordered={false}
+      bordered={true}
     >
       <>
         <MetaAvatar creators={[artist]} size={64} />

@@ -168,7 +168,7 @@ export const AuctionView = () => {
                 {(auction?.items.length || 0) > 1 ? 'Multiple' : edition}
               </span>
             </div>
-            <div className={'info-component'}>
+            {/*<div className={'info-component'}>
               <h6 className={'info-title'}>Winners</h6>
               <span>
                 {winnerCount === undefined ? (
@@ -179,7 +179,7 @@ export const AuctionView = () => {
                   winnerCount
                 )}
               </span>
-            </div>
+            </div> */}
             <div className={'info-component'}>
               <h6 className={'info-title'}>NFTS</h6>
               <span>
@@ -333,8 +333,8 @@ export const AuctionView = () => {
                     {(auction?.items.length || 0) > 1 ? 'Multiple' : edition}
                   </span>
                 </div>
-                <div className={'info-component'}>
-                  <h6 className={'info-title'}>Winners</h6>
+                {/* <div className={'info-component'}>
+                 <h6 className={'info-title'}>Winners</h6>
                   <span>
                     {winnerCount === undefined ? (
                       <Skeleton paragraph={{ rows: 0 }} />
@@ -344,7 +344,7 @@ export const AuctionView = () => {
                       winnerCount
                     )}
                   </span>
-                </div>
+                    </div> */}
                 <div className={'info-component'}>
                   <h6 className={'info-title'}>NFTS</h6>
                   <span>

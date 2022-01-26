@@ -62,6 +62,17 @@ export const ModalContent: React.FC<ModalContentProps> = ({ children }) => {
           {children[2]}
         </Col>
       </Row>
+      <Row gutter={16}>
+        <Col span={24} xl={8}>
+          {children[0]}{' '}
+        </Col>
+        <Col span={24} xl={8}>
+          {children[1]}
+        </Col>
+        <Col span={24} xl={8}>
+          {children[2]}
+        </Col>
+      </Row>
     </div>
   );
 };

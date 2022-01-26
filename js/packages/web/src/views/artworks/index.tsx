@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { ArtCard } from '../../components/ArtCard';
 import { Layout, Row, Col, Tabs, Button } from 'antd';
 import Masonry from 'react-masonry-css';
@@ -24,6 +24,15 @@ export const ArtworksView = () => {
   const createdMetadata = useCreatorArts(publicKey?.toBase58() || '');
   const { metadata, isLoading, pullAllMetadata, storeIndexer } = useMeta();
   const [activeKey, setActiveKey] = useState(ArtworkViewState.Metaplex);
+  const { whitelistedCreatorsByCreator, store } = useMeta();
+  const pubkey = publicKey?.toBase58() || '';
+
+  const canCreate = useMemo(() => {
+    return (
+      store?.info?.public ||
+      whitelistedCreatorsByCreator[pubkey]?.info?.activated
+    );
+  }, [pubkey, whitelistedCreatorsByCreator, store]);
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
@@ -60,7 +69,7 @@ export const ArtworksView = () => {
                 <ArtCard
                   key={id}
                   pubkey={m.pubkey}
-                  preview={false}
+                  preview={true}
                   height={250}
                   width={250}
                 />
@@ -98,7 +107,7 @@ export const ArtworksView = () => {
                   {artworkGrid}
                 </TabPane>
               )}
-              {connected && (
+              {(connected && canCreate) && (
                 <TabPane
                   tab={<span className="tab-title">Created</span>}
                   key={ArtworkViewState.Created}

@@ -26,19 +26,16 @@ export const useCreators = (auction?: AuctionView) => {
           .values(),
       ].map((creator, index, arr) => {
         const knownCreator = whitelistedCreatorsByCreator[creator];
-      
-    
-        
+
         return {
           address: creator,
           verified: true,
-          // not exact share of royalties
           share: (1 / arr.length) * 100,
           image: knownCreator?.info.image || '',
           link: knownCreator?.info.twitter || '',
         } as Artist;
       }),
-    [auction, whitelistedCreatorsByCreator]
+    [auction, whitelistedCreatorsByCreator],
   );
   return creators;
 };

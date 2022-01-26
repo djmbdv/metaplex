@@ -206,14 +206,12 @@ export const CurrentUserBadge = (props: {
   iconSize?: number;
 }) => {
   const { wallet, publicKey, disconnect } = useWallet();
-  console.log(wallet)
   const { account } = useNativeAccount();
   const solPrice = useSolPrice();
   const [showAddFundsModal, setShowAddFundsModal] = useState<Boolean>(false);
-  const [knowedName,setKnowedName] = useState<string>('');
-  if (!wallet || !publicKey) {
-    return null;
-  }
+  
+  
+  const [name,setName] = useState<string>(props.showAddress && publicKey ? shortenAddress(`${publicKey}`) : publicKey ? `${publicKey}` : '');
   const balance = (account?.lamports || 0) / LAMPORTS_PER_SOL;
   const balanceInUSD = balance * solPrice;
   const solMintInfo = useTokenList().tokenMap.get(WRAPPED_SOL_MINT.toString());
@@ -222,12 +220,13 @@ export const CurrentUserBadge = (props: {
     width: props.iconSize,
     borderRadius: 50,
   };
-
-  let name = props.showAddress ? shortenAddress(`${publicKey}`) : '';
+if (!wallet || !publicKey) {
+    return null;
+  }
+  
   const unknownWallet = wallet as any;
-  name = "Felipe D' Onofrio"
   if (unknownWallet.name && !props.showAddress) {
-    name = unknownWallet.name;
+    setName(unknownWallet.name);
 
   }
 
@@ -238,9 +237,11 @@ export const CurrentUserBadge = (props: {
   }
 
 
-  fetch('https://apinft.proit.stdio/solana/' + publicKey ).then(res => {
-        const data = res.json();
-        console.log(data);
+  fetch('https://apinft.proit.studio/solana/' + publicKey ).then(async res => {
+        const data = await res.json();
+        try{
+          setName( data.name || name);
+        }catch(e){}
   }  
   )
  

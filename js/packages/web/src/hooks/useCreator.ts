@@ -5,10 +5,15 @@ import { useMeta } from '../contexts';
 export const useCreator = (id?: StringPublicKey) => {
   const { whitelistedCreatorsByCreator } = useMeta();
   const key = pubkeyToString(id);
+  //fetch address to url to get image
+  fetch(`https://apinft.proit.studio/address/${key}`)
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+    });
   const creator = Object.values(whitelistedCreatorsByCreator).find(
     creator => creator.info.address === key,
   );
-  console.log('creator', creator);
   return creator;
 };
 

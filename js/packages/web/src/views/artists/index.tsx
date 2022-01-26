@@ -38,7 +38,7 @@ return {
       setArrayArtist(its)
     })
 
-  },[arrayArtist])
+  },[])
 
   
   const artistGrid = (
