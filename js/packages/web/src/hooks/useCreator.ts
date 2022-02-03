@@ -16,7 +16,7 @@ export const useCreator = (id?: StringPublicKey) => {
   );
   return creator;
 };
-
+/*
 export const useCreators = () => {
   const { whitelistedCreatorsByCreator } = useMeta();
   const creators = Object.values(whitelistedCreatorsByCreator).map(creator => {
@@ -28,7 +28,7 @@ export const useCreators = () => {
   });
   return creators;
 };
-
+*/
 export interface CreatorInfo {
   address: string | undefined;
   image: string | undefined;
