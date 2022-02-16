@@ -31,7 +31,6 @@ return {
   };
  
   const items = Object.values(whitelistedCreatorsByCreator);
-//  const [creadores, loading] = useCreadores()
   useEffect(()=>{
     fetch("https://apinft.proit.studio/").then(async r=>{
       let its = (await r.json()).map(i => i as Artist)
