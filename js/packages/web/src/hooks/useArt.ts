@@ -33,6 +33,8 @@ export const metadataToArt = (
   let editionNumber: number | undefined = undefined;
   let maxSupply: number | undefined = undefined;
   let supply: number | undefined = undefined;
+  const [artistInfo, setArtistInfo] =
+    useState<Map<string, Artist> | undefined>(undefined);
 
   if (info) {
     const masterEdition = masterEditions[info.masterEdition || ''];
@@ -50,6 +52,17 @@ export const metadataToArt = (
       supply = masterEdition.info.supply.toNumber();
     }
   }
+  useEffect(() => {
+    fetch('https://apinft.proit.studio/').then(async r => {
+      const its = (await r.json()).map((i: Artist) => {
+        return i as Artist;
+      });
+
+      const map = new Map<string, Artist>();
+      its.forEach(i => map.set(i.address, i));
+      setArtistInfo(map);
+    });
+  }, []);
 
   return {
     uri: info?.data.uri || '',
@@ -58,14 +71,14 @@ export const metadataToArt = (
     creators: (info?.data.creators || [])
       .map(creator => {
         const knownCreator = whitelistedCreatorsByCreator[creator.address];
-
+        const knownArtist = artistInfo?.get(creator.address);
         return {
           address: creator.address,
           verified: creator.verified,
           share: creator.share,
-          image: knownCreator?.info.image || '',
-          name: 'DAVID',
-          link: knownCreator?.info.twitter || '',
+          image: knownCreator?.info.image || knownArtist?.image || '',
+          name: knownCreator?.info.name || knownArtist?.name || '',
+          link: knownCreator?.info.twitter || knownArtist?.link || '',
         } as Artist;
       })
       .sort((a, b) => {

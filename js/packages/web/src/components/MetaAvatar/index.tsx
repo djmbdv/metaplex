@@ -11,7 +11,7 @@ const MetaAvatarItem = (props: {
   const { creator, size, alt } = props;
   const [noImage, setNoImage] = useState(false);
   const image = creator.image || '';
-
+  
   return (
     <Avatar
       alt={alt}
@@ -46,9 +46,9 @@ export const MetaAvatar = (props: {
   if (!creators || creators.length === 0) {
     return <Avatar size={size} src={false} />;
   }
-
+  console.table(creators);
   const controls = (creators || []).map(creator => (
-    <MetaAvatarItem creator={creator} alt={creator.name} size={size} />
+    <MetaAvatarItem creator={creator} alt={creator.name?creator.name:"no name" } size={size} />
   ));
 
   if (!showMultiple) {

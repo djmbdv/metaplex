@@ -14,7 +14,7 @@ export const CardLoader = () => (
     <circle cx="39" cy="296" r="15" />
     <rect x="24" y="251" rx="0" ry="6" width="123" height="21" />
     <rect x="24" y="322" rx="6" ry="6" width="44" height="25" />
-    {/* <rect x="9" y="320" rx="5" ry="6" width="232" height="54" />  */}
+    <rect x="9" y="320" rx="5" ry="6" width="232" height="54" />
   </ContentLoader>
 );
 
