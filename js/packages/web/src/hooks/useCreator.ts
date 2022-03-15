@@ -1,34 +1,26 @@
 import { StringPublicKey, pubkeyToString } from '@oyster/common';
+import { PublicKey } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
 import { useMeta } from '../contexts';
-
-export const useCreator = (id?: StringPublicKey) => {
-  const { whitelistedCreatorsByCreator } = useMeta();
-  const key = pubkeyToString(id);
+import { Artist } from '../types';
+export const useCreator = (
+  id?: StringPublicKey | string | PublicKey | null,
+) => {
+  const [key] = useState(pubkeyToString(id));
+  const [creator, setCreator] = useState<Artist | undefined>(undefined);
   //fetch address to url to get image
-  fetch(`https://apinft.proit.studio/address/${key}`)
-    .then(res => res.json())
-    .then(res => {
-      console.log(res);
-    });
-  const creator = Object.values(whitelistedCreatorsByCreator).find(
-    creator => creator.info.address === key,
-  );
+
+  useEffect(() => {
+    fetch(`https://apinft.proit.studio/solana/${key}`)
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        setCreator(res as Artist);
+      });
+  }, [key]);
   return creator;
 };
-/*
-export const useCreators = () => {
-  const { whitelistedCreatorsByCreator } = useMeta();
-  const creators = Object.values(whitelistedCreatorsByCreator).map(creator => {
-    return {
-      address: creator.info.address,
-      image: creator.info.image,
-      name: creator.info.name,
-    };
-  });
-  return creators;
-};
-*/
+
 export interface CreatorInfo {
   address: string | undefined;
   image: string | undefined;

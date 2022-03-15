@@ -58,13 +58,13 @@ export const metadataToArt = (
     creators: (info?.data.creators || [])
       .map(creator => {
         const knownCreator = whitelistedCreatorsByCreator[creator.address];
-
+        //   const knownCreator1 = useCreator(creator.address);
         return {
           address: creator.address,
           verified: creator.verified,
           share: creator.share,
           image: knownCreator?.info.image || '',
-          name: 'DAVID',
+          name: knownCreator?.info.name || '',
           link: knownCreator?.info.twitter || '',
         } as Artist;
       })

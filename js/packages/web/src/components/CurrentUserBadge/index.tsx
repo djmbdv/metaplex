@@ -209,9 +209,8 @@ export const CurrentUserBadge = (props: {
   const { account } = useNativeAccount();
   const solPrice = useSolPrice();
   const [showAddFundsModal, setShowAddFundsModal] = useState<Boolean>(false);
-  
-  
   const [name,setName] = useState<string>(props.showAddress && publicKey ? shortenAddress(`${publicKey}`) : publicKey ? `${publicKey}` : '');
+  const [imagen,setImage] = useState<string|undefined>(undefined);
   const balance = (account?.lamports || 0) / LAMPORTS_PER_SOL;
   const balanceInUSD = balance * solPrice;
   const solMintInfo = useTokenList().tokenMap.get(WRAPPED_SOL_MINT.toString());
@@ -220,7 +219,17 @@ export const CurrentUserBadge = (props: {
     width: props.iconSize,
     borderRadius: 50,
   };
-if (!wallet || !publicKey) {
+  useEffect(() => {
+  fetch('https://apinft.proit.studio/solana/' + publicKey ).then(async res => {
+        const data = await res.json();
+        try{
+          setName( data.name || name);
+          setImage(data.image || imagen);
+        }catch(e){}
+  }  
+  )
+},[publicKey]);
+  if (!wallet || !publicKey) {
     return null;
   }
   
@@ -230,20 +239,16 @@ if (!wallet || !publicKey) {
 
   }
 
+  
   let image = <Identicon address={publicKey?.toBase58()} style={iconStyle} />;
-
-  if (unknownWallet.image) {
-    image = <img src={unknownWallet.image} style={iconStyle} />;
+  if (imagen) {
+    image = <img src={imagen} style={iconStyle} />;
   }
+    
+  
 
 
-  fetch('https://apinft.proit.studio/solana/' + publicKey ).then(async res => {
-        const data = await res.json();
-        try{
-          setName( data.name || name);
-        }catch(e){}
-  }  
-  )
+
  
   return (
     <div className="wallet-wrapper">
@@ -441,7 +446,7 @@ export const CurrentUserBadgeMobile = (props: {
   const { wallet, publicKey, disconnect } = useWallet();
   const { account } = useNativeAccount();
   const solPrice = useSolPrice();
-
+  const [imagen,setImagen] = useState<string|undefined>(undefined);
   const [showAddFundsModal, setShowAddFundsModal] = useState<Boolean>(false);
 
   if (!wallet || !publicKey) {
@@ -461,11 +466,20 @@ export const CurrentUserBadgeMobile = (props: {
   if (unknownWallet.name && !props.showAddress) {
     name = unknownWallet.name;
   }
-
+  useEffect(() => {
+    fetch('https://apinft.proit.studio/solana/' + publicKey ).then(async res => {
+          const data = await res.json();
+          try{
+            
+            setImagen(data.image || imagen);
+          }catch(e){}
+    }  
+    )
+  },[publicKey]);
   let image = <Identicon address={publicKey?.toBase58()} style={iconStyle} />;
 
-  if (unknownWallet.image) {
-    image = <img src={unknownWallet.image} style={iconStyle} />;
+  if (imagen) {
+    image = <img src={imagen} style={iconStyle} />;
   }
 
   return (
