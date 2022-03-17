@@ -62,7 +62,7 @@ export const ArtSelector = (props: ArtSelectorProps) => {
             <ArtCard
               key={key}
               pubkey={m.metadata.pubkey}
-              preview={false}
+              preview={true}
               onClick={open}
               close={() => {
                 setSelected(selected.filter(_ => _.metadata.pubkey !== key));

@@ -11,7 +11,6 @@ const MetaAvatarItem = (props: {
   const { creator, size, alt } = props;
   const [noImage, setNoImage] = useState(false);
   const image = creator.image || '';
-
   return (
     <Avatar
       alt={alt}

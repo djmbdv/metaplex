@@ -12,7 +12,6 @@ import {
   useLocalStorage,
   pubkeyToString,
 } from '@oyster/common';
-import { WhitelistedCreator } from '@oyster/common/dist/lib/models/metaplex/index';
 import { Cache } from 'three';
 import { useInView } from 'react-intersection-observer';
 import useWindowDimensions from '../utils/layout';
@@ -24,10 +23,7 @@ export const metadataToArt = (
     string,
     ParsedAccount<MasterEditionV1 | MasterEditionV2>
   >,
-  whitelistedCreatorsByCreator: Record<
-    string,
-    ParsedAccount<WhitelistedCreator>
-  >,
+  whitelistedCreatorsByCreator: Map<string, Artist> | undefined,
 ) => {
   let type: ArtType = ArtType.NFT;
   let editionNumber: number | undefined = undefined;
@@ -57,15 +53,15 @@ export const metadataToArt = (
     title: info?.data.name,
     creators: (info?.data.creators || [])
       .map(creator => {
-        const knownCreator = whitelistedCreatorsByCreator[creator.address];
+        const knownCreator = whitelistedCreatorsByCreator?.get(creator.address);
         //   const knownCreator1 = useCreator(creator.address);
         return {
           address: creator.address,
           verified: creator.verified,
           share: creator.share,
-          image: knownCreator?.info.image || '',
-          name: knownCreator?.info.name || '',
-          link: knownCreator?.info.twitter || '',
+          image: knownCreator?.image || '',
+          name: knownCreator?.name || '',
+          link: knownCreator?.link || '',
         } as Artist;
       })
       .sort((a, b) => {
@@ -147,23 +143,41 @@ export const useCachedImage = (uri: string, cacheMesh?: boolean) => {
 };
 
 export const useArt = (key?: StringPublicKey) => {
-  const { metadata, editions, masterEditions, whitelistedCreatorsByCreator } =
-    useMeta();
+  const { metadata, editions, masterEditions } = useMeta();
 
   const account = useMemo(
     () => metadata.find(a => a.pubkey === key),
     [key, metadata],
   );
 
+  const [arrayOfCreators, setArrayOfCreators] =
+    useState<Map<string, Artist> | undefined>(undefined);
+  useEffect(() => {
+    let mounted = true;
+    const promesas = account?.info?.data.creators?.map(creator => {
+      return fetch(`https://apinft.proit.studio/solana/${creator.address}`)
+        .then(res => res.json())
+        .then(res => res as Artist);
+    });
+    if (promesas)
+      Promise.all(promesas || []).then(res => {
+        const arrayBuffer = new Map();
+        if (mounted)
+          res?.forEach(creator => {
+            arrayBuffer.set(creator?.address, creator);
+          });
+        setArrayOfCreators(arrayBuffer);
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, [metadata]);
+
   const art = useMemo(
     () =>
-      metadataToArt(
-        account?.info,
-        editions,
-        masterEditions,
-        whitelistedCreatorsByCreator,
-      ),
-    [account, editions, masterEditions, whitelistedCreatorsByCreator],
+      metadataToArt(account?.info, editions, masterEditions, arrayOfCreators),
+    [account, editions, masterEditions, arrayOfCreators],
   );
 
   return art;
