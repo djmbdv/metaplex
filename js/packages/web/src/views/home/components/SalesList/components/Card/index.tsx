@@ -20,7 +20,7 @@ const CardComponent = ({
 
 
   return (
-    <Link to={`/pack/${pubkey}`}>
+    <Link to={`/launchpad/${pubkey}`}>
       <Card hoverable={true} className="auction-render-card sliderCard-wrap" bordered={false}>
         <div className="card-art-info">
          {/*  <div className="card-artist-info card-artist-info--pack">

@@ -12,6 +12,7 @@ import {
   AuctionView,
   HomeView,
   StaticPageView,
+  LaunchpadView,
   LoginView,
 } from './views';
 import { AdminView } from './views/admin';
@@ -61,6 +62,7 @@ export function Routes() {
             {shouldEnableNftPacks && (
               <Route exact path="/pack/:id?" component={() => <PackView />} />
             )}
+            <Route exact path="/launchpad/:id?" component={() => <LaunchpadView />} />
             <Route
               exact
               path="/auction/create/:step_param?"
