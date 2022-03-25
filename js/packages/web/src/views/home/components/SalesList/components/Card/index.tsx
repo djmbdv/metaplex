@@ -40,7 +40,7 @@ const CardComponent = ({
           </div>
           <div className="art-name">{name}</div>
           <div className="art-auction-info">
-            <span className="info-message">{description}</span>
+            <span className="info-message">{name}</span>
             <p className="info-message__main">Nov 9, 2021</p>
           </div>
         </div>
