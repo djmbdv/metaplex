@@ -1,11 +1,11 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-export const CardLoader = () => (
+export const CardLoader = ({width=223,height=400}) => (
   <ContentLoader
     speed={2}
-    width={223}
-    height={400}
+    width={width}
+    height={height}
     viewBox="0 0 250 400"
     backgroundColor="#0c0c0c"
     foregroundColor="red"

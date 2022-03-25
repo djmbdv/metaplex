@@ -7,6 +7,7 @@ import { useMeta } from '../../../../contexts';
 import { CardLoader } from '../../../../components/MyLoader';
 import { Banner } from '../../../../components/Banner';
 import { HowToBuyModal } from '../../../../components/HowToBuyModal';
+import { SliderCard } from './components/SliderCard';
 
 import { useSales } from './hooks/useSales';
 import SaleCard from './components/SaleCard';
@@ -81,11 +82,18 @@ export const SalesListView = () => {
                 columnClassName="masonry-grid_column"
               >
                 {isLoading &&
-                  [...Array(10)].map((_, idx) => <CardLoader key={idx} />)}
+                  [...Array(9)].map((_, idx) => 
+                  <CardLoader key={idx} />
+                  )}
                 {!isLoading &&
-                  sales.map((sale, idx) => <SaleCard sale={sale} key={idx} />)}
+                  sales.map((sale, idx) =>
+
+                   <SaleCard sale={sale} key={idx} />
+                   )}
+                   
               </Masonry>
             </Row>
+            <SliderCard />
           </Col>
         </Content>
       </Layout>
