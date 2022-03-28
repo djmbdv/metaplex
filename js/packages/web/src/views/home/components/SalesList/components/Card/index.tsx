@@ -18,7 +18,7 @@ const CardComponent = ({
 }: Props): ReactElement => {
 
 
-
+console.log(pubkey);
   return (
     <Link to={`/launchpad/${pubkey}`}>
       <Card hoverable={true} className="auction-render-card sliderCard-wrap" bordered={false}>

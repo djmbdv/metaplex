@@ -5,6 +5,10 @@ import { useMeta } from '../../contexts';
 import { Menu } from 'antd';
 import { Collapse } from 'antd';
 import { Button } from 'antd';
+import { CachedImageContent } from '../../components/ArtContent';
+import { Typography } from 'antd';
+
+const { Title } = Typography;
 
 const { Panel } = Collapse;
 /* import { SalesListView } from './components/SalesList';
@@ -19,9 +23,17 @@ export const LaunchpadView = () => {
         <Row> 
             {/* imagen */}
             <Col span={12}>
-                <Row></Row>
+                <Row justify="center">
+                    <Col span={20} >
+                        <CachedImageContent
+                        uri="https://bafybeickbpg5rorsgxncosshr3gicib776imvitz35o2sozkr7qisvx4gm.ipfs.nftstorage.link/"
+                        className="auction-image no-events"
+                        preview={false}
+                        />
+                    </Col>
+                </Row>
                 {/* historia del precio */}
-                <Row>
+                <Row justify="center" >
                 <Col span={22} >
                 <Collapse >
                         <Panel header="Price History" key="1">
@@ -36,11 +48,11 @@ export const LaunchpadView = () => {
                 {/* identificacion de NTF */}
                 <Row></Row>
                 {/* precio de NFT */}
-                <Row>
+                <Row justify="center" className='price-details' >
                     <Col span={20} >
-                        <Row><Col>Current Price</Col></Row>
-                        <Row><Col>20.90 SOL</Col></Row>
-                        <Button type="primary" block >Connect Wallet</Button>
+                        <Row><Col><Title className="title-details" level={2}>Current Price</Title></Col></Row>
+                        <Row><Col><Title  className="subtitle-details" level={3}>20.90 SOL</Title></Col></Row>
+                        <Button type="primary" block size="middle" >Connect Wallet</Button>
                     </Col>
                 </Row>
                 {/* Description del NTF */}
