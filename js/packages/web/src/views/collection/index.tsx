@@ -6,7 +6,7 @@ import { Typography } from 'antd';
 const { Title } = Typography;
 
 
-const CollectionView = () =>{
+export const CollectionView = () =>{
     return(
         <Layout style={{ margin: 0, marginTop: 30 }}>
         <Row>
@@ -37,5 +37,3 @@ const CollectionView = () =>{
     </Layout>
     )
 } 
-
-export default CollectionView
