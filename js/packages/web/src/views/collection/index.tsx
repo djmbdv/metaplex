@@ -11,18 +11,8 @@ export const CollectionView = () =>{
         <Layout style={{ margin: 0, marginTop: 30 }}>
         <Row>
             <Col span={12}>
-                <Row><Col><Button>FEATURED LAUNCH</Button></Col></Row>
-                <Row><Col><Title>Collection Launch</Title></Col></Row>
-                <Row>
-                    <Col><Button>VERIFIED</Button></Col>
-                    <Col><Button>ESCROW 15D</Button></Col>
-                    <Col><p>TOTAL ITEMS 10,000</p></Col>
-                    <Col><Button></Button></Col>
-                    <Col><Button></Button></Col>
-                    <Col><Button></Button></Col>
-                    <Col><Button></Button></Col>
-                </Row>
-                <Row><Col span={20}><p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quia facilis et magnam, libero eum nostrum minima exercitationem odio reiciendis mollitia, vero fugit delectus a ut nisi dolorum ea obcaecati.</p></Col></Row>
+                <Row></Row>
+                <Row justify="center" ><Col><Title>Collection</Title></Col></Row>
             </Col>
             <Col span={12}>
                 <Row><Col span={20} ></Col></Row>
@@ -31,9 +21,21 @@ export const CollectionView = () =>{
             </Col>
         </Row>
         <Row>
-            <Col span={12}></Col>
-            <Col span={12}></Col>
+            <Col span={12}>
+                <Row >
+                    <Col span={20} >
+                    </Col>
+                </Row>
+            </Col>
+            <Col span={12}>
+                <Row>
+                    <Col span={12} ></Col>
+                    <Col span={12} ></Col>
+                </Row>
+            </Col>
         </Row>
     </Layout>
+    //art
+    //auctions
     )
 } 
