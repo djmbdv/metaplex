@@ -24,7 +24,7 @@ export const ButtoLoginBar = () =>{
                 <UserOutlined />
                 </a>
                 <a className="wallet" onClick={handleClick}>
-                Select Wallet  
+                Signup/Signin 
                 </a>
             </div>
         </>

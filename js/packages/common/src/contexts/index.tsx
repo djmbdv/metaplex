@@ -4,5 +4,6 @@ export * as Connection from './connection';
 export * from './connection';
 export * as Wallet from './wallet';
 export * from './wallet';
+export * from './signupAndWallet';
 export * from './store';
 export * from './meta';
