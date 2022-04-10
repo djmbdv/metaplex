@@ -15,23 +15,13 @@ export interface Card {
     description:string;
 }
 
-export const SliderCard =()=>{
-    const [cardDat,setCardDat]=useState([]);
-    const [isLoanding,setIsLoading] = useState(true);
+export const SliderCard =(props)=>{
+    const {data,loading,title} = props
+    const [cardDat,setCardDat]=useState(data);
+    /* const [isLoanding,setIsLoading] = useState(true); */
     const [active,setActive] =useState(2)
     const sliderCard = useRef() as MutableRefObject<HTMLInputElement>;
-    useEffect(()=>{
-        const onLoad = async () => {
-           let resp =  await fetch('https://apinft.proit.studio/all_nfts')
-           let json = await resp.json();
-           setCardDat(json);
-           setIsLoading(false);
-           
-          };
-          onLoad()
-          /* window.addEventListener('load', onLoad);
-          return () => window.removeEventListener('load', onLoad);*/
-    },[]) 
+   
 
     const handleClickRigth =(event)=>{
         sliderCard.current.scrollLeft += 10;
@@ -61,8 +51,8 @@ export const SliderCard =()=>{
             </Col>  
         </Row>
         <div className="slider-wrap" ref={sliderCard}>
-           {isLoanding &&   [...Array(5)].map((_, idx) => <Col span={5}><CardLoader key={idx} width={200} height={370} /></Col>)}
-           {!isLoanding &&  cardDat.map((c:Card, idx) => <Col span={5}><CardComponent key={idx} description={c.description} posterUri={c.image} name={c.name}  pubkey={c.pubkey} /></Col>)}
+           {loading &&   [...Array(5)].map((_, idx) => <Col span={5}><CardLoader key={idx} width={200} height={370} /></Col>)}
+           {!loading &&  cardDat.map((c:Card, idx) => <Col span={5}><CardComponent key={idx} description={c.description} posterUri={c.image} name={c.name}  pubkey={c.pubkey} /></Col>)}
            
            </div>
            <Button type="primary" className="sliderCard-btnLeft" shape="circle" onClick={handleClickLeft} >
