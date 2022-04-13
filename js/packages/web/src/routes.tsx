@@ -12,7 +12,11 @@ import {
   AuctionView,
   HomeView,
   StaticPageView,
+  LaunchpadView,
+  LaunchpadsView,
   LoginView,
+  CollectionView,
+  CollectionsView
 } from './views';
 import { AdminView } from './views/admin';
 import { PackView } from './views/pack';
@@ -23,7 +27,7 @@ export function Routes() {
   const shouldEnableNftPacks = process.env.NEXT_ENABLE_NFT_PACKS;
   return (
     <>
-      <HashRouter basename={'/'}>
+      <HashRouter basename={'/'}  >
         <Providers>
           <Switch>
             <Route exact path="/admin" component={() => <AdminView />} />
@@ -61,6 +65,10 @@ export function Routes() {
             {shouldEnableNftPacks && (
               <Route exact path="/pack/:id?" component={() => <PackView />} />
             )}
+            <Route exact path="/launchpads" component={() => <LaunchpadsView />} />
+            <Route exact path="/launchpad/:id?" component={() => <LaunchpadView />} />
+            <Route exact path="/collections" component={() => <CollectionsView />} />
+            <Route exact path="/collections/:id?" component={() => <CollectionView />} />
             <Route
               exact
               path="/auction/create/:step_param?"
@@ -77,7 +85,7 @@ export function Routes() {
               component={() => <BillingView />}
             />
             <Route path="/about" component={() => <StaticPageView />} />
-            <Route path="/" component={() => <HomeView />} />
+            <Route exact path="/" component={() => <HomeView />} />
           </Switch>
         </Providers>
       </HashRouter>

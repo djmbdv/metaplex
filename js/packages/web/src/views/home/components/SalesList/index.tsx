@@ -1,12 +1,13 @@
 import { useWallet } from '@solana/wallet-adapter-react';
 import { Col, Layout, Row, Tabs } from 'antd';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Masonry from 'react-masonry-css';
 
 import { useMeta } from '../../../../contexts';
 import { CardLoader } from '../../../../components/MyLoader';
 import { Banner } from '../../../../components/Banner';
 import { HowToBuyModal } from '../../../../components/HowToBuyModal';
+import { SliderCard } from './components/SliderCard';
 
 import { useSales } from './hooks/useSales';
 import SaleCard from './components/SaleCard';
@@ -32,7 +33,22 @@ export const SalesListView = () => {
   const [activeKey, setActiveKey] = useState(LiveAuctionViewState.All);
   const { isLoading } = useMeta();
   const { connected } = useWallet();
+  const [isLoad,setIsload]=useState(true);
   const { sales, hasResaleAuctions } = useSales(activeKey);
+  const [cardDat,setCardDat]=useState([]);
+
+  useEffect(()=>{
+    const onLoad = async () => {
+       let resp =  await fetch('https://apinft.proit.studio/all_nfts')
+       let json = await resp.json();
+       setCardDat(json);
+       setIsload(false);
+       
+      };
+      onLoad()
+      /* window.addEventListener('load', onLoad);
+      return () => window.removeEventListener('load', onLoad);*/
+},[]) 
 
   return (
     <>
@@ -81,11 +97,18 @@ export const SalesListView = () => {
                 columnClassName="masonry-grid_column"
               >
                 {isLoading &&
-                  [...Array(10)].map((_, idx) => <CardLoader key={idx} />)}
+                  [...Array(9)].map((_, idx) => 
+                  <CardLoader key={idx} />
+                  )}
                 {!isLoading &&
-                  sales.map((sale, idx) => <SaleCard sale={sale} key={idx} />)}
+                  sales.map((sale, idx) =>
+
+                   <SaleCard sale={sale} key={idx} />
+                   )}
+                   
               </Masonry>
             </Row>
+            <SliderCard data={cardDat} loading={isLoad} />
           </Col>
         </Content>
       </Layout>

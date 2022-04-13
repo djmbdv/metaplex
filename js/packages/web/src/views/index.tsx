@@ -9,3 +9,7 @@ export { ArtworksView } from './artworks';
 export { AnalyticsView } from './analytics';
 export { StaticPageView } from './staticPage';
 export { LoginView } from './login';
+export { LaunchpadView } from './Launchpad';
+export { LaunchpadsView } from './Launchpads';
+export { CollectionView }  from './collection';
+export { CollectionsView }  from './collections';

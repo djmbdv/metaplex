@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Menu, Modal } from 'antd';
+import { Button, Menu, Modal, Row, Col } from 'antd';
 import { useWallet } from '@solana/wallet-adapter-react';
+import { ButtoLoginBar } from '../ButtonLoginBar';
 import { Notifications } from '../Notifications';
 import useWindowDimensions from '../../utils/layout';
 import { MenuOutlined } from '@ant-design/icons';
@@ -13,17 +14,29 @@ import {
 } from '../CurrentUserBadge';
 import { ConnectButton } from '@oyster/common';
 
-const getDefaultLinkActions = (connected: boolean) => {
-  return [
-    <Link to={`/`} key={'explore'}>
-      <Button className="app-btn">Explorar</Button>
-    </Link>,
-    <Link to={`/artworks`} key={'artwork'}>
+{/* <Link to={`/artworks`} key={'artwork'}>
       <Button className="app-btn">{connected ? 'Mis Items' : 'Creaciones'}</Button>
     </Link>,
     <Link to={`/artists`} key={'artists'}>
       <Button className="app-btn">Creadores</Button>
+    </Link>, */}
+const getDefaultLinkActions = (connected: boolean) => {
+  return [
+    <Link to={`/`} key={'explore'}>
+      <Button className="app-btn">Home</Button>
     </Link>,
+    <Link to={`/artworks`} key={'collections'}>
+      <Button className="app-btn">{connected ? 'My Collecions' : 'Collections'}</Button>
+    </Link>,
+    <Link to={`/launchpads`} key={'Launchpads'}>
+    <Button className="app-btn">Launchpad</Button>
+  </Link>,
+    <Link to={`/`} key={'Auctions'}>
+    <Button className="app-btn">Auctions</Button>
+  </Link>,
+    <Link to={`/`} key={'stats'}>
+    <Button className="app-btn">Stats</Button>
+  </Link>,
   ];
 };
 
@@ -50,7 +63,8 @@ const MetaplexMenu = () => {
     return (
       <>
         <Modal
-          title={<img src={'/metaplex-logo.svg'} />}
+          //title={<img src={'/metaplex-logo.svg'} />}
+          title={<img src={'/metaplex-logo-nftplate.svg'} />}
           visible={isModalVisible}
           footer={null}
           className={'modal-box'}
@@ -114,26 +128,30 @@ export const LogoLink = () => {
   );
 };
 
+
+
+
 export const AppBar = () => {
   const { connected } = useWallet();
   return (
     <>
       <div id="mobile-navbar">
         <LogoLink />
-        <MetaplexMenu />
+        {/* <MetaplexMenu /> */}
       </div>
       <div id="desktop-navbar">
         <div className="app-left">
           <LogoLink />
-          &nbsp;&nbsp;&nbsp;
-          <MetaplexMenu />
+          {/* &nbsp;&nbsp;&nbsp;
+          <MetaplexMenu /> */}
         </div>
         <div className="app-right">
-          {!connected && (
+        {/*   {!connected && (
             <HowToBuyModal buttonClassName="modal-button-default" />
-          )}
+          )} */}
           {!connected && (
-            <ConnectButton style={{ height: 48 }} allowWalletChange />
+            <ButtoLoginBar />
+            //<ConnectButton style={{ height: 48 }} allowWalletChange />
           )}
           {connected && (
             <>
@@ -147,7 +165,16 @@ export const AppBar = () => {
             </>
           )}
         </div>
+        
       </div>
+      <Row  justify='center' >
+          <Col span={24}>
+        <div className="app-center">
+          <MetaplexMenu />
+        </div>
+        </Col>
+      </Row>
+      
     </>
   );
 };

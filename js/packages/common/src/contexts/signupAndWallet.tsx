@@ -14,9 +14,6 @@ import {
   WalletName,
 } from '@solana/wallet-adapter-wallets';
 import { Button, Collapse } from 'antd';
-import { Input ,Form} from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-
 import React, {
   createContext,
   FC,
@@ -30,111 +27,34 @@ import React, {
 import { notify } from '../utils';
 import { MetaplexModal } from '../components';
 
-
 const { Panel } = Collapse;
 
-export interface WalletModalContextState {
+export interface SignupAndWalletModalContextState {
   visible: boolean;
   setVisible: (open: boolean) => void;
 }
 
-export const WalletModalContext = createContext<WalletModalContextState>(
-  {} as WalletModalContextState,
+export const SignupAndWalletModalContext = createContext<SignupAndWalletModalContextState>(
+  {} as SignupAndWalletModalContextState,
 );
 
-export function useWalletModal(): WalletModalContextState {
-  return useContext(WalletModalContext);
+export function useSignupAndWalletModal(): SignupAndWalletModalContextState {
+  return useContext(SignupAndWalletModalContext);
 }
 
-export const WalletModal: FC = () => {
-  const [showMe,setShowMe] = useState(false);
+export const SignupAndWalletModal: FC = () => {
   const { wallets, wallet: selected, select } = useWallet();
-  const { visible, setVisible } = useWalletModal();
+  const { visible, setVisible } = useSignupAndWalletModal();
   const [showWallets, setShowWallets] = useState(false);
   const close = useCallback(() => {
     setVisible(false);
     setShowWallets(false);
   }, [setVisible, setShowWallets]);
+
   const phatomWallet = useMemo(() => getPhantomWallet(), []);
-  const onFinish = async (values: any) => {
-    console.log('Success:', values);
-    close();
-    let resp = await fetch('http://localhost:3012/auth', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    })
-    if(resp.ok){ 
-      window.location.href="./dashboard";  
-      console.log(resp);
-    }
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-  };
-  const formSignIn = ()=>{
-    return(
-      <>
-      <Form
-      name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-      <Form.Item
-        label="Email"
-        name="email"
-        rules={[{ required: true, message: 'Please input your username!' }]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" className="btn-form-signin" htmlType="submit">
-          Conectar
-        </Button>
-      </Form.Item>
-    </Form>
-      </>
-    )
-  }
 
   return (
-    <MetaplexModal title="signin / signup / wallet " visible={visible} onCancel={close}>
-      <Button
-        className="phantom-button metaplex-button-signin"
-        onClick={() => {
-          console.log('sign in')
-          let status = showMe ? false : true; 
-          setShowMe(status);
-        }}
-      >
-        Sign In
-      </Button>
-        {showMe && formSignIn()}
-      <Button
-        className="phantom-button metaplex-button-signup"
-        type="text"
-        onClick={() => {
-          console.log('Sign up')
-        }}
-      >
-        Sign up
-      </Button>
+    <MetaplexModal title="Signup" visible={visible} onCancel={close}>
       <span
         style={{
           color: 'rgba(255, 255, 255, 0.75)',
@@ -151,6 +71,7 @@ export const WalletModal: FC = () => {
       <Button
         className="phantom-button metaplex-button"
         onClick={() => {
+          console.log(phatomWallet.name);
           select(phatomWallet.name);
           close();
         }}
@@ -237,7 +158,7 @@ export const WalletModal: FC = () => {
   );
 };
 
-export const WalletModalProvider: FC<{ children: ReactNode }> = ({
+export const SignupAndWalletModalProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const { publicKey } = useWallet();
@@ -273,19 +194,19 @@ export const WalletModalProvider: FC<{ children: ReactNode }> = ({
   }, [publicKey, connected, setConnected]);
 
   return (
-    <WalletModalContext.Provider
+    <SignupAndWalletModalContext.Provider
       value={{
         visible,
         setVisible,
       }}
     >
       {children}
-      <WalletModal />
-    </WalletModalContext.Provider>
+      <SignupAndWalletModal />
+    </SignupAndWalletModalContext.Provider>
   );
 };
 
-export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
+export const SignupAndWalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const wallets = useMemo(
     () => [
       getPhantomWallet(),
@@ -315,12 +236,12 @@ export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <BaseWalletProvider wallets={wallets} onError={onError} autoConnect>
-      <WalletModalProvider>{children}</WalletModalProvider>
+      <SignupAndWalletModalProvider>{children}</SignupAndWalletModalProvider>
     </BaseWalletProvider>
   );
 };
 
-export type WalletSigner = Pick<
+export type SignupAndWalletSigner = Pick<
   WalletAdapter,
   'publicKey' | 'signTransaction' | 'signAllTransactions'
 >;

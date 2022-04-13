@@ -15,6 +15,7 @@ export const useSales = (
   const { auctions, hasResaleAuctions } = useAuctionsList(activeKey);
   const packs = usePacksList();
 
+
   const sales = useMemo(() => {
     const activePacks = [
       LiveAuctionViewState.All,
