@@ -1,8 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import {Layout,Row, Col} from 'antd';
 import { Banner } from '../../components/Banner';
-import { HowToBuyModal } from '../../components/HowToBuyModal';
-import { useSales } from '../home/components/SalesList/hooks/useSales';
+import { HowToBuyModal } from '../../components/HowToBuyModal';;
 import { LiveAuctionViewState } from './enum';
 import { CardSliderComponent } from './components/card-slider';
 import { Typography } from 'antd';
@@ -14,8 +13,6 @@ export const LaunchpadsView = () =>{
     let live  =  LiveAuctionViewState.Ended
     const [cardDat,setCardDat] = useState([]);
     const [isLoading,setIsLoading] = useState(true);
-    /* const { sales, hasResaleAuctions } = useSales(live);
-    console.log(sales); */
 
     useEffect(()=>{
         const onLoad = async () => {
@@ -26,9 +23,7 @@ export const LaunchpadsView = () =>{
            setIsLoading(false);
            
           };
-          onLoad()
-          /* window.addEventListener('load', onLoad);
-          return () => window.removeEventListener('load', onLoad);*/
+          onLoad().catch(e => console.log(JSON.stringify(e)))
     },[]) 
 
     return(
@@ -49,7 +44,7 @@ export const LaunchpadsView = () =>{
                     <Row><Title>Live</Title></Row>
                     <CardSliderComponent data={cardDat} loading={isLoading} />
                 </Col>
-            </Row>
+            </Row>{/* 
             <Row>
                 <Col>
                     <Row><Title>Upcoming</Title></Row>
@@ -61,7 +56,7 @@ export const LaunchpadsView = () =>{
                     <Row><Title>Ended</Title></Row>
                     <CardSliderComponent data={cardDat} loading={isLoading} />
                 </Col>
-            </Row>
+            </Row>*/}
         </Layout>
     )
 }

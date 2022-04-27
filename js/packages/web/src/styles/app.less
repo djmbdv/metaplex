@@ -1,5 +1,5 @@
-@import '~antd/es/style/themes/dark.less';
-@import '~antd/dist/antd.dark.less';
+@import '~antd/es/style/themes/index.less';
+@import '~antd/dist/antd.less';
 
 html {
   overflow-y: scroll;
@@ -26,7 +26,7 @@ html {
 body {
   --row-highlight: @background-color-base;
   margin: 0;
-
+  color: contrast(@background-color-base);
   font-style: normal;
   font-weight: normal;
   font-family: 'Graphik Web' !important;
@@ -142,6 +142,10 @@ code {
   color: @text-color-secondary;
 }
 
+.ant-btn {
+
+  color: rgb(53, 53, 53) !important;
+}
 .ant-tabs {
   width: 100%;
 }
