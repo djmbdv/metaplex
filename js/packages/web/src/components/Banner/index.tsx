@@ -43,7 +43,7 @@ export const Banner = (props: {
       </div>
       <div
         id={'current-banner'}
-        style={{ backgroundImage: `url(${props.src})` }}
+        
       >
         <span id={'gradient-banner'}></span>
         <div id="banner-inner">
@@ -53,10 +53,10 @@ export const Banner = (props: {
             {props.actionComponent}
           </div>
           {props.children}
-          <div className="powered-by">
-            <span>
-              POWERED BY <b>NFT PLATE</b>
-            </span>
+          <div className="second-column"
+          style={{ backgroundImage: `url(${props.src})` }}
+          >
+            &nbsp;
           </div>
         </div>
       </div>

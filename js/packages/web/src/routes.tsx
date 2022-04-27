@@ -16,7 +16,8 @@ import {
   LaunchpadsView,
   LoginView,
   CollectionView,
-  CollectionsView
+  CollectionsView,
+  SignupView
 } from './views';
 import { AdminView } from './views/admin';
 import { PackView } from './views/pack';
@@ -42,6 +43,11 @@ export function Routes() {
               exact
               path="/analytics"
               component={() => <AnalyticsView />}
+            />
+            <Route
+              exact
+              path="/signup"
+              component={() => <SignupView />}
             />
             <Route
               exact

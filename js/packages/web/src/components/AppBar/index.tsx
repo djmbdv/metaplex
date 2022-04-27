@@ -25,18 +25,18 @@ const getDefaultLinkActions = (connected: boolean) => {
     <Link to={`/`} key={'explore'}>
       <Button className="app-btn">Home</Button>
     </Link>,
-    <Link to={`/artworks`} key={'collections'}>
-      <Button className="app-btn">{connected ? 'My Collecions' : 'Collections'}</Button>
-    </Link>,
-    <Link to={`/launchpads`} key={'Launchpads'}>
-    <Button className="app-btn">Launchpad</Button>
-  </Link>,
-    <Link to={`/`} key={'Auctions'}>
-    <Button className="app-btn">Auctions</Button>
-  </Link>,
-    <Link to={`/`} key={'stats'}>
-    <Button className="app-btn">Stats</Button>
-  </Link>,
+  //   <Link to={`/artworks`} key={'collections'}>
+  //     <Button className="app-btn">{connected ? 'My Collecions' : 'Collections'}</Button>
+  //   </Link>,
+  //   <Link to={`/launchpads`} key={'Launchpads'}>
+  //   <Button className="app-btn">Launchpad</Button>
+  // </Link>,
+  //   <Link to={`/`} key={'Auctions'}>
+  //   <Button className="app-btn">Auctions</Button>
+  // </Link>,
+  //   <Link to={`/`} key={'stats'}>
+  //   <Button className="app-btn">Stats</Button>
+  // </Link>,
   ];
 };
 
@@ -123,7 +123,7 @@ const MetaplexMenu = () => {
 export const LogoLink = () => {
   return (
     <Link to={`/`}>
-      <img src={'/metaplex-logo.svg'} />
+      <img src={'/metaplex-logo.svg'} className="logo" />
     </Link>
   );
 };
@@ -167,7 +167,7 @@ export const AppBar = () => {
         </div>
         
       </div>
-      <Row  justify='center' >
+      <Row className='wrap-second-bar' justify='center' >
           <Col span={24}>
         <div className="app-center">
           <MetaplexMenu />

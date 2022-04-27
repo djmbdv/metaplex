@@ -52,6 +52,7 @@ export const SalesListView = () => {
 
   return (
     <>
+    <Layout style={{ margin: 0, marginTop: 30 }} >
       <Banner
         src="/main-banner.svg"
         headingText="No te pierdas la oportunidad de entrar al mundo de los NFT."
@@ -59,9 +60,9 @@ export const SalesListView = () => {
         actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
         useBannerBg
       />
-      <Layout>
-        <Content style={{ display: 'flex', flexWrap: 'wrap' }}>
-          <Col style={{ width: '100%', marginTop: 32 }}>
+      
+        <Content style={{ display: 'flex', flexWrap: 'wrap',color:'#000' }}>
+          <Col style={{ width: '100%', marginTop: 64 }}>
             <Row>
               <Tabs
                 activeKey={activeKey}
@@ -97,7 +98,7 @@ export const SalesListView = () => {
                 columnClassName="masonry-grid_column"
               >
                 {isLoading &&
-                  [...Array(9)].map((_, idx) => 
+                  [...Array(4)].map((_, idx) => 
                   <CardLoader key={idx} />
                   )}
                 {!isLoading &&
@@ -108,7 +109,7 @@ export const SalesListView = () => {
                    
               </Masonry>
             </Row>
-            <SliderCard data={cardDat} loading={isLoad} />
+            {/* <SliderCard data={cardDat} loading={isLoad} /> */}
           </Col>
         </Content>
       </Layout>
