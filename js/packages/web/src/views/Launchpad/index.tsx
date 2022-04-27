@@ -9,6 +9,7 @@ import { CachedImageContent } from '../../components/ArtContent';
 import { Typography } from 'antd';
 import { TabsInfo } from './components/tabs-info';
 import { InfoLaunchpad } from "./info-launchpad";
+import { BtnCandyMachineComponent } from './components/botonCandyMachine';
 
 const { Title, Paragraph } = Typography;
 
@@ -21,22 +22,24 @@ export const LaunchpadView = () => {
   const { isConfigured } = useStore(); */
 
   return (
-    <Layout style={{ margin: 0, marginTop: 30 }}>
-    <Row>
+    <Layout style={{ margin: 0, marginTop: 64 }}>
+    <Row className='details-launchpad'>
    <Col span={12}>
-       <Row><Col><Button size="small">FEATURED LAUNCH</Button></Col></Row>
+       <Row><Col>
+       <Button  className="btn-outline-launchpad" size="small">FEATURED LAUNCH</Button>
+       </Col></Row>
        <Row><Col><Title>Collection Launch</Title></Col></Row>
        <Row>
-           <Col><Button>VERIFIED</Button></Col>
-           <Col><Button>ESCROW 15D</Button></Col>
-           <Col><p>TOTAL ITEMS 10,000</p></Col>
+           <Col><Button className="btn-outline-launchpad" >VERIFIED</Button></Col>
+           <Col><Button className="btn-outline-launchpad" >ESCROW 15D</Button></Col>
+           <Col><p id="total-items-launchpad" >TOTAL ITEMS 10,000</p></Col>
            <Col><Button></Button></Col>
            <Col><Button></Button></Col>
            <Col><Button></Button></Col>
            <Col><Button></Button></Col>
        </Row>
        <Row><Col span={20}>
-           <Paragraph > 
+           <Paragraph className='details-paragraph'> 
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quia facilis et magnam, libero eum nostrum minima exercitationem odio reiciendis mollitia, vero fugit delectus a ut nisi dolorum ea obcaecati.
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quia facilis et magnam, libero eum nostrum minima exercitationem odio reiciendis mollitia, vero fugit delectus a ut nisi dolorum ea obcaecati.
             </Paragraph>
@@ -50,11 +53,15 @@ export const LaunchpadView = () => {
            preview={false}
             />
            </Col></Row>
-       <Row><Col span={20} ></Col></Row>
+       <Row><Col span={20} >
+           <div className="wrap-btnCandy">
+                <BtnCandyMachineComponent />
+           </div>
+           </Col></Row>
 
    </Col>
 </Row>
-<Row>
+<Row className="wrap-info-launchpad" >
    <Col span={12}>
        <Row >
            <Col span={20} >

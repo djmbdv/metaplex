@@ -54,7 +54,7 @@ export const SalesListView = () => {
     <>
     <Layout style={{ margin: 0, marginTop: 30 }} >
       <Banner
-        src="/main-banner.svg"
+        src="/image4.png"
         headingText="No te pierdas la oportunidad de entrar al mundo de los NFT."
         subHeadingText="Compra NFTs de tus artistas favoritos."
         actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
