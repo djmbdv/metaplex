@@ -31,7 +31,7 @@ export const LaunchpadsView = () =>{
             <Row justify='center' >
                 <Col span={20}>
                 <Banner
-                    src="/main-banner.svg"
+                    src="/image4.jpg"
                     headingText="No te pierdas la oportunidad de entrar al mundo de los NFT."
                     subHeadingText="Compra NFTs de tus artistas favoritos."
                     actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
