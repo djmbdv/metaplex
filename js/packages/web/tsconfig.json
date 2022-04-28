@@ -1,24 +1,37 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "downlevelIteration": true,
+    "downlevelIteration": false,
     "noEmit": true,
     "jsx": "preserve",
-    "typeRoots": ["../../types"]
+    "sourceMap": false,
+    "typeRoots": [
+      "../../types"
+    ],
+    "declaration": false
   },
-  "include": ["src","src/models"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src",
+    "src/models"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
