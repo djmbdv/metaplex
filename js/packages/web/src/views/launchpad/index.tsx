@@ -1,6 +1,6 @@
 import { Layout,Row,Col } from 'antd';
 import React from 'react';
-import { Button } from 'antd';
+import { Button,Progress } from 'antd';
 import { CachedImageContent } from '../../components/ArtContent';
 import { Typography } from 'antd';
 import { TabsInfo } from './components/tabs-info';
@@ -18,8 +18,14 @@ import {
   SetupState,
   createAccountsForMint,
 } from '../../models/candy-machine';
+import { sendTransaction }  from '../../models/connection';
+
 import { PublicKey, Transaction } from '@solana/web3.js';
+import {MintButton } from "./components/mintButton"
+import { GatewayProvider } from '@civic/solana-gateway-react';
 import { AlertState, toDate, formatNumber, getAtaForMint } from '../../models/utils';
+import {ConnectButton} from "@oyster/common"
+import {MintCountdown} from "./components/mintCountdown"
 const { Title, Paragraph } = Typography;
 
 
@@ -45,7 +51,7 @@ export interface LaunchpadViewProps {
 
 const defaultProps : LaunchpadViewProps = {
    candyMachineId: new anchor.web3.PublicKey(
-    "EhrfX7kM4b3dmaEcFBJx1t8ugEozZ1WGRjLtTkK9wvK"),
+    "BEhrfX7kM4b3dmaEcFBJx1t8ugEozZ1WGRjLtTkK9wvK"),
    rpcHost : "https://metaplex.devnet.rpcpool.com/",
    txTimeout : 40,
    connection:new anchor.web3.Connection(
@@ -55,7 +61,7 @@ const defaultProps : LaunchpadViewProps = {
 
 export const LaunchpadView = (props:LaunchpadViewProps) => {
     const [isUserMinting, setIsUserMinting] = useState(false);
-    const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>();
+    const [candyMachine, setCandyMachine] = useState<CandyMachineAccount|null>(null);
     const [alertState, setAlertState] = useState<AlertState>({
       open: false,
       message: '',
@@ -361,7 +367,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
         setIsUserMinting(false);
       }
     };
-  
+
     const toggleMintButton = () => {
       let active = !isActive || isPresale;
   
@@ -386,6 +392,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
     };
   
     useEffect(() => {
+      console.log("refreshCandyMachineState")
       refreshCandyMachineState();
     }, [
       anchorWallet,
@@ -395,37 +402,195 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
     ]);
   return (
     <Layout style={{ margin: 0, marginTop: 30 }}>
-    <Row>
+    <Row className='details-launchpad'>
    <Col span={12}>
-       <Row><Col><Button size="small">FEATURED LAUNCH</Button></Col></Row>
+       <Row><Col><Button className="btn-outline-launchpad" size="small">FEATURED LAUNCH</Button></Col></Row>
        <Row><Col><Title>Collection Launch</Title></Col></Row>
        <Row>
-           <Col><Button>VERIFIED</Button></Col>
-           <Col><Button>ESCROW 15D</Button></Col>
-           <Col> {`${itemsRemaining}`}</Col>
-           <Col><Button></Button></Col>
-           <Button>{JSON.stringify(wallet)} </Button><br/>
-           <Button> {JSON.stringify(candyMachine)}</Button>
+           <Col><Button className="btn-outline-launchpad">VERIFIED</Button></Col>
+           <Col><Button className="btn-outline-launchpad">ESCROW 15D</Button></Col>
+           <Col><p id="total-items-launchpad" >TOTAL ITEMS  {`${itemsRemaining}`} </p></Col>
        </Row>
        <Row><Col span={20}>
-           <Paragraph > 
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quia facilis et magnam, libero eum nostrum minima exercitationem odio reiciendis mollitia, vero fugit delectus a ut nisi dolorum ea obcaecati.
-            </Paragraph>
+           <Paragraph className='details-paragraph'> 
+           {JSON.stringify(wallet)} <br></br>
+           {JSON.stringify(candyMachine?.state.price)}<br/>
+
+          
+           {JSON.stringify(endDate)}
+           </Paragraph>
+                               {isActive && endDate && Date.now() < endDate.getTime() ? (
+                      <>
+                        <MintCountdown
+                          key="endSettings"
+                          date={getCountdownDate(candyMachine)}
+                          style={{ justifyContent: 'flex-end' }}
+                          status="COMPLETED"
+                          onComplete={toggleMintButton}
+                        />
+                        <Typography
+                          style={{ fontWeight: 'bold' }}
+                        >
+                          TO END OF MINT
+                        </Typography>
+                      </>
+                    ) : (
+                      <>
+                        <MintCountdown
+                          key="goLive"
+                          date={getCountdownDate(candyMachine)}
+                        
+                          status={
+                            candyMachine?.state?.isSoldOut ||
+                            (endDate && Date.now() > endDate.getTime())
+                              ? 'COMPLETED'
+                              : isPresale
+                              ? 'PRESALE'
+                              : 'LIVE'
+                          }
+                          onComplete={toggleMintButton}
+                        />
+                        {isPresale && candyMachine &&
+                          candyMachine.state.goLiveDate &&
+                          candyMachine.state.goLiveDate.toNumber() >
+                            new Date().getTime() / 1000 && (
+                            <Typography
+                              style={{ fontWeight: 'bold' }}
+                            >
+                              UNTIL PUBLIC MINT
+                            </Typography>
+                          )}
+                      </>
+                    )}
         </Col></Row>
    </Col>
    <Col span={12}>
-       <Row><Col span={20} >
+       <Row><Col span={24}  className="wrap-btnCandy">
            <CachedImageContent
-           uri="https://4hvpohv3qqhopkhmgrh6d5pcrku4aqvvo4jnqwxqbicbyoe7kica.arweave.net/4er3HruEDueo7DRP4fXiiqnAQrV3Etha8AoEHDifUgQ?ext=jpg"
+           uri="https://media.istockphoto.com/photos/wine-bottles-picture-id180732455?k=20&m=180732455&s=612x612&w=0&h=4MT5fOxL_KJn_gnYu2b6-IigGSUlJCk6vk2RG2K851o="
            className="auction-image no-events"
-           preview={false}
+           preview={true}
             />
            </Col></Row>
-       <Row><Col span={20} ></Col></Row>
+       <Row className="wrap-btnCandy"> <Col  span={12} >
+        {!wallet.connected ? (
+            <ConnectButton className="wrap-btnCandy btn-mint" >Connect Wallet</ConnectButton>
+          ) :(
+          candyMachine?.state.isActive &&
+                candyMachine?.state.gatekeeper &&
+                wallet.publicKey &&
+                wallet.signTransaction ? (
+                  <GatewayProvider
+                    wallet={{
+                      publicKey:
+                        wallet.publicKey ||
+                        new PublicKey(CANDY_MACHINE_PROGRAM),
+                      //@ts-ignore
+                      signTransaction: wallet.signTransaction,
+                    }}
+                    gatekeeperNetwork={
+                      candyMachine?.state?.gatekeeper?.gatekeeperNetwork
+                    }
+                    clusterUrl={rpcUrl}
+                    handleTransaction={async (transaction: Transaction) => {
+                      setIsUserMinting(true);
+                      const userMustSign = transaction.signatures.find(sig =>
+                        sig.publicKey.equals(wallet.publicKey!),
+                      );
+                      if (userMustSign) {
+                        setAlertState({
+                          open: true,
+                          message: 'Please sign one-time Civic Pass issuance',
+                          severity: 'info',
+                        });
+                        try {
+                          transaction = await wallet.signTransaction!(
+                            transaction,
+                          );
+                        } catch (e) {
+                          setAlertState({
+                            open: true,
+                            message: 'User cancelled signing',
+                            severity: 'error',
+                          });
+                          // setTimeout(() => window.location.reload(), 2000);
+                          setIsUserMinting(false);
+                          throw e;
+                        }
+                      } else {
+                        setAlertState({
+                          open: true,
+                          message: 'Refreshing Civic Pass',
+                          severity: 'info',
+                        });
+                      }
+                      try {
+                        await sendTransaction(
+                          props.connection,
+                          wallet,
+                          transaction,
+                          [],
+                          true,
+                          'confirmed',
+                        );
+                        setAlertState({
+                          open: true,
+                          message: 'Please sign minting',
+                          severity: 'info',
+                        });
+                      } catch (e) {
+                        setAlertState({
+                          open: true,
+                          message:
+                            'Solana dropped the transaction, please try again',
+                          severity: 'warning',
+                        });
+                        console.error(e);
+                        // setTimeout(() => window.location.reload(), 2000);
+                        setIsUserMinting(false);
+                        throw e;
+                      }
+                      await onMint();
+                    }}
+                    broadcastTransaction={false}
+                    options={{ autoShowModal: false }}
+                  >
+                    <MintButton
+                      candyMachine={candyMachine}
+                      isMinting={isUserMinting}
+                      setIsMinting={val => setIsUserMinting(val)}
+                      onMint={onMint}
+                      isActive={isActive || (isPresale && isWhitelistUser)}
+                    />
+                  </GatewayProvider>
+                ) : (
+                  <MintButton
+                    candyMachine={candyMachine}
+                    isMinting={isUserMinting}
+                    setIsMinting={val => setIsUserMinting(val)}
+                    onMint={onMint}
+                    isActive={isActive || (isPresale && isWhitelistUser)}
+                  />
+                ))}
+
+          
+         </Col>
+          <Col  span={12}>
+            <Row className="wrap-btnCandy">
+                <Progress percent={candyMachine && candyMachine.state.endSettings ? (candyMachine.state.itemsRedeemed/Math.min(
+              candyMachine.state.endSettings.number.toNumber(),
+              candyMachine.state.itemsAvailable,
+            ))*100 : 0} strokeColor="#8B442E"/>
+          </Row>
+                      <Row >
+                        TOTAL MINTED {candyMachine?.state?.itemsRedeemed}
+          </Row>
+         </Col>
+         </Row>
 
    </Col>
 </Row>
-<Row>
+<Row className="section-info">
    <Col span={12}>
        <Row >
            <Col span={20} >
@@ -443,6 +608,26 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
 </Row>
 </Layout>
 
+  );
+};
+
+
+const getCountdownDate = (
+  candyMachine: CandyMachineAccount|null,
+): Date | undefined => {
+  if (
+    candyMachine?.state.isActive &&
+    candyMachine?.state.endSettings?.endSettingType.date
+  ) {
+    return toDate(candyMachine?.state.endSettings.number);
+  }
+
+  return toDate(
+    candyMachine?.state.goLiveDate
+      ? candyMachine?.state.goLiveDate
+      : candyMachine?.state.isPresale
+      ? new anchor.BN(new Date().getTime() / 1000)
+      : undefined,
   );
 };
 

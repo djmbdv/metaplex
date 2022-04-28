@@ -14,12 +14,7 @@ import {
 } from '../CurrentUserBadge';
 import { ConnectButton } from '@oyster/common';
 
-{/* <Link to={`/artworks`} key={'artwork'}>
-      <Button className="app-btn">{connected ? 'Mis Items' : 'Creaciones'}</Button>
-    </Link>,
-    <Link to={`/artists`} key={'artists'}>
-      <Button className="app-btn">Creadores</Button>
-    </Link>, */}
+
 const getDefaultLinkActions = (connected: boolean) => {
   return [
     <Link to={`/`} key={'explore'}>
@@ -123,7 +118,7 @@ const MetaplexMenu = () => {
 export const LogoLink = () => {
   return (
     <Link to={`/`}>
-      <img src={'/metaplex-logo.svg'} />
+      <img src={'/metaplex-logo.svg'} className="logo" />
     </Link>
   );
 };
@@ -167,7 +162,7 @@ export const AppBar = () => {
         </div>
         
       </div>
-      <Row  justify='center' >
+      <Row  className='wrap-second-bar' justify='center' >
           <Col span={24}>
         <div className="app-center">
           <MetaplexMenu />

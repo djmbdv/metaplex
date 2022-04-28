@@ -55,7 +55,7 @@ export const Banner = (props: {
           {props.children}
           <div className="powered-by">
             <span>
-              POWERED BY <b>nft.proit.studio</b>
+              POWERED BY <b>Corko.io</b>
             </span>
           </div>
         </div>

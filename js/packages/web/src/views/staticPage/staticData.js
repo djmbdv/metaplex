@@ -1,8 +1,8 @@
 export const data = {
   headContent: {
-    title: 'We are Metaplex',
+    title: 'We are Corko',
     subtitle: 'About Us',
-    bannerImage: '/main-banner.png',
+    bannerImage: '/image4.jpg',
   },
   leftContent: undefined,
   midContent: {
@@ -14,7 +14,7 @@ export const data = {
           '• Starting a variety of auctions for primary/secondary sales;',
           '• and Visualizing NFTs in a standard way across wallets and applications.',
         ],
-        image: '/main-banner.png',
+        image: '/image4.jpg',
       },
     ],
   },

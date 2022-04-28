@@ -131,6 +131,7 @@ export const WalletModal: FC = () => {
         type="text"
         onClick={() => {
           console.log('Sign up')
+          window.location.href = "/signup"
         }}
       >
         Sign up

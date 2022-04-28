@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
 import { CandyMachineAccount } from '../../../models/candy-machine';
 import { CircularProgress } from '@material-ui/core';
+import { Button} from 'antd';
 import { GatewayStatus, useGateway } from '@civic/solana-gateway-react';
 import { useEffect, useState, useRef ,useContext,createContext} from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
@@ -14,16 +14,7 @@ import {
 
 import { Connection } from '@solana/web3.js';
 
-export const CTAButton = styled(Button)`
-  width: 100%;
-  height: 60px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  background: linear-gradient(180deg, #604ae5 0%, #813eee 100%);
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-`; // ad
+
 
 export interface ConnectionContextState {
   connection: Connection;
@@ -44,7 +35,7 @@ export const MintButton =  ({
     isActive,
   }: {
     onMint: () => Promise<void>;
-    candyMachine?: CandyMachineAccount;
+    candyMachine?: CandyMachineAccount|null;
     isMinting: boolean;
     setIsMinting: (val: boolean) => void;
     isActive: boolean;
@@ -110,7 +101,7 @@ export const MintButton =  ({
     }, [setIsMinting, previousGatewayStatus, gatewayStatus]);
   
     return (
-      <CTAButton
+      <Button className="wrap-btnCandy btn-mint"
         disabled={isMinting || !isActive}
         onClick={async () => {
           if (candyMachine?.state.isActive && candyMachine?.state.gatekeeper) {
@@ -167,10 +158,9 @@ export const MintButton =  ({
             setClicked(false);
           }
         }}
-        variant="contained"
       >
         {getMintButtonContent()}
-      </CTAButton>
+      </Button>
     );
   };
   
