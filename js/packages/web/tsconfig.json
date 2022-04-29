@@ -25,7 +25,8 @@
     "typeRoots": [
       "../../types"
     ],
-    "declaration": false
+    "declaration": false,
+    "incremental": true
   },
   "include": [
     "src",

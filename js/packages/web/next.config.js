@@ -27,15 +27,12 @@ module.exports = withPlugins(plugins, {
   },
   webpack: (config, { isServer }) => {
     // Fixes npm packages that depend on `fs` module
-    if (!isServer) {
-      config.node = {
-        fs: 'empty'
-      }
-    }
+    if(!isServer)
+        config.resolve.fallback.fs= false;
 
     return config
   },
-  webpack5: false,
+  //webpack5: false,
   env: {
     NEXT_PUBLIC_STORE_OWNER_ADDRESS:
       process.env.STORE_OWNER_ADDRESS ||
