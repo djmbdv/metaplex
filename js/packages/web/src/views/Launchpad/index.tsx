@@ -10,6 +10,7 @@ import { Typography } from 'antd';
 import { TabsInfo } from './components/tabs-info';
 import { InfoLaunchpad } from "./info-launchpad";
 import { BtnCandyMachineComponent } from './components/botonCandyMachine';
+import { WhiteListComponent } from './components/whiteList'
 
 const { Title, Paragraph } = Typography;
 
@@ -44,6 +45,7 @@ export const LaunchpadView = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quia facilis et magnam, libero eum nostrum minima exercitationem odio reiciendis mollitia, vero fugit delectus a ut nisi dolorum ea obcaecati.
             </Paragraph>
             </Col></Row>
+        <WhiteListComponent />
    </Col>
    <Col span={12}>
        <Row><Col span={20} >

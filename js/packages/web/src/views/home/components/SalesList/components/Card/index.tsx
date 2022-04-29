@@ -7,6 +7,7 @@ interface Props {
   pubkey: string;
   posterUri: string;
   name: string;
+  url: string;
   description:string;
 }
 
@@ -14,13 +15,14 @@ const CardComponent = ({
   pubkey,
   posterUri,
   name,
+  url,
   description
 }: Props): ReactElement => {
 
 
-console.log(pubkey);
+// console.log(pubkey);
   return (
-    <Link to={`/launchpad/${pubkey}`}>
+    <Link to={`${url}`}>
       <Card hoverable={true} className="auction-render-card sliderCard-wrap" bordered={false}>
         <div className="card-art-info">
          {/*  <div className="card-artist-info card-artist-info--pack">

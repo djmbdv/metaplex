@@ -50,9 +50,9 @@ export const SliderCard =(props)=>{
                 </Row>
             </Col>  
         </Row>
-        <div className="slider-wrap" ref={sliderCard}>
+        {/* <div className="slider-wrap" ref={sliderCard}>
            {loading &&   [...Array(5)].map((_, idx) => <Col span={5}><CardLoader key={idx} width={200} height={370} /></Col>)}
-           {!loading &&  cardDat.map((c:Card, idx) => <Col span={5}><CardComponent key={idx} description={c.description} posterUri={c.image} name={c.name}  pubkey={c.pubkey} /></Col>)}
+           {!loading &&  cardDat.map((c:Card, idx) => <Col span={5}><CardComponent key={idx} url={'/launchpad/' + c.pubkey} description={c.description} posterUri={c.image} name={c.name}  pubkey={c.pubkey} /></Col>)}
            
            </div>
            <Button type="primary" className="sliderCard-btnLeft" shape="circle" onClick={handleClickLeft} >
@@ -60,7 +60,7 @@ export const SliderCard =(props)=>{
             </Button>
            <Button type="primary" className="sliderCard-btnRigth" shape="circle" onClick={handleClickRigth} >
                 <RightOutlined />
-            </Button>
+            </Button> */}
             
         </>
     )

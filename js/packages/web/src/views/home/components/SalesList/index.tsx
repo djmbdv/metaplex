@@ -37,18 +37,18 @@ export const SalesListView = () => {
   const { sales, hasResaleAuctions } = useSales(activeKey);
   const [cardDat,setCardDat]=useState([]);
 
-  useEffect(()=>{
-    const onLoad = async () => {
-       let resp =  await fetch('https://apinft.proit.studio/all_nfts')
-       let json = await resp.json();
-       setCardDat(json);
-       setIsload(false);
+//   useEffect(()=>{
+//     const onLoad = async () => {
+//        let resp =  await fetch('https://apinft.proit.studio/all_nfts')
+//        let json = await resp.json();
+//        setCardDat(json);
+//        setIsload(false);
        
-      };
-      onLoad()
-      /* window.addEventListener('load', onLoad);
-      return () => window.removeEventListener('load', onLoad);*/
-},[]) 
+//       };
+//       onLoad()
+//       /* window.addEventListener('load', onLoad);
+//       return () => window.removeEventListener('load', onLoad);*/
+// },[]) 
 
   return (
     <>

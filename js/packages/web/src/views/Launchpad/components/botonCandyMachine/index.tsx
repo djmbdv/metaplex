@@ -6,7 +6,7 @@ export const BtnCandyMachineComponent = () =>{
 
     return(
         <>
-        <Button>wallet not connected </Button>
+        <Button className="btnCandyMachine">Wallet not connected </Button>
         </>
     )
 }
