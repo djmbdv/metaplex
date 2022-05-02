@@ -51,7 +51,7 @@ export interface LaunchpadViewProps {
 
 const defaultProps : LaunchpadViewProps = {
    candyMachineId: new anchor.web3.PublicKey(
-    "BEhrfX7kM4b3dmaEcFBJx1t8ugEozZ1WGRjLtTkK9wvK"),
+    "9SzQ7BrsuQ5agTVNTkhD3V3JSV1egsis2cPbjHjrLdAU"),
    rpcHost : "https://metaplex.devnet.rpcpool.com/",
    txTimeout : 40,
    connection:new anchor.web3.Connection(
@@ -413,11 +413,13 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
        </Row>
        <Row><Col span={20}>
            <Paragraph className='details-paragraph'> 
-           {JSON.stringify(wallet)} <br></br>
-           {JSON.stringify(candyMachine?.state.price)}<br/>
+  
+           Louis XV 1996 received a Gold medal at The World’s Finest Glass of Bubbly awards in 2017. Subtle and voluptuous, revealing a paradox of flavors, fine but intense, underlined by an incandescent yellow gold color. This Champagne's exceptional elegance will seduce connoisseurs of great champagnes.
+
+75 cl   
 
           
-           {JSON.stringify(endDate)}
+           
            </Paragraph>
                                {isActive && endDate && Date.now() < endDate.getTime() ? (
                       <>
@@ -427,6 +429,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
                           style={{ justifyContent: 'flex-end' }}
                           status="COMPLETED"
                           onComplete={toggleMintButton}
+                          price={candyMachine?.state.price/1000000000}
                         />
                         <Typography
                           style={{ fontWeight: 'bold' }}
@@ -439,7 +442,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
                         <MintCountdown
                           key="goLive"
                           date={getCountdownDate(candyMachine)}
-                        
+                          price={candyMachine?.state.price/1000000000}
                           status={
                             candyMachine?.state?.isSoldOut ||
                             (endDate && Date.now() > endDate.getTime())
@@ -462,12 +465,13 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
                           )}
                       </>
                     )}
+
         </Col></Row>
    </Col>
    <Col span={12}>
        <Row><Col span={24}  className="wrap-btnCandy">
            <CachedImageContent
-           uri="https://media.istockphoto.com/photos/wine-bottles-picture-id180732455?k=20&m=180732455&s=612x612&w=0&h=4MT5fOxL_KJn_gnYu2b6-IigGSUlJCk6vk2RG2K851o="
+           uri="https://fmzelq6ejcd2o5qodi3r6vjjefpoaxvdplfkbhd3trfoqlkqhe.arweave.net/KzJFw8RIh6d2Dho3H1_UpIV7gXqN6yqCce5xK6C1QOc?ext=gif"
            className="auction-image no-events"
            preview={true}
             />
