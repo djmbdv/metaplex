@@ -429,7 +429,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
                           style={{ justifyContent: 'flex-end' }}
                           status="COMPLETED"
                           onComplete={toggleMintButton}
-                          price={candyMachine?.state.price/1000000000}
+                          price={Number(candyMachine?.state.price)/1000000000}
                         />
                         <Typography
                           style={{ fontWeight: 'bold' }}
@@ -442,7 +442,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
                         <MintCountdown
                           key="goLive"
                           date={getCountdownDate(candyMachine)}
-                          price={candyMachine?.state.price/1000000000}
+                          price={Number(candyMachine?.state.price)/1000000000}
                           status={
                             candyMachine?.state?.isSoldOut ||
                             (endDate && Date.now() > endDate.getTime())
