@@ -51,7 +51,7 @@ export interface LaunchpadViewProps {
 
 const defaultProps : LaunchpadViewProps = {
    candyMachineId: new anchor.web3.PublicKey(
-    "9SzQ7BrsuQ5agTVNTkhD3V3JSV1egsis2cPbjHjrLdAU"),
+    "GwzkriYi18xSMEizCAa91bNke5HbhauP9o6myBroA7S2"),
    rpcHost : "https://metaplex.devnet.rpcpool.com/",
    txTimeout : 40,
    connection:new anchor.web3.Connection(
