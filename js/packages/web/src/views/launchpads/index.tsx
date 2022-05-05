@@ -5,7 +5,7 @@ import { HowToBuyModal } from '../../components/HowToBuyModal';;
 import { LiveAuctionViewState } from './enum';
 import { CardSliderComponent } from './components/card-slider';
 import { Typography } from 'antd';
-
+import { CardComponent } from '../../components/Card';
 const { Title } = Typography;
 
 
@@ -42,21 +42,12 @@ export const LaunchpadsView = () =>{
             <Row>
                 <Col>
                     <Row><Title>Live</Title></Row>
-                    <CardSliderComponent data={cardDat} loading={isLoading} />
-                </Col>
-            </Row>{/* 
-            <Row>
-                <Col>
-                    <Row><Title>Upcoming</Title></Row>
-                    <CardSliderComponent data={cardDat} loading={isLoading} />
+                    <Col span={6}>
+                    <CardComponent key={"1"} description={"Louis  XV deVenoge Collection"} posterUri={"https://fmzelq6ejcd2o5qodi3r6vjjefpoaxvdplfkbhd3trfoqlkqhe.arweave.net/KzJFw8RIh6d2Dho3H1_UpIV7gXqN6yqCce5xK6C1QOc?ext=gif"} items={"1"} price={"0.001"} name={"Louis XV"} link={'/launchpad/1' }  pubkey={"1"} />
+                    </Col>
+                    {/*<CardSliderComponent data={cardDat} loading={isLoading} />*/}
                 </Col>
             </Row>
-            <Row>
-                <Col>
-                    <Row><Title>Ended</Title></Row>
-                    <CardSliderComponent data={cardDat} loading={isLoading} />
-                </Col>
-            </Row>*/}
         </Layout>
     )
 }
