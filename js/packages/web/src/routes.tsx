@@ -16,7 +16,8 @@ import {
   LaunchpadsView,
   LoginView,
   CollectionView,
-  CollectionsView
+  CollectionsView,
+  // SignupView
 } from './views';
 import { AdminView } from './views/admin';
 import { PackView } from './views/pack';
@@ -48,6 +49,11 @@ export function Routes() {
               path="/login"
               component={() => <LoginView />}
             />
+             {/* <Route
+              exact
+              path="/signup"
+              component={() => <SignupView />}
+            /> */}
             <Route
               exact
               path="/art/create/:step_param?"

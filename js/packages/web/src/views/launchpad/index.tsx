@@ -400,6 +400,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
       props.connection,
       refreshCandyMachineState,
     ]);
+    console.log(candyMachine)
   return (
     <Layout style={{ margin: 0, marginTop: 30 }}>
     <Row className='details-launchpad'>
@@ -413,10 +414,8 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
        </Row>
        <Row><Col span={20}>
            <Paragraph className='details-paragraph'> 
-           {JSON.stringify(wallet)} <br></br>
-           {JSON.stringify(candyMachine?.state.price)}<br/>
-
-          
+           {/* {JSON.stringify(wallet)} <br></br> */}
+           {JSON.stringify(candyMachine?.state.price)}<br/>          
            {JSON.stringify(endDate)}
            </Paragraph>
                                {isActive && endDate && Date.now() < endDate.getTime() ? (
