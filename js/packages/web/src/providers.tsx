@@ -24,19 +24,11 @@ export const Providers: FC = ({ children }) => {
                 storeAddress={process.env.NEXT_PUBLIC_STORE_ADDRESS}
               >
                 <MetaProvider>
-<<<<<<< HEAD
                    {/* <LoaderProvider> */}
                     <ConfettiProvider>
                       <AppLayout>{children}</AppLayout>
                     </ConfettiProvider>
                   {/* </LoaderProvider>  */}
-=======
-              
-                    <ConfettiProvider>
-                      <AppLayout>{children}</AppLayout>
-                    </ConfettiProvider>
-      
->>>>>>> 608fe4f0a9533313b9d69afb86f8003a7c9e9819
                 </MetaProvider>
               </StoreProvider>
             </CoingeckoProvider>
