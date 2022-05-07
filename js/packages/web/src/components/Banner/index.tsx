@@ -9,27 +9,27 @@ export const Banner = (props: {
   actionComponent?: JSX.Element;
   children?: React.ReactNode;
 }) => {
-  useEffect(() => {
-    const mainBg = document.getElementById('main-bg');
-    const gradient = document.getElementById('bg-gradient');
-    if (mainBg && props.useBannerBg) {
-      mainBg.style.backgroundImage = `url(${props.src})`;
-      mainBg.style.display = 'inline-block';
-      if (gradient) {
-        gradient.style.display = 'inline-block';
-      }
-    }
+  // useEffect(() => {
+  //   const mainBg = document.getElementById('main-bg');
+  //   const gradient = document.getElementById('bg-gradient');
+  //   if (mainBg && props.useBannerBg) {
+  //     mainBg.style.backgroundImage = `url(${props.src})`;
+  //     mainBg.style.display = 'inline-block';
+  //     if (gradient) {
+  //       gradient.style.display = 'inline-block';
+  //     }
+  //   }
 
-    return () => {
-      const mainBg = document.getElementById('main-bg');
-      const gradient = document.getElementById('bg-gradient');
-      if (mainBg && props.useBannerBg) {
-        mainBg.style.backgroundImage = '';
-        mainBg.style.display = 'none';
-      }
-      if (gradient) gradient.style.display = 'none';
-    };
-  }, [props.src, props.useBannerBg]);
+  //   return () => {
+  //     const mainBg = document.getElementById('main-bg');
+  //     const gradient = document.getElementById('bg-gradient');
+  //     if (mainBg && props.useBannerBg) {
+  //       mainBg.style.backgroundImage = '';
+  //       mainBg.style.display = 'none';
+  //     }
+  //     if (gradient) gradient.style.display = 'none';
+  //   };
+  // }, [props.src, props.useBannerBg]);
 
   return (
     <>
@@ -45,18 +45,21 @@ export const Banner = (props: {
         id={'current-banner'}
         style={{ backgroundImage: `url(${props.src})` }}
       >
-        <span id={'gradient-banner'}></span>
+        <span ></span>
         <div id="banner-inner">
           <div id={'message-container'}>
             <div id={'main-heading'}>{props.headingText}</div>
             <div id={'sub-heading'}>{props.subHeadingText}</div>
             {props.actionComponent}
           </div>
-          {props.children}
-          <div className="powered-by">
+          {/* {props.children} */}
+          {/* <div className="powered-by">
             <span>
               POWERED BY <b>Corko.io</b>
             </span>
+          </div> */}
+          <div  className='imgBanner' >
+             <img className="imgDesktop" src={props.src} />
           </div>
         </div>
       </div>
