@@ -41,9 +41,13 @@ export const Banner = (props: {
           {props.actionComponent}
         </div>
       </div>
-      <div
+      {/* <div
         id={'current-banner'}
         style={{ backgroundImage: `url(${props.src})` }}
+      > */}
+      <div
+        id={'current-banner'}
+        
       >
         <span ></span>
         <div id="banner-inner">
