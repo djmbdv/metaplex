@@ -28,7 +28,7 @@ export const LaunchpadsView = () =>{
 
     return(
         <Layout style={{ margin: 0, marginTop: 40 }}>
-            <Row justify='center' >
+            <Row justify='center' className="launchpad-banner" >
                 <Col span={20}>
                 <Banner
                     src="/image4.jpg"
@@ -39,7 +39,7 @@ export const LaunchpadsView = () =>{
                 />
                 </Col>
             </Row>
-            <Row>
+            <Row className='launchpad-card'>
                 <Col>
                     <Row><Title>Live</Title></Row>
                     <Col span={6}>
