@@ -19,7 +19,7 @@ import {
   createAccountsForMint,
 } from '../../models/candy-machine';
 import { sendTransaction }  from '../../models/connection';
-
+import { WhiteList } from './components/whiteList'
 import { PublicKey, Transaction } from '@solana/web3.js';
 import {MintButton } from "./components/mintButton"
 import { GatewayProvider } from '@civic/solana-gateway-react';
@@ -422,6 +422,8 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
           
            
            </Paragraph>
+
+         
                                {isActive && endDate && Date.now() < endDate.getTime() ? (
                       <>
                         <MintCountdown
@@ -468,6 +470,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
                     )}
 
         </Col></Row>
+        <WhiteList />
    </Col>
    <Col span={12}>
        <Row><Col span={24}  className="wrap-btnCandy">
@@ -477,7 +480,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
            preview={true}
             />
            </Col></Row>
-       <Row className="wrap-btnCandy"> <Col  span={12} >
+       <Row className="wrap-btnCandy-p"> <Col  span={12} >
         {!wallet.connected ? (
             <ConnectButton className="wrap-btnCandy btn-mint" >Connect Wallet</ConnectButton>
           ) :(

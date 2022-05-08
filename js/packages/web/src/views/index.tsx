@@ -13,4 +13,4 @@ export { LaunchpadView } from './launchpad';
 export { LaunchpadsView } from './launchpads';
 export { CollectionView }  from './collection';
 export { CollectionsView }  from './collections';
-// export { SignupView } from './signup'
+export { SignupView } from './signup'

@@ -4,8 +4,10 @@ import { Row,Col } from 'antd'
 
 export const WhiteList = ()=>{
     return(
-        <Row>
-            <Col></Col>
+        <Row  className='wrap-whitelist'>
+            <Col>
+            <h1>fgdgdfgdf</h1>
+            </Col>
         </Row>
     )
 }

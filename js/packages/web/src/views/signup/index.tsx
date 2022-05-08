@@ -14,6 +14,8 @@ export const SignupView = () => {
 
   return (
     <Layout style={{ margin: 0, marginTop: 64, paddingTop:64 }}>
+      
+      <div className='form-signup' >
     <Form
       name="basic"
       labelCol={{ span: 8 }}
@@ -61,6 +63,7 @@ export const SignupView = () => {
         </Button>
       </Form.Item>
     </Form>
+    </div>
     </Layout>
   );
 };
