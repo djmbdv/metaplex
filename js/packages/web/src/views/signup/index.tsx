@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox,Layout } from 'antd';
+import { BannerUser } from './components/banner-user'
 
 
 
@@ -16,6 +17,7 @@ export const SignupView = () => {
     <Layout style={{ margin: 0, marginTop: 64, paddingTop:64 }}>
       
       <div className='form-signup' >
+    <BannerUser />
     <Form
       name="basic"
       labelCol={{ span: 8 }}
@@ -50,7 +52,7 @@ export const SignupView = () => {
       </Form.Item>
 
       <Form.Item
-        label="Email"
+        label="Description"
         name="Description"
         rules={[{ required: true, message: 'Please input your Description' }]}
       >

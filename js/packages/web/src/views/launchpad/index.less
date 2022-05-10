@@ -80,12 +80,26 @@
         border-radius: 8px;
         padding: 1rem;
         text-align: center;
-        margin:1rem
+        margin-top:1rem
     }
-} 	
+}
+
 .btn-mint{
     width: 95%;
+    background: @metaplex-primary-color !important;
+    color:#fff !important;
+    border: 1px solid @metaplex-primary-color;
+    border-color: @metaplex-primary-color !important;
+    border-radius: 9px;
 }
+
+.btn-mint:hover{
+    color:@metaplex-primary-color !important;
+    border: 1px solid @metaplex-primary-color;
+    border-color: @metaplex-primary-color !important;
+    border-radius: 9px;
+}
+
 .section-info{
     background-color: black;
     color: white !important;
@@ -105,4 +119,46 @@
 .wrap-whitelist{
     border:1px solid @metaplex-primary-color;
     border-radius: 8px;
+    width:85%;
+    margin:1rem 0;
 }
+// reponsive
+@media (max-width:600px) {
+
+    .details-launchpad{
+        padding: .5rem;
+        .details-paragraph{
+            width: 100%;
+            margin: 1rem;
+        }
+        .datos-launchpad{
+            margin-top: 2rem;
+        }
+
+        .wrap-btnCandy{
+            border:1px solid @metaplex-primary-color;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .wrap-btnCandy-p{
+            border:1px solid @metaplex-primary-color;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            margin-top:1rem
+        }
+        .btn-mint{
+            font-size: 12px;
+            height: 45px;
+
+        }
+        
+    }
+
+    .wrap-whitelist{
+        width: 100%;
+    }
+    
+} 	

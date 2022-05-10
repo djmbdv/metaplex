@@ -1,12 +1,12 @@
 import React from 'react';
-import { Row,Col } from 'antd'
+import { Row,Col ,Progress } from 'antd'
 
 
 export const WhiteList = ()=>{
     return(
         <Row  className='wrap-whitelist'>
             <Col>
-            <h1>fgdgdfgdf</h1>
+            <Progress strokeColor="#000" percent={10} />
             </Col>
         </Row>
     )

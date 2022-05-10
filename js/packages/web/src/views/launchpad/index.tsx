@@ -400,11 +400,11 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
       props.connection,
       refreshCandyMachineState,
     ]);
-    console.log(candyMachine)
+    console.log('candy-Machine'+candyMachine)
   return (
     <Layout style={{ margin: 0, marginTop: 30 }}>
-    <Row className='details-launchpad'>
-   <Col span={12}>
+    <Row className='details-launchpad'  gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }} >
+   <Col md={{span:12,order:1}} xs={{span:24,order:2}} className="gutter-row datos-launchpad" >
        <Row><Col><Button className="btn-outline-launchpad" size="small">FEATURED LAUNCH</Button></Col></Row>
        <Row><Col><Title>Collection Launch</Title></Col></Row>
        <Row>
@@ -472,7 +472,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
         </Col></Row>
         <WhiteList />
    </Col>
-   <Col span={12}>
+   <Col md={{span:12,order:2}} xs={{span:24,order:1}}  className="gutter-row">
        <Row><Col span={24}  className="wrap-btnCandy">
            <CachedImageContent
            uri="https://fmzelq6ejcd2o5qodi3r6vjjefpoaxvdplfkbhd3trfoqlkqhe.arweave.net/KzJFw8RIh6d2Dho3H1_UpIV7gXqN6yqCce5xK6C1QOc?ext=gif"
@@ -482,7 +482,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
            </Col></Row>
        <Row className="wrap-btnCandy-p"> <Col  span={12} >
         {!wallet.connected ? (
-            <ConnectButton className="wrap-btnCandy btn-mint" >Connect Wallet</ConnectButton>
+            <ConnectButton className=" btn-mint" >Connect Wallet</ConnectButton>
           ) :(
           candyMachine?.state.isActive &&
                 candyMachine?.state.gatekeeper &&
@@ -584,11 +584,11 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
           
          </Col>
           <Col  span={12}>
-            <Row className="wrap-btnCandy">
-                <Progress percent={candyMachine && candyMachine.state.endSettings ? (candyMachine.state.itemsRedeemed/Math.min(
+            <Row >
+                <Progress strokeColor="#000" percent={candyMachine && candyMachine.state.endSettings ? (candyMachine.state.itemsRedeemed/Math.min(
               candyMachine.state.endSettings.number.toNumber(),
               candyMachine.state.itemsAvailable,
-            ))*100 : 0} strokeColor="#8B442E"/>
+            ))*100 : 10} />
           </Row>
                       <Row >
                         TOTAL MINTED {candyMachine?.state?.itemsRedeemed}
@@ -598,15 +598,15 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
 
    </Col>
 </Row>
-<Row className="section-info">
-   <Col span={12}>
+<Row className="section-info" gutter={{ xs: 24, sm: 16, md: 24, lg: 32}}>
+   <Col md={12} xs={24} className="gutter-row" >
        <Row >
            <Col span={20} >
             <InfoLaunchpad />
            </Col>
        </Row>
    </Col>
-   <Col span={12}>
+   <Col md={12} xs={24} className="gutter-row" >
        <Row justify="center">
            <Col span={20} >
                <TabsInfo />
