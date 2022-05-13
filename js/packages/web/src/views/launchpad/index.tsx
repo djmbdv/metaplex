@@ -615,7 +615,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
          </Col>
           <Col  span={12}>
             <Row >
-              {candyMachine?.state  &&  <Progress strokeColor="#000" percent={Math.floor((candyMachine.state.itemsRedeemed/(candyMachine?.state.endSettings?.number?
+              {candyMachine?.state  &&  <Progress strokeColor="#8B442E" percent={Math.floor((candyMachine.state.itemsRedeemed/(candyMachine?.state.endSettings?.number?
                 Math.min(
               candyMachine?.state.endSettings?.number.toNumber(),
               candyMachine?.state.itemsAvailable
