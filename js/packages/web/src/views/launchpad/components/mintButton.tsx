@@ -29,6 +29,7 @@ export function useConnection(): ConnectionContextState {
 
 export const MintButton =  ({
     onMint,
+    onMinted,
     candyMachine,
     isMinting,
     setIsMinting,
@@ -39,6 +40,7 @@ export const MintButton =  ({
     isMinting: boolean;
     setIsMinting: (val: boolean) => void;
     isActive: boolean;
+    onMinted: ()=>any
   }) => {
     const wallet = useWallet();
     const connection = useConnection();
@@ -155,6 +157,7 @@ export const MintButton =  ({
             }
           } else {
             await onMint();
+            onMinted();
             setClicked(false);
           }
         }}
