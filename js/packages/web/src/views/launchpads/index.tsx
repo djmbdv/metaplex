@@ -27,9 +27,9 @@ export const LaunchpadsView = () =>{
     },[]) 
 
     return(
-        <Layout style={{ margin: 0, marginTop: 40 }}>
+        <Layout className='launchpad'>
             <Row justify='center' className="launchpad-banner" >
-                <Col span={20}>
+                <Col md={20} xs={24}>
                 <Banner
                     src="/image4.jpg"
                     headingText="No te pierdas la oportunidad de entrar al mundo de los NFT."

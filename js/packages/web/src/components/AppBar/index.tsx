@@ -59,7 +59,7 @@ const MetaplexMenu = () => {
       <>
         <Modal
           //title={<img src={'/metaplex-logo.svg'} />}
-          title={<img src={'/metaplex-logo-nftplate.svg'} />}
+          title={<img src={'/metaplex-logo-blnco.svg'} className="logo" />}
           visible={isModalVisible}
           footer={null}
           className={'modal-box'}
@@ -105,9 +105,10 @@ const MetaplexMenu = () => {
             </div>
           </div>
         </Modal>
+        {/* button burgue menu Mobile. */}
         <MenuOutlined
           onClick={() => setIsModalVisible(true)}
-          style={{ fontSize: '1.4rem' }}
+          style={{ fontSize: '1.4rem',color:'#8B442E' }}
         />
       </>
     );
@@ -131,6 +132,7 @@ export const AppBar = () => {
   return (
     <>
       <div id="mobile-navbar">
+      <MetaplexMenu />
         <LogoLink />
         {/* <MetaplexMenu /> */}
       </div>
@@ -163,7 +165,7 @@ export const AppBar = () => {
         
       </div>
       <Row  className='wrap-second-bar' justify='center' >
-          <Col span={24}>
+          <Col md={24} xs={2}>
         <div className="app-center">
           <MetaplexMenu />
         </div>
