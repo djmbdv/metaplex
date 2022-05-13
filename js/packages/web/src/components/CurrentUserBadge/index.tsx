@@ -223,12 +223,13 @@ export const CurrentUserBadge = (props: {
   fetch('https://apinft.proit.studio/solana/' + publicKey ).then(async res => {
         const data = await res.json();
         try{
-          setName( data.name || name);
-          setImage(data.image || imagen);
-        }catch(e){}
+          setName( data?.name || name);
+          setImage(data?.image || imagen);
+        }catch(e){ }
   }  
-  )
-},[publicKey]);
+  ).catch(e=>{})
+},[publicKey])
+
   if (!wallet || !publicKey) {
     return null;
   }

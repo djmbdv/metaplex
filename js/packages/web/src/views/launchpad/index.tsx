@@ -24,8 +24,12 @@ import { PublicKey, Transaction } from '@solana/web3.js';
 import {MintButton } from "./components/mintButton"
 import { GatewayProvider } from '@civic/solana-gateway-react';
 import { AlertState, toDate, formatNumber, getAtaForMint } from '../../models/utils';
-import {ConnectButton} from "@oyster/common"
+import {ConnectButton,MetaplexOverlay} from "@oyster/common"
 import {MintCountdown} from "./components/mintCountdown"
+import {Confetti} from "../../components/Confetti"
+
+
+
 const { Title, Paragraph } = Typography;
 
 
@@ -67,7 +71,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
       message: '',
       severity: undefined,
     });
-  
+    const [showCongrats, setShowCongrats] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [endDate, setEndDate] = useState<Date>();
     const [itemsRemaining, setItemsRemaining] = useState<number>();
@@ -76,7 +80,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
     const [discountPrice, setDiscountPrice] = useState<anchor.BN>();
     const [needTxnSplit, setNeedTxnSplit] = useState(true);
     const [setupTxn, setSetupTxn] = useState<SetupState>();
-  
+    
     const rpcUrl = props.rpcHost;
     const wallet = useWallet();
   
@@ -248,7 +252,6 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
     ) => {
       try {
         setIsUserMinting(true);
-        document.getElementById('#identity')?.click();
         if (wallet.connected && candyMachine?.program && wallet.publicKey) {
           let setupMint: SetupState | undefined;
           if (needTxnSplit && setupTxn === undefined) {
@@ -261,6 +264,8 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
               candyMachine,
               wallet.publicKey,
             );
+
+
             let status: any = { err: true };
             if (setupMint.transaction) {
               status = await awaitTransactionSignatureConfirmation(
@@ -270,6 +275,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
                 true,
               );
             }
+            console.log("transaccion firmada")
             if (status && !status.err) {
               setSetupTxn(setupMint);
               setAlertState({
@@ -303,7 +309,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
             setupMint ?? setupTxn,
           );
           const mintTxId = mintOne[0];
-  
+          console.log("test")
           let status: any = { err: true };
           if (mintTxId) {
             status = await awaitTransactionSignatureConfirmation(
@@ -312,11 +318,10 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
               props.connection,
               true,
             );
+            console.log("test")
           }
-  
+          console.log(JSON.stringify(status))
           if (status && !status.err) {
-            // manual update since the refresh might not detect
-            // the change immediately
             let remaining = itemsRemaining! - 1;
             setItemsRemaining(remaining);
             setIsActive((candyMachine.state.isActive = remaining > 0));
@@ -327,7 +332,9 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
               message: 'Congratulations! Mint succeeded!',
               severity: 'success',
             });
+            alert("one Token")
           } else {
+            console.log("error")
             setAlertState({
               open: true,
               message: 'Mint failed! Please try again!',
@@ -398,11 +405,37 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
       anchorWallet,
       props.candyMachineId,
       props.connection,
-      refreshCandyMachineState,
+      refreshCandyMachineState,showCongrats
     ]);
-    console.log('candy-Machine'+candyMachine)
   return (
     <Layout style={{ margin: 0, marginTop: 30 }}>
+    <MetaplexOverlay visible={showCongrats}>
+            <Confetti />
+            <h1
+              className="title"
+              style={{
+                fontSize: '3rem',
+                marginBottom: 20,
+              }}
+            >
+              Congratulations
+            </h1>
+            <p
+              style={{
+                
+                textAlign: 'center',
+                fontSize: '2rem',
+              }}
+            >
+              Your NTF has minted 
+            </p>
+            <Button
+              className="overlay-btn"
+              onClick ={ ()=>setShowCongrats(false)}
+            >
+              OK
+            </Button>
+          </MetaplexOverlay>
     <Row className='details-launchpad'  gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }} >
    <Col md={{span:12,order:1}} xs={{span:24,order:2}} className="gutter-row datos-launchpad" >
        <Row><Col><Button className="btn-outline-launchpad" size="small">FEATURED LAUNCH</Button></Col></Row>
@@ -414,17 +447,13 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
        </Row>
        <Row><Col span={20}>
            <Paragraph className='details-paragraph'> 
-  
-           Louis XV 1996 received a Gold medal at The World’s Finest Glass of Bubbly awards in 2017. Subtle and voluptuous, revealing a paradox of flavors, fine but intense, underlined by an incandescent yellow gold color. This Champagne's exceptional elegance will seduce connoisseurs of great champagnes.
-
-75 cl   
-
-          
-           
+           Louis XV 1996 received a Gold medal at The World’s Finest Glass of Bubbly awards in 2017. 
+           Subtle and voluptuous, revealing a paradox of flavors, fine but intense, 
+           underlined by an incandescent yellow gold color. This Champagne's exceptional elegance will seduce connoisseurs 
+           of great champagnes.
+          75 cl   
            </Paragraph>
-
-         
-                               {isActive && endDate && Date.now() < endDate.getTime() ? (
+            {isActive && endDate && Date.now() < endDate.getTime() ? (
                       <>
                         <MintCountdown
                           key="endSettings"
@@ -521,7 +550,6 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
                             message: 'User cancelled signing',
                             severity: 'error',
                           });
-                          // setTimeout(() => window.location.reload(), 2000);
                           setIsUserMinting(false);
                           throw e;
                         }
@@ -569,6 +597,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
                       setIsMinting={val => setIsUserMinting(val)}
                       onMint={onMint}
                       isActive={isActive || (isPresale && isWhitelistUser)}
+                      onMinted = {()=> setShowCongrats(true)}
                     />
                   </GatewayProvider>
                 ) : (
@@ -577,6 +606,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
                     isMinting={isUserMinting}
                     setIsMinting={val => setIsUserMinting(val)}
                     onMint={onMint}
+                    onMinted = {()=> setShowCongrats(true)}
                     isActive={isActive || (isPresale && isWhitelistUser)}
                   />
                 ))}
@@ -585,10 +615,11 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
          </Col>
           <Col  span={12}>
             <Row >
-                <Progress strokeColor="#000" percent={candyMachine && candyMachine.state.endSettings ? (candyMachine.state.itemsRedeemed/Math.min(
-              candyMachine.state.endSettings.number.toNumber(),
-              candyMachine.state.itemsAvailable,
-            ))*100 : 10} />
+              {candyMachine?.state  &&  <Progress strokeColor="#000" percent={Math.floor((candyMachine.state.itemsRedeemed/(candyMachine?.state.endSettings?.number?
+                Math.min(
+              candyMachine?.state.endSettings?.number.toNumber(),
+              candyMachine?.state.itemsAvailable
+            ) :  candyMachine?.state.itemsAvailable))*100)} />}
           </Row>
                       <Row >
                         TOTAL MINTED {candyMachine?.state?.itemsRedeemed}
