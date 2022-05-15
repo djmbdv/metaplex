@@ -80,12 +80,13 @@ export const WalletModal: FC = () => {
       <>
       <Form
       name="basic"
-      labelCol={{ span: 8 }}
+      labelCol={{ span: 8, color:'#fff' }}
       wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
+      className='formSignIn'
     >
       <Form.Item
         label="Email"
@@ -103,8 +104,8 @@ export const WalletModal: FC = () => {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" className="btn-form-signin" htmlType="submit">
+      <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
+        <Button type="primary" className="btn-form-signin" htmlType="submit" block >
           Conectar
         </Button>
       </Form.Item>
@@ -116,7 +117,7 @@ export const WalletModal: FC = () => {
   return (
     <MetaplexModal title="signin / signup / wallet " visible={visible} onCancel={close}>
       <Button
-        className="phantom-button metaplex-button-signin"
+        className="metaplex-button-signin"
         onClick={() => {
           console.log('sign in')
           let status = showMe ? false : true; 
@@ -127,11 +128,13 @@ export const WalletModal: FC = () => {
       </Button>
         {showMe && formSignIn()}
       <Button
-        className="phantom-button metaplex-button-signup"
+        className="metaplex-button-signup"
         type="text"
         onClick={() => {
-          console.log('Sign up')
-          window.location.href = "/signup"
+          console.log(window.location)
+
+          window.location.href = window.location.href+"signup"
+          close();
         }}
       >
         Sign up

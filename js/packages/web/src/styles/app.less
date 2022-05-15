@@ -364,7 +364,8 @@ model-viewer {
   margin: 5px;
   padding: 16px 36px;
   border: none;
-  background: @grey-70 !important;
+  background: @metaplex-primary-color !important;
+  color:#fff !important;
   box-shadow: 0 0 24px rgba(26, 26, 26, 0.12);
   border-radius: 8px;
   cursor: pointer !important;
@@ -376,7 +377,11 @@ model-viewer {
     line-height: 24px;
   }
 }
-
+.refresh-button:hover{
+  color: @metaplex-primary-color !important;
+  border: 1px solid @metaplex-primary-color !important;
+  border-radius:9px;
+}
 /* Optional, different gutter size on mobile */
 @media (max-width: 800px) {
   .my-masonry-grid {

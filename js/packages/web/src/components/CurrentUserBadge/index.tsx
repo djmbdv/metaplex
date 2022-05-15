@@ -52,7 +52,7 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
                   onClick={() => {
                     props.onClick ? props.onClick() : null;
                   }}
-                  className="black-btn"
+                  className="black-btn black-btn-custom"
                 >
                   Create
                 </Button>
@@ -63,7 +63,7 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
                 onClick={() => {
                   props.onClick ? props.onClick() : null;
                 }}
-                className="black-btn"
+                className="black-btn black-btn-custom"
               >
                 Sell
               </Button>
@@ -218,6 +218,7 @@ export const CurrentUserBadge = (props: {
     display: 'flex',
     width: props.iconSize,
     borderRadius: 50,
+    color:'#000'
   };
   useEffect(() => {
   fetch('https://apinft.proit.studio/solana/' + publicKey ).then(async res => {

@@ -56,11 +56,11 @@ export const SalesListView = () => {
         src="/image4.jpg"
         headingText="No te pierdas la oportunidad de entrar al mundo de los NFT."
         subHeadingText="Compra NFTs de tus artistas favoritos."
-        actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
+        actionComponent={<HowToBuyModal buttonClassName="secondary-btn btn-banner" />}
         useBannerBg
       />
       <Layout>
-        <Content style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <Content style={{ display: 'flex', flexWrap: 'wrap', paddingLeft:40, paddingRight:40 }}>
           <Col style={{ width: '100%', marginTop: 32 }}>
             <Row>
               <Tabs
