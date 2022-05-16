@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox,Layout } from 'antd';
-import { BannerUser } from './components/banner-user'
+import { BannerUser } from './components/banner-user';
+import { AvatarUser } from './components/avatar-user';
 
 
 
@@ -18,9 +19,10 @@ export const SignupView = () => {
       
       <div className='form-signup' >
     <BannerUser />
+    <AvatarUser />
     <Form
       name="basic"
-      labelCol={{ span: 8 }}
+      labelCol={{ span: 4 }}
       wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
@@ -59,8 +61,8 @@ export const SignupView = () => {
         <Input />
       </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit" block>
+      <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
+        <Button type="primary" className='form-signup-btn' htmlType="submit" block>
           Register
         </Button>
       </Form.Item>

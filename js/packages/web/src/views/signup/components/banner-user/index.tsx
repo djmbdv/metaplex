@@ -49,7 +49,7 @@ export const BannerUser =  (props)=>{
     return(
         <div ref={first} className='banner-user' >
              <Button type="primary" onClick={EditBanner} shape="circle" icon={<UploadOutlined />} size="small" />
-            <input type="file" className='file' name="banner" id="banner" ref={fileElement} />     
+            <input type="file" className='file' name="banner" id="banner-user" ref={fileElement} />     
         </div>
     )
 }

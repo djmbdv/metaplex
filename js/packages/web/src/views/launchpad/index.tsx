@@ -27,7 +27,7 @@ import { AlertState, toDate, formatNumber, getAtaForMint } from '../../models/ut
 import {ConnectButton,MetaplexOverlay} from "@oyster/common"
 import {MintCountdown} from "./components/mintCountdown"
 import {Confetti} from "../../components/Confetti"
-
+import { SocialNetworking } from './components/socialmedia'
 
 
 const { Title, Paragraph } = Typography;
@@ -443,7 +443,12 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
        <Row>
            <Col><Button className="btn-outline-launchpad">VERIFIED</Button></Col>
            <Col><Button className="btn-outline-launchpad">ESCROW 15D</Button></Col>
-           <Col><p id="total-items-launchpad" >TOTAL ITEMS  {`${itemsRemaining}`} </p></Col>
+           <Col>
+              <p id="total-items-launchpad" >TOTAL ITEMS  {`${itemsRemaining}`} </p>
+              <SocialNetworking img="/twitter.svg" url="/"  />
+              <SocialNetworking img="/discord.svg" url="/"  />
+              <SocialNetworking img="/instagram.svg" url="/"  />
+           </Col>
        </Row>
        <Row><Col span={20}>
            <Paragraph className='details-paragraph'> 
