@@ -439,15 +439,18 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
     <Row className='details-launchpad'  gutter={{ xs: 24, sm: 16, md: 24, lg: 32 }} >
    <Col md={{span:12,order:1}} xs={{span:24,order:2}} className="gutter-row datos-launchpad" >
        <Row><Col><Button className="btn-outline-launchpad" size="small">FEATURED LAUNCH</Button></Col></Row>
-       <Row><Col><Title>Collection Launch</Title></Col></Row>
+       <Row><Col><Title>Louis XV</Title></Col></Row>
        <Row>
            <Col><Button className="btn-outline-launchpad">VERIFIED</Button></Col>
            <Col><Button className="btn-outline-launchpad">ESCROW 15D</Button></Col>
            <Col>
-              <p id="total-items-launchpad" >TOTAL ITEMS  {`${itemsRemaining}`} </p>
-              <SocialNetworking img="/twitter.svg" url="/"  />
-              <SocialNetworking img="/discord.svg" url="/"  />
-              <SocialNetworking img="/instagram.svg" url="/"  />
+           <Row>
+              <Col><p id="total-items-launchpad" >TOTAL ITEMS  1000 </p></Col>
+              <Col><SocialNetworking img="/twitter.svg" url="/"  /></Col>
+              <Col><SocialNetworking img="/discord.svg" url="/"  /></Col>
+              <Col><SocialNetworking img="/instagram.svg" url="/"  /></Col>
+              <Col><SocialNetworking img="/web.svg" url="/"  /></Col>
+            </Row>
            </Col>
        </Row>
        <Row><Col span={20}>

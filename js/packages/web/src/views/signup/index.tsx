@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { Form, Input, Button, Checkbox,Layout } from 'antd';
+import { Form, Input, Button, Checkbox,Layout,Radio } from 'antd';
 import { BannerUser } from './components/banner-user';
 import { AvatarUser } from './components/avatar-user';
 
@@ -16,8 +16,8 @@ export const SignupView = (props) => {
     console.log('url:',urlBanner);
     values['avatar'] = url;
     values['banner'] = urlBanner;
-    values['userType'] = userType;
-    console.log('Success:', values);
+    if( !values.hasOwnProperty('userType') ) values['userType'] = userType;
+    console.log('Success:', values); 
 
     // let resp = await fetch('http://localhost:3012/users', {
     //   method: 'POST',
@@ -36,6 +36,17 @@ export const SignupView = (props) => {
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
+
+  const selectUserType = ()=>{
+    return(
+      <Form.Item label="tipo de Usuario" name="userType">
+        <Radio.Group>
+          <Radio.Button value="cliente">Cliente</Radio.Button>
+          <Radio.Button value="creador">Creador</Radio.Button>
+        </Radio.Group>
+      </Form.Item>
+    )
+  }
 
   return (
     <Layout style={{ margin: 0, marginTop: 64, paddingTop:64 }}>
@@ -82,8 +93,8 @@ export const SignupView = (props) => {
         rules={[{ required: true, message: 'Please input your Description' }]}
       >
         <Input />
-      </Form.Item>
-
+      </Form.Item>  
+      {  manager && selectUserType()     }
       <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
         <Button type="primary" className='form-signup-btn' htmlType="submit" block>
           Register

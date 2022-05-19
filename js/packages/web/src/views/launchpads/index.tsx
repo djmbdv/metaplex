@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import {Layout,Row, Col} from 'antd';
-import { Banner } from '../../components/Banner';
-import { HowToBuyModal } from '../../components/HowToBuyModal';;
+import { Banner } from './components/Banner';
+import { GoToLaunchpad } from './components/BtnGotoLaunchpad';;
 import { LiveAuctionViewState } from './enum';
 import { CardSliderComponent } from './components/card-slider';
 import { Typography } from 'antd';
@@ -32,9 +32,9 @@ export const LaunchpadsView = () =>{
                 <Col md={20} xs={24}>
                 <Banner
                     src="/image4.jpg"
-                    headingText="No te pierdas la oportunidad de entrar al mundo de los NFT."
-                    subHeadingText="Compra NFTs de tus artistas favoritos."
-                    actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
+                    headingText="Louis XV"
+                    subHeadingText="Luis XV deVenoge Brut 2028 collection"
+                    actionComponent={<GoToLaunchpad buttonText="GO TO LAUNCHPAD" buttonClassName="secondary-btn" />}
                     useBannerBg
                 />
                 </Col>
