@@ -17,6 +17,19 @@
     visibility: hidden;
   }
 
+  .btn-edit-user-photo{
+        position: relative;
+        top: -60px;
+        left: 50%;
+        z-index: 1;
+        color:#fff !important;
+  }
+  .btn-edit-user-photo:hover{
+      background: #fff !important;
+      opacity: .5;
+      border-color: #fff!important;
+  }
+
 .avatar-user-wrap input[type="file"]:single-button {
 font-size: 17px;
 color: #b8b8b8;
@@ -26,17 +39,25 @@ color: #b8b8b8;
     width: 100px;
     height: 100px;
     margin: .5rem auto;
+    position: relative;
+    top: -68px;
+    left:40%;
     box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .avatar-user-button{
-    background-color: #1565c0;
     border-radius: 5px;
     padding: .25rem;
-    color: #fff;
+    color: #fff !important;
+    border-color: #fff !important;
+    position: relative;
+    left: 10%;
+    top: 5px;
     /* box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12); */
 }
 .avatar-user-button:hover{
-    background-color: #155eb1;
+    background-color: #fff !important;
+    opacity: .5;
+    color:@metaplex-primary-color !important;
 }
 

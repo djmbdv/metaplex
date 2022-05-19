@@ -1,6 +1,6 @@
 import React,{useEffect,useRef,useState } from 'react';
 import { Button, Tooltip } from 'antd';
-import { UserOutlined }from '@ant-design/icons';
+import { UserOutlined, EditOutlined }from '@ant-design/icons';
 
 
 
@@ -10,6 +10,7 @@ export const AvatarUser = (props) => {
     const avatar =  useRef<HTMLInputElement| null >(null);
     const [urlImagen, setUrlImage] = useState('')
     const {setUrl} = props;
+
     
      useEffect(()=>{
         const onLoad =  () => {
@@ -43,7 +44,12 @@ export const AvatarUser = (props) => {
     }
     const loadImagen = (url)=>{
         
-        return <img src={url} alt="photo-profile" className="avatar-user-photoProfile"/>
+        return (
+            <>
+                <Button className='avatar-user-button btn-edit-user-photo' shape="circle" icon={<EditOutlined />} onClick={handleClick} size="large" />
+                <img src={url} alt="photo-profile" className="avatar-user-photoProfile"/>
+            </>
+        )
     }
     
    
@@ -51,7 +57,7 @@ export const AvatarUser = (props) => {
         <>
         {!isLoadFile ?
         <div className="avatar-user-wrap" >
-            <Button className='avatar-user-button' shape="circle" icon={<UserOutlined />} onClick={handleClick} size="large" />
+            <Button className='avatar-user-button' shape="circle" icon={<EditOutlined />} onClick={handleClick} size="large" />
             <input ref={avatar} type="file" name="Subir" id="upload-avatar" />
         </div>:loadImagen(urlImagen)}
         </>

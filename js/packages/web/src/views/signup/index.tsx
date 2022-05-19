@@ -1,13 +1,36 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Form, Input, Button, Checkbox,Layout } from 'antd';
 import { BannerUser } from './components/banner-user';
 import { AvatarUser } from './components/avatar-user';
 
 
 
-export const SignupView = () => {
-  const onFinish = (values: any) => {
+export const SignupView = (props) => {
+  const {manager=false} = props;
+  const [userType,setUserType] =useState("cliente");
+  const [url,setUrl] = useState()
+  const [urlBanner,setUrlBanner] = useState()
+  const onFinish = async (values: any) => {
+    
+    console.log('url:',url);
+    console.log('url:',urlBanner);
+    values['avatar'] = url;
+    values['banner'] = urlBanner;
+    values['userType'] = userType;
     console.log('Success:', values);
+
+    // let resp = await fetch('http://localhost:3012/users', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(values),
+    // })
+    // if(resp.ok){
+      
+    //   window.location.href
+    // }
+
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -18,8 +41,8 @@ export const SignupView = () => {
     <Layout style={{ margin: 0, marginTop: 64, paddingTop:64 }}>
       
       <div className='form-signup' >
-    <BannerUser />
-    <AvatarUser />
+    <BannerUser setUrlBanner={setUrlBanner}/>
+    <AvatarUser setUrl={setUrl}/>
     <Form
       name="basic"
       labelCol={{ span: 4 }}

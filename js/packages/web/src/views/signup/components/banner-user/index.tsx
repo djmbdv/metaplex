@@ -1,6 +1,6 @@
 import React,{useState,useRef,useEffect} from 'react';
 import { Button, Radio } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import { UploadOutlined, EditOutlined } from '@ant-design/icons';
 
 
 
@@ -48,7 +48,7 @@ export const BannerUser =  (props)=>{
 
     return(
         <div ref={first} className='banner-user' >
-             <Button type="primary" onClick={EditBanner} shape="circle" icon={<UploadOutlined />} size="small" />
+             <Button type="primary" className='btn-edit-banner' onClick={EditBanner} shape="circle" icon={<EditOutlined />} size="large" />
             <input type="file" className='file' name="banner" id="banner-user" ref={fileElement} />     
         </div>
     )
