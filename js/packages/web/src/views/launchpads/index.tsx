@@ -14,17 +14,17 @@ export const LaunchpadsView = () =>{
     const [cardDat,setCardDat] = useState([]);
     const [isLoading,setIsLoading] = useState(true);
 
-    useEffect(()=>{
-        const onLoad = async () => {
-           let resp =  await fetch('https://api-mainnet.magiceden.io/launchpad_collections');
-           let json = await resp.json();
-           console.log(json);
-           setCardDat(json);
-           setIsLoading(false);
+    // useEffect(()=>{
+    //     const onLoad = async () => {
+    //        let resp =  await fetch('https://api-mainnet.magiceden.io/launchpad_collections');
+    //        let json = await resp.json();
+    //        console.log(json);
+    //        setCardDat(json);
+    //        setIsLoading(false);
            
-          };
-          onLoad().catch(e => console.log(JSON.stringify(e)))
-    },[]) 
+    //       };
+    //       onLoad().catch(e => console.log(JSON.stringify(e)))
+    // },[]) 
 
     return(
         <Layout className='launchpad'>

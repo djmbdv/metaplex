@@ -12,24 +12,24 @@ export const SignupView = (props) => {
   const [urlBanner,setUrlBanner] = useState()
   const onFinish = async (values: any) => {
     
-    console.log('url:',url);
-    console.log('url:',urlBanner);
+    // console.log('url:',url);
+    // console.log('url:',urlBanner);
     values['avatar'] = url;
     values['banner'] = urlBanner;
     if( !values.hasOwnProperty('userType') ) values['userType'] = userType;
     console.log('Success:', values); 
 
-    // let resp = await fetch('http://localhost:3012/users', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(values),
-    // })
-    // if(resp.ok){
+    let resp = await fetch('http://localhost:3012/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
+    if(resp.ok){
       
-    //   window.location.href
-    // }
+      window.location.href
+    }
 
   };
 

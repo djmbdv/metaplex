@@ -7,7 +7,7 @@ export const CardLoader = ({width=223,height=400}) => (
     width={width}
     height={height}
     viewBox="0 0 250 400"
-    backgroundColor="#0c0c0c"
+    backgroundColor="#f2f2f2"//"#0c0c0c"
     foregroundColor="#8B442E"
   >
     <rect x="9" y="0" rx="14" ry="14" width="232" height="240" />
