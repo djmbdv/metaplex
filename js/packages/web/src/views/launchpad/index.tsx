@@ -440,7 +440,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
    <Col md={{span:12,order:1}} xs={{span:24,order:2}} className="gutter-row datos-launchpad" >
        <Row><Col><Button className="btn-outline-launchpad" size="small">FEATURED LAUNCH</Button></Col></Row>
        <Row><Col><Title>Louis XV</Title></Col></Row>
-       <Row>
+       <Row className='wrap-total-social'>
            <Col><Button className="btn-outline-launchpad">VERIFIED</Button></Col>
            <Col><Button className="btn-outline-launchpad">ESCROW 15D</Button></Col>
            <Col>
