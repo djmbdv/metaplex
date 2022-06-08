@@ -444,7 +444,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
            <Col><Button className="btn-outline-launchpad">VERIFIED</Button></Col>
            <Col><Button className="btn-outline-launchpad">ESCROW 15D</Button></Col>
            <Col>
-           <Row>
+           <Row className="wrap-total-social">
               <Col><p id="total-items-launchpad" >TOTAL ITEMS  1000 </p></Col>
               <Col><SocialNetworking img="/twitter.svg" url="/"  /></Col>
               <Col><SocialNetworking img="/discord.svg" url="/"  /></Col>
