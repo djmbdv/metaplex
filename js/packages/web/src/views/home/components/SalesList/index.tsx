@@ -39,11 +39,13 @@ export const SalesListView = () => {
 
   useEffect(()=>{
     const onLoad = async () => {
-       let resp =  await fetch('https://apinft.proit.studio/all_nfts')
-       let json = await resp.json();
-       setCardDat(json);
-       setIsload(false);
-       
+      fetch('https://apinft.proit.studio/all_nfts')
+        .then(resp => resp.json())
+        .then(json => {
+          setCardDat(json);
+          setIsload(false);
+         })
+        .catch(e => console.log(e));
       };
       onLoad()
       /* window.addEventListener('load', onLoad);

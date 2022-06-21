@@ -1,18 +1,17 @@
-import React,{useEffect, useState} from 'react';
+import React from 'react';
 import {Layout,Row, Col} from 'antd';
 import { Banner } from './components/Banner';
-import { GoToLaunchpad } from './components/BtnGotoLaunchpad';;
-import { LiveAuctionViewState } from './enum';
-import { CardSliderComponent } from './components/card-slider';
+import { GoToLaunchpad } from './components/BtnGotoLaunchpad';
+//import { LiveAuctionViewState } from './enum';
 import { Typography } from 'antd';
 import { CardComponent } from '../../components/Card';
 const { Title } = Typography;
 
 
 export const LaunchpadsView = () =>{
-    let live  =  LiveAuctionViewState.Ended
-    const [cardDat,setCardDat] = useState([]);
-    const [isLoading,setIsLoading] = useState(true);
+    //let live  =  LiveAuctionViewState.Ended
+    //const [cardDat,setCardDat] = useState([]);
+    //const [isLoading,setIsLoading] = useState(true);
 
     // useEffect(()=>{
     //     const onLoad = async () => {
@@ -43,7 +42,7 @@ export const LaunchpadsView = () =>{
                 <Col>
                     <Row><Title>Live</Title></Row>
                     <Col span={6}>
-                    <CardComponent key={"1"} description={"Louis  XV deVenoge Collection"} posterUri={"https://fmzelq6ejcd2o5qodi3r6vjjefpoaxvdplfkbhd3trfoqlkqhe.arweave.net/KzJFw8RIh6d2Dho3H1_UpIV7gXqN6yqCce5xK6C1QOc?ext=gif"} items={"1000"} price={"0.001"} name={"Louis XV"} link={'/launchpad/1' }  pubkey={"1"} />
+                    <CardComponent key={"1"} description={"Louis  XV deVenoge Collection"} posterUri={"https://fmzelq6ejcd2o5qodi3r6vjjefpoaxvdplfkbhd3trfoqlkqhe.arweave.net/KzJFw8RIh6d2Dho3H1_UpIV7gXqN6yqCce5xK6C1QOc?ext=gif"} items={"1000"} price={"0.001"} name={"Louis XV"} link={'/launchpad/6CDkZfay8Q4S82e3bo2tYPBXGC5mLkHewuMYcedmCeWU' }  pubkey={"1"} />
                     </Col>
                     {/*<CardSliderComponent data={cardDat} loading={isLoading} />*/}
                 </Col>
