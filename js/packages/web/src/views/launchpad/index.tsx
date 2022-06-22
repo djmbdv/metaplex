@@ -23,7 +23,7 @@ import { WhiteList } from './components/whiteList'
 import { PublicKey, Transaction } from '@solana/web3.js';
 import {MintButton } from "./components/mintButton"
 import { GatewayProvider } from '@civic/solana-gateway-react';
-import { AlertState, toDate, formatNumber, getAtaForMint } from '../../models/utils';
+import { AlertState, toDate, getAtaForMint } from '../../models/utils';
 import {ConnectButton,MetaplexOverlay} from "@oyster/common"
 import {MintCountdown} from "./components/mintCountdown"
 import {Confetti} from "../../components/Confetti"
@@ -34,7 +34,7 @@ const { Title, Paragraph } = Typography;
 
 
 
-const getCandyMachineId = (): anchor.web3.PublicKey | undefined => {
+/*const getCandyMachineId = (): anchor.web3.PublicKey | undefined => {
   try {
     const candyMachineId = new anchor.web3.PublicKey(
       process.env.REACT_APP_CANDY_MACHINE_ID!,
@@ -45,7 +45,7 @@ const getCandyMachineId = (): anchor.web3.PublicKey | undefined => {
     console.log('Failed to construct CandyMachineId', e);
     return undefined;
   }
-};
+};*/
 export interface LaunchpadViewProps {
     candyMachineId?: anchor.web3.PublicKey;
     connection: anchor.web3.Connection;
@@ -55,7 +55,7 @@ export interface LaunchpadViewProps {
 
 const defaultProps : LaunchpadViewProps = {
    candyMachineId: new anchor.web3.PublicKey(
-    "GwzkriYi18xSMEizCAa91bNke5HbhauP9o6myBroA7S2"),
+    "6CDkZfay8Q4S82e3bo2tYPBXGC5mLkHewuMYcedmCeWU"),
    rpcHost : "https://metaplex.devnet.rpcpool.com/",
    txTimeout : 40,
    connection:new anchor.web3.Connection(
@@ -147,7 +147,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
               const balance = await props.connection.getTokenAccountBalance(
                 token,
               );
-              let valid = parseInt(balance.value.amount) > 0;
+              const valid = parseInt(balance.value.amount) > 0;
               // only whitelist the user if the balance > 0
               setIsWhitelistUser(valid);
               active = (presale && valid) || active;
@@ -173,7 +173,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
           }
           // amount to stop the mint?
           if (cndy?.state.endSettings?.endSettingType.amount) {
-            let limit = Math.min(
+            const limit = Math.min(
               cndy.state.endSettings.number.toNumber(),
               cndy.state.itemsAvailable,
             );
@@ -301,7 +301,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
             });
           }
   
-          let mintOne = await mintOneToken(
+          const mintOne = await mintOneToken(
             candyMachine,
             wallet.publicKey,
             beforeTransactions,
@@ -322,7 +322,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
           }
           console.log(JSON.stringify(status))
           if (status && !status.err) {
-            let remaining = itemsRemaining! - 1;
+            const remaining = itemsRemaining! - 1;
             setItemsRemaining(remaining);
             setIsActive((candyMachine.state.isActive = remaining > 0));
             candyMachine.state.isSoldOut = remaining === 0;
@@ -512,7 +512,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
    <Col md={{span:12,order:2}} xs={{span:24,order:1}}  className="gutter-row">
        <Row><Col span={24}  className="wrap-btnCandy">
            <CachedImageContent
-           uri="https://fmzelq6ejcd2o5qodi3r6vjjefpoaxvdplfkbhd3trfoqlkqhe.arweave.net/KzJFw8RIh6d2Dho3H1_UpIV7gXqN6yqCce5xK6C1QOc?ext=gif"
+           uri="https://wincbphavq4xu2b5ug5zdyui4glhbeeoeygnur4uynygfpou.arweave.net/sho_gvOCsOXp-oPaG7keKI4ZZwkI4mDNp_HlMNwYr3U?ext=gif"
            className="auction-image no-events"
            preview={true}
             />

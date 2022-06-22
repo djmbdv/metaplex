@@ -157,7 +157,8 @@ export const useArt = (key?: StringPublicKey) => {
     const promesas = account?.info?.data.creators?.map(creator => {
       return fetch(`https://apinft.proit.studio/solana/${creator.address}`)
         .then(res => res.json())
-        .then(res => res as Artist);
+        .then(res => res as Artist)
+        .catch(e => console.log(e))
     });
     if (promesas)
       Promise.all(promesas || []).then(res => {
