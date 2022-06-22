@@ -17,7 +17,7 @@ export const InfoLaunchpad = ()=>{
            <Col span={15} >
              {/* redes sociales */}
              <Row className="wrap-total-social">
-              <Col span={4}><SocialNetworking img="/twitter-BL.svg" url="/"  /></Col>
+              {/*<Col span={4}><SocialNetworking img="/twitter-BL.svg" url="/"  /></Col>*/}
               <Col span={4}><SocialNetworking img="/discord-BL.svg" url="/"  /></Col>
               <Col span={4}><SocialNetworking img="/instagram-BL.svg" url="/"  /></Col>
               <Col span={4}><SocialNetworking img="/web-BL.svg" url="/"  /></Col>
