@@ -9,18 +9,18 @@ export const InfoLaunchpad = ()=>{
     return(
         <>
         <Title level={2}>Louis XV</Title>
-        <Row className="white-Paper-contract" >
-           <Col span={8} >
+        <Row className="white-Paper-contract" gutter={{ xs: 24, sm: 16, md: 24, lg: 32}} >
+           <Col md={8} xs={{span:24,order:1}} >
             <Row><Paragraph>WHITE PAPER</Paragraph></Row>
             <Row><Paragraph>CONTRACT</Paragraph></Row>
            </Col>
-           <Col span={15} >
+           <Col md={15} xs={{span:24,order:2}}  >
              {/* redes sociales */}
-             <Row className="wrap-total-social">
-              <Col span={4}><SocialNetworking img="/twitter-BL.svg" url="/"  /></Col>
-              <Col span={4}><SocialNetworking img="/discord-BL.svg" url="/"  /></Col>
-              <Col span={4}><SocialNetworking img="/instagram-BL.svg" url="/"  /></Col>
-              <Col span={4}><SocialNetworking img="/web-BL.svg" url="/"  /></Col>
+             <Row className="wrap-total-social" justify="center" >
+              <Col md={4} xs={{ span : 6}} ><SocialNetworking className="redSocial" img="/twitter-BL.svg" url="/"  /></Col>
+              <Col md={4} xs={{ span : 6}}><SocialNetworking className="redSocial" img="/discord-BL.svg" url="/"  /></Col>
+              <Col md={4} xs={{ span : 6}}><SocialNetworking className="redSocial" img="/instagram-BL.svg" url="/"  /></Col>
+              <Col md={4} xs={{ span : 6}}><SocialNetworking className="redSocial" img="/web-BL.svg" url="/"  /></Col>
             </Row>
             <Row>
               <Col> &nbsp; </Col>

@@ -97,7 +97,7 @@ export default function TokenDialog({
     >
 
       <Col className={'dialog-header'}>
-        <Typography style={{ paddingBottom: "16px", textAlign: 'center', textTransform: 'uppercase', fontWeight: 600 }}>
+        <Typography style={{ paddingBottom: "16px", textAlign: 'center', textTransform: 'uppercase', fontWeight: 600,color:'#ffffff' }}>
           Select a token as your auction mint
         </Typography>
         <Input

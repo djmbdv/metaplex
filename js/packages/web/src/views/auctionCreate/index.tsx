@@ -698,7 +698,7 @@ export const AuctionCreateView = () => {
           {stepsByCategory[attributes.category][step][1]}
           {0 < step && stepsVisible && (
             <div style={{ margin: 'auto', width: 'fit-content' }}>
-              <Button onClick={() => gotoNextStep(step - 1)}>Back</Button>
+              <Button className="sidebar-btn secondary-btn" onClick={() => gotoNextStep(step - 1)}>Back</Button>
             </div>
           )}
         </Col>
@@ -713,7 +713,7 @@ const CategoryStep = (props: {
   const { width } = useWindowDimensions();
   return (
     <>
-      <Row className="call-to-action">
+      <Row className="call-to-action auction-wrap">
         <h2>List an item</h2>
         <p>
           First time listing on Metaplex? <a>Read our sellers' guide.</a>
@@ -1904,7 +1904,7 @@ const ReviewStep = (props: {
 
   return (
     <>
-      <Row className="call-to-action">
+      <Row className="call-to-action auction-wrap">
         <h2>Review and list</h2>
         <p>Review your listing before publishing.</p>
       </Row>

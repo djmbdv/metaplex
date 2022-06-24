@@ -412,10 +412,11 @@ export const Cog = () => {
                 borderRadius: 8,
                 width: '100%',
                 marginBottom: 10,
+                color:'#ffffff'
               }}
             >
               {ENDPOINTS.map(({ name }) => (
-                <Select.Option value={name} key={endpoint.name}>
+                <Select.Option value={name} style={{color:'#ffffff'}} key={endpoint.name}>
                   {name}
                 </Select.Option>
               ))}

@@ -446,10 +446,10 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
            <Col>
            <Row className="wrap-total-social">
               <Col><p id="total-items-launchpad" >TOTAL ITEMS  1000 </p></Col>
-              <Col><SocialNetworking img="/twitter.svg" url="/"  /></Col>
-              <Col><SocialNetworking img="/discord.svg" url="/"  /></Col>
-              <Col><SocialNetworking img="/instagram.svg" url="/"  /></Col>
-              <Col><SocialNetworking img="/web.svg" url="/"  /></Col>
+              <Col><SocialNetworking className="redSocial" img="/twitter.svg" url="/"  /></Col>
+              <Col><SocialNetworking className="redSocial" img="/discord.svg" url="/"  /></Col>
+              <Col><SocialNetworking className="redSocial" img="/instagram.svg" url="/"  /></Col>
+              <Col><SocialNetworking className="redSocial" img="/web.svg" url="/"  /></Col>
             </Row>
            </Col>
        </Row>
@@ -513,7 +513,7 @@ export const LaunchpadView = (props:LaunchpadViewProps) => {
        <Row><Col span={24}  className="wrap-btnCandy">
            <CachedImageContent
            uri="https://wincbphavq4xu2b5ug5zdyui4glhbeeoeygnur4uynygfpou.arweave.net/sho_gvOCsOXp-oPaG7keKI4ZZwkI4mDNp_HlMNwYr3U?ext=gif"
-           className="auction-image no-events"
+           className="auction-image no-events customs-img"
            preview={true}
             />
            </Col></Row>

@@ -38,11 +38,11 @@ export const LaunchpadsView = () =>{
                 />
                 </Col>
             </Row>
-            <Row className='launchpad-card'>
-                <Col>
+            <Row className='launchpad-card' >
+                <Col xs={{offset:2}}>
                     <Row><Title>Live</Title></Row>
                     <Col span={6}>
-                    <CardComponent key={"1"} description={"Louis  XV deVenoge Collection"} posterUri={"https://fmzelq6ejcd2o5qodi3r6vjjefpoaxvdplfkbhd3trfoqlkqhe.arweave.net/KzJFw8RIh6d2Dho3H1_UpIV7gXqN6yqCce5xK6C1QOc?ext=gif"} items={"1000"} price={"0.001"} name={"Louis XV"} link={'/launchpad/6CDkZfay8Q4S82e3bo2tYPBXGC5mLkHewuMYcedmCeWU' }  pubkey={"1"} />
+                    <CardComponent key={"1"} description={"Louis  XV deVenoge Collection"} posterUri={"https://wincbphavq4xu2b5ug5zdyui4glhbeeoeygnur4uynygfpou.arweave.net/sho_gvOCsOXp-oPaG7keKI4ZZwkI4mDNp_HlMNwYr3U?ext=gif"} items={"1000"} price={"0.001"} name={"Louis XV"} link={'/launchpad/6CDkZfay8Q4S82e3bo2tYPBXGC5mLkHewuMYcedmCeWU' }  pubkey={"1"} />
                     </Col>
                     {/*<CardSliderComponent data={cardDat} loading={isLoading} />*/}
                 </Col>

@@ -220,7 +220,7 @@ export const ArtCreateView = () => {
           )}
           {0 < step && step < 5 && (
             <div style={{ margin: 'auto', width: 'fit-content' }}>
-              <Button onClick={() => gotoStep(step - 1)}>Back</Button>
+              <Button className="sidebar-btn secondary-btn"  onClick={() => gotoStep(step - 1)}>Back</Button>
             </div>
           )}
         </Col>
@@ -1278,7 +1278,7 @@ const Congrats = (props: {
       <>
         <div className="waiting-title">Sorry, there was an error!</div>
         <p>{props.alert}</p>
-        <Button onClick={_ => history.push('/art/create')}>
+        <Button className="metaplex-button" onClick={_ => history.push('/art/create')}>
           Back to Create NFT
         </Button>
       </>
