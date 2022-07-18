@@ -91,7 +91,7 @@ export function Routes() {
               component={() => <BillingView />}
             />
             <Route path="/about" component={() => <StaticPageView />} />
-            <Route exact path="/" component={() => <HomeView />} />
+            <Route exact path="/" component={() => <launchpad />} />
           </Switch>
         </Providers>
       </HashRouter>
