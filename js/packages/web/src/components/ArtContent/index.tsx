@@ -1,4 +1,4 @@
-import React, { Ref, useCallback, useEffect, useState } from 'react';
+import React, { Ref, useEffect, useRef, useState } from 'react';
 import { Image } from 'antd';
 import { MetadataCategory, MetadataFile, pubkeyToString } from '@oyster/common';
 import { MeshViewer } from '../MeshViewer';
@@ -62,7 +62,7 @@ export const CachedImageContent = ({
       wrapperClassName={className}
       loading="lazy"
       wrapperStyle={{ ...style }}
-      onLoad={e => {
+      onLoad={() => {
         setLoaded(true);
       }}
       placeholder={<ThreeDots />}
@@ -86,20 +86,14 @@ const VideoArtContent = ({
   animationURL?: string;
   active?: boolean;
 }) => {
-  const [playerApi, setPlayerApi] = useState<StreamPlayerApi>();
 
-  const playerRef = useCallback(
-    ref => {
-      setPlayerApi(ref);
-    },
-    [setPlayerApi],
-  );
+  const playerRef = useRef<StreamPlayerApi|undefined> ();
 
   useEffect(() => {
-    if (playerApi) {
-      playerApi.currentTime = 0;
+    if (playerRef.current) {
+      playerRef.current.currentTime = 0;
     }
-  }, [active, playerApi]);
+  }, [active, playerRef.current]);
 
   const likelyVideo = (files || []).filter((f, index, arr) => {
     if (typeof f !== 'string') {
@@ -115,16 +109,12 @@ const VideoArtContent = ({
     likelyVideo.startsWith('https://watch.videodelivery.net/') ? (
       <div className={`${className} square`}>
         <Stream
-          streamRef={(e: any) => playerRef(e)}
+          streamRef={playerRef}
           src={likelyVideo.replace('https://watch.videodelivery.net/', '')}
           loop={true}
-          height={600}
-          width={600}
+          height={"600"}
+          width={"600"}
           controls={false}
-          videoDimensions={{
-            videoHeight: 700,
-            videoWidth: 400,
-          }}
           autoplay={true}
           muted={true}
         />
@@ -150,7 +140,7 @@ const VideoArtContent = ({
         {files
           ?.filter(f => typeof f !== 'string')
           .map((f: any) => (
-            <source src={f.uri} type={f.type} style={style} />
+            <source key={f} src={f.uri} type={f.type} style={style} />
           ))}
       </video>
     );

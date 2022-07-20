@@ -39,7 +39,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { Connection } from '@solana/web3.js';
 import { MintLayout } from '@solana/spl-token';
 import { useHistory, useParams } from 'react-router-dom';
-import { cleanName, getLast } from '../../utils/utils';
+import { getLast } from '../../utils/utils';
 import { AmountLabel } from '../../components/AmountLabel';
 import useWindowDimensions from '../../utils/layout';
 import {
@@ -377,7 +377,7 @@ const UploadStep = (props: {
   return (
     <>
       <Row className="call-to-action">
-        <h2>Now, let's upload your creation</h2>
+        <h2>Now, let&apos;s upload your creation</h2>
         <p style={{ fontSize: '1.2rem' }}>
           Your file will be uploaded to the decentralized web via Arweave.
           Depending on file type, can take up to 1 minute. Arweave is a new type
@@ -609,22 +609,20 @@ const InfoStep = (props: {
   setAttributes: (attr: IMetadataExtension) => void;
   confirm: () => void;
 }) => {
-  const [creators, setCreators] = useState<Array<UserValue>>([]);
-  const [royalties, setRoyalties] = useState<Array<Royalty>>([]);
   const { image, animation_url } = useArtworkFiles(
     props.files,
     props.attributes,
   );
   const [form] = Form.useForm();
 
-  useEffect(() => {
+  /*useEffect(() => {
     setRoyalties(
       creators.map(creator => ({
         creatorKey: creator.key,
         amount: Math.trunc(100 / creators.length),
       })),
     );
-  }, [creators]);
+  }, [creators]);*/
   return (
     <>
       <Row className="call-to-action">
@@ -664,21 +662,6 @@ const InfoStep = (props: {
               }
             />
           </label>
-          {/* <label className="action-field">
-            <span className="field-title">Symbol</span>
-            <Input
-              className="input"
-              placeholder="Max 10 characters"
-              allowClear
-              value={props.attributes.symbol}
-              onChange={info =>
-                props.setAttributes({
-                  ...props.attributes,
-                  symbol: info.target.value,
-                })
-              }
-            />
-          </label> */}
 
           <label className="action-field">
             <span className="field-title">Description</span>
@@ -718,18 +701,16 @@ const InfoStep = (props: {
             <Form.List name="attributes">
               {(fields, { add, remove }) => (
                 <>
-                  {fields.map(({ key, name, fieldKey }) => (
+                  {fields.map(({ key, name }) => (
                     <Space key={key} align="baseline">
                       <Form.Item
                         name={[name, 'trait_type']}
-                        fieldKey={[fieldKey, 'trait_type']}
                         hasFeedback
                       >
-                        <Input placeholder="trait_type (Optional)" />
+                      <Input placeholder="trait_type (Optional)" />
                       </Form.Item>
                       <Form.Item
                         name={[name, 'value']}
-                        fieldKey={[fieldKey, 'value']}
                         rules={[{ required: true, message: 'Missing value' }]}
                         hasFeedback
                       >
@@ -737,7 +718,6 @@ const InfoStep = (props: {
                       </Form.Item>
                       <Form.Item
                         name={[name, 'display_type']}
-                        fieldKey={[fieldKey, 'display_type']}
                         hasFeedback
                       >
                         <Input placeholder="display_type (Optional)" />

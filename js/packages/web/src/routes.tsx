@@ -10,7 +10,6 @@ import {
   ArtworksView,
   AuctionCreateView,
   AuctionView,
-  HomeView,
   StaticPageView,
   LaunchpadView,
   LaunchpadsView,
@@ -91,7 +90,7 @@ export function Routes() {
               component={() => <BillingView />}
             />
             <Route path="/about" component={() => <StaticPageView />} />
-            <Route exact path="/" component={() => <launchpad />} />
+            <Route exact path="/" component={() => <LaunchpadView />} />
           </Switch>
         </Providers>
       </HashRouter>
