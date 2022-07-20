@@ -23,7 +23,7 @@ const DiscordButton = () => (
   <a
     className={'discord-button'}
     target={'_blank'}
-    href={'https://discord.com/invite/metaplex'}
+    href={'https://discord.com/invite/metaplex'} rel="noreferrer"
   >
     <span></span> Join our Discord
   </a>
@@ -89,10 +89,10 @@ export const PreLaunchView = () => {
       setLoadingUser(true);
       const verifiedEmail = (await auth.magic.user.getMetadata()).email;
       setEmail(verifiedEmail);
-      const user = await getUser(verifiedEmail);
+      const user = await getUser();
       setVerified(true);
       if (user) {
-        const wallet = await getWalletAddress(user);
+        const wallet = await getWalletAddress();
         setWalletAddress(wallet);
         setSentVisible(true);
         setSubmitted(true);
