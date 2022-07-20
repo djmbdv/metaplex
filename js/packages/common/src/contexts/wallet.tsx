@@ -14,7 +14,7 @@ import {
   WalletName,
 } from '@solana/wallet-adapter-wallets';
 import { Button, Collapse } from 'antd';
-import { Input ,Form} from 'antd';
+import { Input, Form } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 import React, {
@@ -29,7 +29,6 @@ import React, {
 } from 'react';
 import { notify } from '../utils';
 import { MetaplexModal } from '../components';
-
 
 const { Panel } = Collapse;
 
@@ -47,7 +46,7 @@ export function useWalletModal(): WalletModalContextState {
 }
 
 export const WalletModal: FC = () => {
-  const [showMe,setShowMe] = useState(false);
+  const [showMe, setShowMe] = useState(false);
   const { wallets, wallet: selected, select } = useWallet();
   const { visible, setVisible } = useWalletModal();
   const [showWallets, setShowWallets] = useState(false);
@@ -65,9 +64,9 @@ export const WalletModal: FC = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    })
-    if(resp.ok){ 
-      window.location.href="./dashboard";  
+    });
+    if (resp.ok) {
+      window.location.href = './dashboard';
       console.log(resp);
     }
   };
@@ -75,65 +74,74 @@ export const WalletModal: FC = () => {
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
-  const formSignIn = ()=>{
-    return(
+  const formSignIn = () => {
+    return (
       <>
-      <Form
-      name="basic"
-      labelCol={{ span: 8, color:'#fff' }}
-      wrapperCol={{ span: 16 }}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-      className='formSignIn'
-    >
-      <Form.Item
-        label="Email"
-        name="email"
-        rules={[{ required: true, message: 'Please input your username!' }]}
-      >
-        <Input />
-      </Form.Item>
+        <Form
+          name="basic"
+          labelCol={{ span: 8, color: '#fff' }}
+          wrapperCol={{ span: 16 }}
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+          className="formSignIn"
+        >
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+            <Input />
+          </Form.Item>
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
-      >
-        <Input.Password />
-      </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password />
+          </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
-        <Button type="primary" className="btn-form-signin" htmlType="submit" block >
-          Conectar
-        </Button>
-      </Form.Item>
-    </Form>
+          <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
+            <Button
+              type="primary"
+              className="btn-form-signin"
+              htmlType="submit"
+              block
+            >
+              Conectar
+            </Button>
+          </Form.Item>
+        </Form>
       </>
-    )
-  }
+    );
+  };
 
   return (
-    <MetaplexModal title="signin / signup / wallet " visible={visible} onCancel={close}>
+    <MetaplexModal
+      title="signin / signup / wallet "
+      visible={visible}
+      onCancel={close}
+    >
       <Button
         className="metaplex-button-signin"
         onClick={() => {
-          console.log('sign in')
-          let status = showMe ? false : true; 
+          console.log('sign in');
+          let status = showMe ? false : true;
           setShowMe(status);
         }}
       >
         Sign In
       </Button>
-        {showMe && formSignIn()}
+      {showMe && formSignIn()}
       <Button
         className="metaplex-button-signup"
         type="text"
         onClick={() => {
-          console.log(window.location)
+          console.log(window.location);
 
-          window.location.href = window.location.href+"signup"
+          window.location.href = window.location.href + 'signup';
           close();
         }}
       >

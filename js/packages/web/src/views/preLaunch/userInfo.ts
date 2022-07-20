@@ -1,11 +1,10 @@
 // Leave for store implementation
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getUser = async (email: string) => {
+export const getUser = async (): Promise<null> => {
   return null;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getWalletAddress = async (user: any) => {
+export const getWalletAddress = async () => {
   return 'wallet';
 };
 

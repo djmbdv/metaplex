@@ -11,7 +11,15 @@ export const HomeView = () => {
 
   const showAuctions = (store && isConfigured) || isLoading;
   return (
-    <Layout style={{ margin: 0, marginTop: 30, alignItems: 'center',paddingLeft:40,paddingRight:40 }}>
+    <Layout
+      style={{
+        margin: 0,
+        marginTop: 30,
+        alignItems: 'center',
+        paddingLeft: 40,
+        paddingRight: 40,
+      }}
+    >
       {showAuctions ? <SalesListView /> : <SetupView />}
     </Layout>
   );

@@ -4,18 +4,17 @@ import { Button } from 'antd';
 interface GoToLaunchpadProps {
   buttonClassName: string;
   onClick?: any;
-  buttonText:string ;
+  buttonText: string;
 }
 
 export const GoToLaunchpad: React.FC<GoToLaunchpadProps> = ({
   buttonClassName,
   onClick,
-  buttonText
+  buttonText,
 }) => {
   return (
     <Button className={buttonClassName} onClick={onClick}>
-    {buttonText}
-  </Button>
-  
+      {buttonText}
+    </Button>
   );
 };

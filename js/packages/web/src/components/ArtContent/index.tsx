@@ -86,8 +86,7 @@ const VideoArtContent = ({
   animationURL?: string;
   active?: boolean;
 }) => {
-
-  const playerRef = useRef<StreamPlayerApi|undefined> ();
+  const playerRef = useRef<StreamPlayerApi | undefined>();
 
   useEffect(() => {
     if (playerRef.current) {
@@ -112,8 +111,8 @@ const VideoArtContent = ({
           streamRef={playerRef}
           src={likelyVideo.replace('https://watch.videodelivery.net/', '')}
           loop={true}
-          height={"600"}
-          width={"600"}
+          height={'600'}
+          width={'600'}
           controls={false}
           autoplay={true}
           muted={true}

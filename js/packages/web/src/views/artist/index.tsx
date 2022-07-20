@@ -46,9 +46,11 @@ export const ArtistView = () => {
           <Col span={24}>
             <h2>
               {/* <MetaAvatar creators={creator ? [creator] : []} size={100} /> */}
-              {creator?.name && 
-              <>{creator?.name} <small> ({creator?.address})</small> </>
-              }
+              {creator?.name && (
+                <>
+                  {creator?.name} <small> ({creator?.address})</small>{' '}
+                </>
+              )}
             </h2>
             <br />
             <div className="info-header">ABOUT THE CREATOR</div>

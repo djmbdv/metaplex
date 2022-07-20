@@ -7,23 +7,25 @@ interface Props {
   pubkey: string;
   posterUri: string;
   name: string;
-  description:string;
+  description: string;
 }
 
 const CardComponent = ({
   pubkey,
   posterUri,
   name,
-  description
+  description,
 }: Props): ReactElement => {
-
-
-console.log(pubkey);
+  console.log(pubkey);
   return (
     <Link to={`/launchpad/${pubkey}`}>
-      <Card hoverable={true} className="auction-render-card sliderCard-wrap" bordered={false}>
+      <Card
+        hoverable={true}
+        className="auction-render-card sliderCard-wrap"
+        bordered={false}
+      >
         <div className="card-art-info">
-         {/*  <div className="card-artist-info card-artist-info--pack">
+          {/*  <div className="card-artist-info card-artist-info--pack">
                 <MetaAvatar creators={[creator]} /> 
             <div className="card-artist-info__subtitle">
               <p>Pack</p>

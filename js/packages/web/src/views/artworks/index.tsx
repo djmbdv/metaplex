@@ -80,8 +80,11 @@ export const ArtworksView = () => {
     </Masonry>
   );
 
-  const refreshButton = connected && storeIndexer.length !== 0 &&
-  <Button className="refresh-button" onClick={() => pullAllMetadata()}>Refresh</Button>
+  const refreshButton = connected && storeIndexer.length !== 0 && (
+    <Button className="refresh-button" onClick={() => pullAllMetadata()}>
+      Refresh
+    </Button>
+  );
 
   return (
     <Layout style={{ margin: 0, marginTop: 30 }}>
@@ -107,7 +110,7 @@ export const ArtworksView = () => {
                   {artworkGrid}
                 </TabPane>
               )}
-              {(connected && canCreate) && (
+              {connected && canCreate && (
                 <TabPane
                   tab={<span className="tab-title">Created</span>}
                   key={ArtworkViewState.Created}

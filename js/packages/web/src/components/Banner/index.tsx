@@ -45,11 +45,8 @@ export const Banner = (props: {
         id={'current-banner'}
         style={{ backgroundImage: `url(${props.src})` }}
       > */}
-      <div
-        id={'current-banner'}
-        
-      >
-        <span ></span>
+      <div id={'current-banner'}>
+        <span></span>
         <div id="banner-inner">
           <div id={'message-container'}>
             <div id={'main-heading'}>{props.headingText}</div>
@@ -62,8 +59,8 @@ export const Banner = (props: {
               POWERED BY <b>Corko.io</b>
             </span>
           </div> */}
-          <div  className='imgBanner' >
-             <img className="imgDesktop" src={props.src} />
+          <div className="imgBanner">
+            <img className="imgDesktop" src={props.src} />
           </div>
         </div>
       </div>

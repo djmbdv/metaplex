@@ -239,7 +239,6 @@ const MemoizedBar = React.memo(
       ],
     };
 
-
     return <Bar data={histoData} />;
   },
 );

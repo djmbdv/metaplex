@@ -1,6 +1,6 @@
 import { useWallet } from '@solana/wallet-adapter-react';
 import { Col, Layout, Row, Tabs } from 'antd';
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Masonry from 'react-masonry-css';
 
 import { useMeta } from '../../../../contexts';
@@ -33,24 +33,24 @@ export const SalesListView = () => {
   const [activeKey, setActiveKey] = useState(LiveAuctionViewState.All);
   const { isLoading } = useMeta();
   const { connected } = useWallet();
-  const [isLoad,setIsload]=useState(true);
+  const [isLoad, setIsload] = useState(true);
   const { sales, hasResaleAuctions } = useSales(activeKey);
-  const [cardDat,setCardDat]=useState([]);
+  const [cardDat, setCardDat] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     const onLoad = async () => {
       fetch('https://apinft.proit.studio/all_nfts')
         .then(resp => resp.json())
         .then(json => {
           setCardDat(json);
           setIsload(false);
-         })
+        })
         .catch(e => console.log(e));
-      };
-      onLoad()
-      /* window.addEventListener('load', onLoad);
+    };
+    onLoad();
+    /* window.addEventListener('load', onLoad);
       return () => window.removeEventListener('load', onLoad);*/
-},[]) 
+  }, []);
 
   return (
     <>
@@ -58,11 +58,20 @@ export const SalesListView = () => {
         src="/image4.jpg"
         headingText="No te pierdas la oportunidad de entrar al mundo de los NFT."
         subHeadingText="Compra NFTs de tus artistas favoritos."
-        actionComponent={<HowToBuyModal buttonClassName="secondary-btn btn-banner" />}
+        actionComponent={
+          <HowToBuyModal buttonClassName="secondary-btn btn-banner" />
+        }
         useBannerBg
       />
       <Layout>
-        <Content style={{ display: 'flex', flexWrap: 'wrap', paddingLeft:40, paddingRight:40 }}>
+        <Content
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            paddingLeft: 40,
+            paddingRight: 40,
+          }}
+        >
           <Col style={{ width: '100%', marginTop: 32 }}>
             <Row>
               <Tabs
@@ -99,15 +108,9 @@ export const SalesListView = () => {
                 columnClassName="masonry-grid_column"
               >
                 {isLoading &&
-                  [...Array(9)].map((_, idx) => 
-                  <CardLoader key={idx} />
-                  )}
+                  [...Array(9)].map((_, idx) => <CardLoader key={idx} />)}
                 {!isLoading &&
-                  sales.map((sale, idx) =>
-
-                   <SaleCard sale={sale} key={idx} />
-                   )}
-                   
+                  sales.map((sale, idx) => <SaleCard sale={sale} key={idx} />)}
               </Masonry>
             </Row>
             <SliderCard data={cardDat} loading={isLoad} />

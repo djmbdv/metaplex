@@ -1,55 +1,65 @@
-import React,{useState,useRef,useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Button, Radio } from 'antd';
 import { UploadOutlined, EditOutlined } from '@ant-design/icons';
 
+export const BannerUser = props => {
+  const first = useRef<HTMLDivElement | null>(null);
+  const [url, setUrl] = useState('');
+  const fileElement = useRef<HTMLInputElement | null>(null);
+  const { setUrlBanner } = props;
 
+  useEffect(() => {
+    const onLoad = () => {
+      try {
+        if (first.current) first.current.style['background-image'] = url;
+        setUrlBanner(url);
+      } catch (e) {}
+    };
+    onLoad();
+  }, [url]);
 
-export const BannerUser =  (props)=>{
-    const first  = useRef<HTMLDivElement | null>(null);
-    const [url,setUrl] = useState("");
-    const fileElement = useRef<HTMLInputElement | null>(null);
-    const {setUrlBanner} = props;
+  useEffect(() => {
+    const onLoad = () => {
+      if (fileElement.current) fileElement.current.style.opacity = '0';
+    };
 
-    useEffect(()=>{
-        const onLoad = ()=>{
-            try{
-                if(first.current) first.current.style['background-image']= url;
-                setUrlBanner(url);
-            }catch(e){}
-        }
-        onLoad()
-    },[url])
+    window.addEventListener('load', onLoad);
+    return () => {
+      window.removeEventListener('load', onLoad);
+    };
+  }, []);
 
-    useEffect(()=>{
-        const onLoad =  () => {
-            if(fileElement.current)fileElement.current.style.opacity = "0";
-      
-        };
+  const handleChange = e => {
+    let files = e.target.files;
+    let render = new FileReader();
+    render.readAsDataURL(files[0]);
+    render.onload = e => {
+      setUrl("url('" + e?.target?.result + "')");
+    };
+  };
 
-          window.addEventListener('load', onLoad);
-          return () => {window.removeEventListener('load', onLoad)};
-       
-    },[])
+  const EditBanner = () => {
+    fileElement.current?.click();
+    fileElement.current?.addEventListener('change', handleChange);
+  };
 
-    const handleChange =(e)=> {
-        let files =e.target.files
-        let render = new FileReader();
-        render.readAsDataURL(files[0]);
-        render.onload =(e)=>{
-            setUrl("url('"+e?.target?.result+"')")
-        }
-        
-    }
-
-    const EditBanner = () =>{
-        fileElement.current?.click();
-        fileElement.current?.addEventListener('change',handleChange);
-    }
-
-    return(
-        <div ref={first} className='banner-user' >
-             <Button type="primary" className='btn-edit-banner' onClick={EditBanner} shape="circle" icon={<EditOutlined />} size="large" />
-            <input type="file" className='file' name="banner" id="banner-user" ref={fileElement} />     
-        </div>
-    )
-}
+  return (
+    <div ref={first} className="banner-user">
+      <Button
+        type="primary"
+        className="btn-edit-banner"
+        onClick={EditBanner}
+        shape="circle"
+        icon={<EditOutlined />}
+        size="large"
+      />
+      <input
+        type="file"
+        className="file"
+        name="banner"
+        id="banner-user"
+        ref={fileElement}
+      />
+    </div>
+  );
+};

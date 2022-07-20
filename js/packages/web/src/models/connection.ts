@@ -66,7 +66,7 @@ export async function sendTransactionsWithManualRetry(
   let stopPoint = 0;
   let tries = 0;
   let lastInstructionsLength = 0;
-  let toRemoveSigners: Record<number, boolean> = {};
+  const toRemoveSigners: Record<number, boolean> = {};
   instructions = instructions.filter((instr, i) => {
     if (instr.length > 0) {
       return true;
@@ -131,8 +131,8 @@ export const sendTransactions = async (
   signersSet: Keypair[][],
   sequenceType: SequenceType = SequenceType.Parallel,
   commitment: Commitment = 'singleGossip',
-  successCallback: (txid: string, ind: number) => void = (txid, ind) => {},
-  failCallback: (reason: string, ind: number) => boolean = (txid, ind) => false,
+  successCallback: (txid: string, ind: number) => void = () => {},
+  failCallback: (reason: string, ind: number) => boolean = () => false,
   block?: BlockhashAndFeeCalculator,
   beforeTransactions: Transaction[] = [],
   afterTransactions: Transaction[] = [],
@@ -153,7 +153,7 @@ export const sendTransactions = async (
       continue;
     }
 
-    let transaction = new Transaction();
+    const transaction = new Transaction();
     instructions.forEach(instruction => transaction.add(instruction));
     transaction.recentBlockhash = block.blockhash;
     transaction.setSigners(
@@ -196,9 +196,7 @@ export const sendTransactions = async (
 
     if (sequenceType !== SequenceType.Parallel) {
       try {
-        await signedTxnPromise.then(({ txid, slot }) =>
-          successCallback(txid, i),
-        );
+        await signedTxnPromise.then(({ txid }) => successCallback(txid, i));
         pendingTxns.push(signedTxnPromise);
       } catch (e) {
         console.log('Failed at txn index:', i);
@@ -266,7 +264,7 @@ export const sendTransaction = async (
   }
 
   const rawTransaction = transaction.serialize();
-  let options = {
+  const options = {
     skipPreflight: true,
     commitment,
   };
@@ -410,7 +408,9 @@ export async function sendSignedTransaction({
       simulateResult = (
         await simulateTransaction(connection, signedTransaction, 'single')
       ).value;
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
     if (simulateResult && simulateResult.err) {
       if (simulateResult.logs) {
         for (let i = simulateResult.logs.length - 1; i >= 0; --i) {
@@ -473,7 +473,7 @@ async function awaitTransactionSignatureConfirmation(
     err: null,
   };
   let subId = 0;
-  status = await new Promise(async (resolve, reject) => {
+  status = await new Promise((resolve, reject) => {
     setTimeout(() => {
       if (done) {
         return;
@@ -535,7 +535,7 @@ async function awaitTransactionSignatureConfirmation(
           }
         }
       })();
-      await sleep(2000);
+      sleep(2000);
     }
   });
 

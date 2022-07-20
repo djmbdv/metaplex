@@ -150,15 +150,16 @@ export const useArt = (key?: StringPublicKey) => {
     [key, metadata],
   );
 
-  const [arrayOfCreators, setArrayOfCreators] =
-    useState<Map<string, Artist> | undefined>(undefined);
+  const [arrayOfCreators, setArrayOfCreators] = useState<
+    Map<string, Artist> | undefined
+  >(undefined);
   useEffect(() => {
     let mounted = true;
     const promesas = account?.info?.data.creators?.map(creator => {
       return fetch(`https://apinft.proit.studio/solana/${creator.address}`)
         .then(res => res.json())
         .then(res => res as Artist)
-        .catch(e => console.log(e))
+        .catch(e => console.log(e));
     });
     if (promesas)
       Promise.all(promesas || []).then(res => {

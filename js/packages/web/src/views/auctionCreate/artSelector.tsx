@@ -74,7 +74,12 @@ export const ArtSelector = (props: ArtSelectorProps) => {
         {(allowMultiple || selectedItems.size === 0) && (
           <div
             className="ant-card ant-card-bordered ant-card-hoverable art-card"
-            style={{ width: 200, height: 300, display: 'flex',color:'#ffffff' }}
+            style={{
+              width: 200,
+              height: 300,
+              display: 'flex',
+              color: '#ffffff',
+            }}
             onClick={open}
           >
             <span className="text-center">Add an NFT</span>

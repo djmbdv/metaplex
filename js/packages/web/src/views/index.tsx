@@ -11,6 +11,6 @@ export { StaticPageView } from './staticPage';
 export { LoginView } from './login';
 export { LaunchpadView } from './launchpad';
 export { LaunchpadsView } from './launchpads';
-export { CollectionView }  from './collection';
-export { CollectionsView }  from './collections';
-export { SignupView } from './signup'
+export { CollectionView } from './collection';
+export { CollectionsView } from './collections';
+export { SignupView } from './signup';

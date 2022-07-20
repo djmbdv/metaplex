@@ -34,9 +34,10 @@ export interface SignupAndWalletModalContextState {
   setVisible: (open: boolean) => void;
 }
 
-export const SignupAndWalletModalContext = createContext<SignupAndWalletModalContextState>(
-  {} as SignupAndWalletModalContextState,
-);
+export const SignupAndWalletModalContext =
+  createContext<SignupAndWalletModalContextState>(
+    {} as SignupAndWalletModalContextState,
+  );
 
 export function useSignupAndWalletModal(): SignupAndWalletModalContextState {
   return useContext(SignupAndWalletModalContext);
@@ -206,7 +207,9 @@ export const SignupAndWalletModalProvider: FC<{ children: ReactNode }> = ({
   );
 };
 
-export const SignupAndWalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
+export const SignupAndWalletProvider: FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const wallets = useMemo(
     () => [
       getPhantomWallet(),

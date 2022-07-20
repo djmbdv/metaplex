@@ -66,8 +66,9 @@ export const ArtCreateView = () => {
   const [step, setStep] = useState<number>(0);
   const [stepsVisible, setStepsVisible] = useState<boolean>(true);
   const [isMinting, setMinting] = useState<boolean>(false);
-  const [nft, setNft] =
-    useState<{ metadataAccount: StringPublicKey } | undefined>(undefined);
+  const [nft, setNft] = useState<
+    { metadataAccount: StringPublicKey } | undefined
+  >(undefined);
   const [files, setFiles] = useState<File[]>([]);
   const [attributes, setAttributes] = useState<IMetadataExtension>({
     name: '',
@@ -220,7 +221,12 @@ export const ArtCreateView = () => {
           )}
           {0 < step && step < 5 && (
             <div style={{ margin: 'auto', width: 'fit-content' }}>
-              <Button className="sidebar-btn secondary-btn"  onClick={() => gotoStep(step - 1)}>Back</Button>
+              <Button
+                className="sidebar-btn secondary-btn"
+                onClick={() => gotoStep(step - 1)}
+              >
+                Back
+              </Button>
             </div>
           )}
         </Col>
@@ -703,11 +709,8 @@ const InfoStep = (props: {
                 <>
                   {fields.map(({ key, name }) => (
                     <Space key={key} align="baseline">
-                      <Form.Item
-                        name={[name, 'trait_type']}
-                        hasFeedback
-                      >
-                      <Input placeholder="trait_type (Optional)" />
+                      <Form.Item name={[name, 'trait_type']} hasFeedback>
+                        <Input placeholder="trait_type (Optional)" />
                       </Form.Item>
                       <Form.Item
                         name={[name, 'value']}
@@ -716,10 +719,7 @@ const InfoStep = (props: {
                       >
                         <Input placeholder="value" />
                       </Form.Item>
-                      <Form.Item
-                        name={[name, 'display_type']}
-                        hasFeedback
-                      >
+                      <Form.Item name={[name, 'display_type']} hasFeedback>
                         <Input placeholder="display_type (Optional)" />
                       </Form.Item>
                       <MinusCircleOutlined onClick={() => remove(name)} />
@@ -1258,7 +1258,10 @@ const Congrats = (props: {
       <>
         <div className="waiting-title">Sorry, there was an error!</div>
         <p>{props.alert}</p>
-        <Button className="metaplex-button" onClick={_ => history.push('/art/create')}>
+        <Button
+          className="metaplex-button"
+          onClick={() => history.push('/art/create')}
+        >
           Back to Create NFT
         </Button>
       </>

@@ -209,8 +209,14 @@ export const CurrentUserBadge = (props: {
   const { account } = useNativeAccount();
   const solPrice = useSolPrice();
   const [showAddFundsModal, setShowAddFundsModal] = useState<Boolean>(false);
-  const [name,setName] = useState<string>(props.showAddress && publicKey ? shortenAddress(`${publicKey}`) : publicKey ? `${publicKey}` : '');
-  const [imagen,setImage] = useState<string|undefined>(undefined);
+  const [name, setName] = useState<string>(
+    props.showAddress && publicKey
+      ? shortenAddress(`${publicKey}`)
+      : publicKey
+      ? `${publicKey}`
+      : '',
+  );
+  const [imagen, setImage] = useState<string | undefined>(undefined);
   const balance = (account?.lamports || 0) / LAMPORTS_PER_SOL;
   const balanceInUSD = balance * solPrice;
   const solMintInfo = useTokenList().tokenMap.get(WRAPPED_SOL_MINT.toString());
@@ -218,40 +224,34 @@ export const CurrentUserBadge = (props: {
     display: 'flex',
     width: props.iconSize,
     borderRadius: 50,
-    color:'#000'
+    color: '#000',
   };
   useEffect(() => {
-  fetch('https://apinft.proit.studio/solana/' + publicKey ).then(async res => {
+    fetch('https://apinft.proit.studio/solana/' + publicKey)
+      .then(async res => {
         const data = await res.json();
-        try{
-          setName( data?.name || name);
+        try {
+          setName(data?.name || name);
           setImage(data?.image || imagen);
-        }catch(e){ }
-  }  
-  ).catch(e=>{})
-},[publicKey])
+        } catch (e) {}
+      })
+      .catch(e => {});
+  }, [publicKey]);
 
   if (!wallet || !publicKey) {
     return null;
   }
-  
+
   const unknownWallet = wallet as any;
   if (unknownWallet.name && !props.showAddress) {
     setName(unknownWallet.name);
-
   }
 
-  
   let image = <Identicon address={publicKey?.toBase58()} style={iconStyle} />;
   if (imagen) {
     image = <img src={imagen} style={iconStyle} />;
   }
-    
-  
 
-
-
- 
   return (
     <div className="wallet-wrapper">
       {props.showBalance && (
@@ -412,11 +412,15 @@ export const Cog = () => {
                 borderRadius: 8,
                 width: '100%',
                 marginBottom: 10,
-                color:'#ffffff'
+                color: '#ffffff',
               }}
             >
               {ENDPOINTS.map(({ name }) => (
-                <Select.Option value={name} style={{color:'#ffffff'}} key={endpoint.name}>
+                <Select.Option
+                  value={name}
+                  style={{ color: '#ffffff' }}
+                  key={endpoint.name}
+                >
                   {name}
                 </Select.Option>
               ))}
@@ -449,7 +453,7 @@ export const CurrentUserBadgeMobile = (props: {
   const { wallet, publicKey, disconnect } = useWallet();
   const { account } = useNativeAccount();
   const solPrice = useSolPrice();
-  const [imagen,setImagen] = useState<string|undefined>(undefined);
+  const [imagen, setImagen] = useState<string | undefined>(undefined);
   const [showAddFundsModal, setShowAddFundsModal] = useState<Boolean>(false);
 
   if (!wallet || !publicKey) {
@@ -470,15 +474,13 @@ export const CurrentUserBadgeMobile = (props: {
     name = unknownWallet.name;
   }
   useEffect(() => {
-    fetch('https://apinft.proit.studio/solana/' + publicKey ).then(async res => {
-          const data = await res.json();
-          try{
-            
-            setImagen(data.image || imagen);
-          }catch(e){}
-    }  
-    )
-  },[publicKey]);
+    fetch('https://apinft.proit.studio/solana/' + publicKey).then(async res => {
+      const data = await res.json();
+      try {
+        setImagen(data.image || imagen);
+      } catch (e) {}
+    });
+  }, [publicKey]);
   let image = <Identicon address={publicKey?.toBase58()} style={iconStyle} />;
 
   if (imagen) {

@@ -1,11 +1,7 @@
 import * as anchor from '@project-serum/anchor';
 
 import { MintLayout, TOKEN_PROGRAM_ID, Token } from '@solana/spl-token';
-import {
-  SystemProgram,
-  Transaction,
-  PublicKey
-} from '@solana/web3.js';
+import { SystemProgram, Transaction, PublicKey } from '@solana/web3.js';
 import { sendTransactions, SequenceType } from './connection';
 
 import {
@@ -15,10 +11,6 @@ import {
   getNetworkToken,
   SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
 } from './utils';
-
-
-
-
 
 export const SYSVAR_SLOT_HASHES_PUBKEY = new PublicKey(
   'SysvarS1otHashes111111111111111111111111111',
@@ -84,8 +76,8 @@ export const awaitTransactionSignatureConfirmation = async (
     confirmations: 0,
     err: null,
   };
-  let subId = 0;
-  status = await new Promise(async (resolve, reject) => {
+  const subId = 0;
+  status = await new Promise((resolve, reject) => {
     setTimeout(() => {
       if (done) {
         return;
@@ -124,7 +116,7 @@ export const awaitTransactionSignatureConfirmation = async (
           }
         }
       })();
-      await sleep(2000);
+      sleep(2000);
     }
   });
 
@@ -370,9 +362,9 @@ export const mintOneToken = async (
     : payer;
 
   const candyMachineAddress = candyMachine.id;
-  const remainingAccounts:any[] = [];
-  const cleanupInstructions:any[] = [];
-  const instructions:any[] = [];
+  const remainingAccounts: any[] = [];
+  const cleanupInstructions: any[] = [];
+  const instructions: any[] = [];
   const signers: anchor.web3.Keypair[] = [];
   console.log('SetupState: ', setupState);
   if (!setupState) {

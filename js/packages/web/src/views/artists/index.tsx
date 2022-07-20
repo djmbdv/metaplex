@@ -1,45 +1,43 @@
 import { Col, Layout } from 'antd';
 import React from 'react';
-import {useState,useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import Masonry from 'react-masonry-css';
 import { Link } from 'react-router-dom';
 import { ArtistCard } from '../../components/ArtistCard';
-import { useMeta} from '../../contexts';
-import {useCreadores} from '../../hooks/useCreator'
-import {Artist} from '../../types'
+import { useMeta } from '../../contexts';
+import { useCreadores } from '../../hooks/useCreator';
+import { Artist } from '../../types';
 const { Content } = Layout;
 
 export const ArtistsView = () => {
   const { whitelistedCreatorsByCreator } = useMeta();
-  const [arrayArtist,setArrayArtist] =useState <Artist[]>(Object.values(whitelistedCreatorsByCreator).map(a =>{
+  const [arrayArtist, setArrayArtist] = useState<Artist[]>(
+    Object.values(whitelistedCreatorsByCreator).map(a => {
+      return {
+        address: a.info.address,
+        name: a.info.name || '',
 
-return {
-                address: a.info.address,
-                name: a.info.name || '',
-                
-                image: a.info.image || '',
-                link: a.info.twitter || '',
-                background: a.info.background || '',
-              }
-
-  }))
+        image: a.info.image || '',
+        link: a.info.twitter || '',
+        background: a.info.background || '',
+      };
+    }),
+  );
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
     700: 2,
     500: 1,
   };
- 
+
   const items = Object.values(whitelistedCreatorsByCreator);
-  useEffect(()=>{
-    fetch("https://apinft.proit.studio/").then(async r=>{
-      let its = (await r.json()).map(i => i as Artist)
-      setArrayArtist(its)
-    })
+  useEffect(() => {
+    fetch('https://apinft.proit.studio/').then(async r => {
+      let its = (await r.json()).map(i => i as Artist);
+      setArrayArtist(its);
+    });
+  }, []);
 
-  },[])
-
-  
   const artistGrid = (
     <Masonry
       breakpointCols={breakpointColumnsObj}
@@ -55,7 +53,7 @@ return {
               artist={{
                 address: m.address,
                 name: m.name || '',
-                
+
                 image: m.image || '',
                 link: m.link || '',
                 background: m.background || '',

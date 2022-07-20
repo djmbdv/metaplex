@@ -11,7 +11,7 @@ export interface Auction {
 export interface Artist {
   address?: string;
   name: string;
-  link: string|undefined;
+  link: string | undefined;
   image: string;
   itemsAvailable?: number;
   itemsSold?: number;

@@ -14,24 +14,25 @@ import {
 } from '../CurrentUserBadge';
 import { ConnectButton } from '@oyster/common';
 
-
 const getDefaultLinkActions = (connected: boolean) => {
   return [
     <Link to={`/`} key={'explore'}>
       <Button className="app-btn">Home</Button>
     </Link>,
     <Link to={`/artworks`} key={'collections'}>
-      <Button className="app-btn">{connected ? 'My Collecions' : 'Collections'}</Button>
+      <Button className="app-btn">
+        {connected ? 'My Collecions' : 'Collections'}
+      </Button>
     </Link>,
     <Link to={`/launchpads`} key={'Launchpads'}>
-    <Button className="app-btn">Launchpad</Button>
-  </Link>,
+      <Button className="app-btn">Launchpad</Button>
+    </Link>,
     <Link to={`/`} key={'Auctions'}>
-    <Button className="app-btn">Auctions</Button>
-  </Link>,
+      <Button className="app-btn">Auctions</Button>
+    </Link>,
     <Link to={`/`} key={'stats'}>
-    <Button className="app-btn">Stats</Button>
-  </Link>,
+      <Button className="app-btn">Stats</Button>
+    </Link>,
   ];
 };
 
@@ -108,7 +109,7 @@ const MetaplexMenu = () => {
         {/* button burgue menu Mobile. */}
         <MenuOutlined
           onClick={() => setIsModalVisible(true)}
-          style={{ fontSize: '1.4rem',color:'#8B442E' }}
+          style={{ fontSize: '1.4rem', color: '#8B442E' }}
         />
       </>
     );
@@ -124,15 +125,12 @@ export const LogoLink = () => {
   );
 };
 
-
-
-
 export const AppBar = () => {
   const { connected } = useWallet();
   return (
     <>
       <div id="mobile-navbar">
-      <MetaplexMenu />
+        <MetaplexMenu />
         <LogoLink />
         {/* <MetaplexMenu /> */}
       </div>
@@ -143,7 +141,7 @@ export const AppBar = () => {
           <MetaplexMenu /> */}
         </div>
         <div className="app-right">
-        {/*   {!connected && (
+          {/*   {!connected && (
             <HowToBuyModal buttonClassName="modal-button-default" />
           )} */}
           {!connected && (
@@ -162,16 +160,14 @@ export const AppBar = () => {
             </>
           )}
         </div>
-        
       </div>
-      <Row  className='wrap-second-bar' justify='center' >
-          <Col md={24} xs={2}>
-        <div className="app-center">
-          <MetaplexMenu />
-        </div>
+      <Row className="wrap-second-bar" justify="center">
+        <Col md={24} xs={2}>
+          <div className="app-center">
+            <MetaplexMenu />
+          </div>
         </Col>
       </Row>
-      
     </>
   );
 };

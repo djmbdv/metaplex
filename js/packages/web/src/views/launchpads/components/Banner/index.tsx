@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import {GoToLaunchpad} from '../BtnGotoLaunchpad';
+import { GoToLaunchpad } from '../BtnGotoLaunchpad';
 
 export const Banner = (props: {
   src: string;
@@ -10,7 +10,6 @@ export const Banner = (props: {
   actionComponent?: JSX.Element;
   children?: React.ReactNode;
 }) => {
-
   return (
     <>
       <div id="mobile-banner">
@@ -25,15 +24,16 @@ export const Banner = (props: {
         id={'current-banner'}
         style={{ backgroundImage: `url(${props.src})` }}
       > */}
-      <div
-        id={'current-banner'}
-        
-      >
-        <span ></span>
+      <div id={'current-banner'}>
+        <span></span>
         <div id="banner-inner">
           <div id={'message-container'}>
-
-            <div id={'main-heading'}><GoToLaunchpad buttonText='FEATURED LAUNCHPAD' buttonClassName='banner-outline-btn' /></div>
+            <div id={'main-heading'}>
+              <GoToLaunchpad
+                buttonText="FEATURED LAUNCHPAD"
+                buttonClassName="banner-outline-btn"
+              />
+            </div>
             <div id={'main-heading'}>{props.headingText}</div>
             <div id={'sub-heading'}>{props.subHeadingText}</div>
             {props.actionComponent}
@@ -44,8 +44,8 @@ export const Banner = (props: {
               POWERED BY <b>Corko.io</b>
             </span>
           </div> */}
-          <div  className='imgBanner' >
-             <img className="imgDesktop" src={props.src} />
+          <div className="imgBanner">
+            <img className="imgDesktop" src={props.src} />
           </div>
         </div>
       </div>

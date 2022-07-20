@@ -31,7 +31,7 @@ export const SetupView = () => {
       const getStore = async () => {
         if (wallet.publicKey) {
           const store = await setStoreForOwner(wallet.publicKey.toBase58());
-          console.log(store)
+          console.log(store);
           setStoreAddress(store);
         } else {
           setStoreAddress(undefined);

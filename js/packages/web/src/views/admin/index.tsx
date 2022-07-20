@@ -119,7 +119,7 @@ function ArtistModal({
 }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalAddress, setModalAddress] = useState<string>('');
-  const [modalName, setModalName] = useState<string>('')
+  const [modalName, setModalName] = useState<string>('');
   return (
     <>
       <Modal
@@ -158,17 +158,14 @@ function ArtistModal({
         }}
         onCancel={() => {
           setModalAddress('');
-          setModalName('')
+          setModalName('');
           setModalOpen(false);
         }}
       >
-      <label>Name</label>
-        <Input
-          value={modalName}
-          onChange={e => setModalName(e.target.value)}
-        />
+        <label>Name</label>
+        <Input value={modalName} onChange={e => setModalName(e.target.value)} />
 
-      <label>WalletAddress</label>
+        <label>WalletAddress</label>
         <Input
           value={modalAddress}
           onChange={e => setModalAddress(e.target.value)}
@@ -201,11 +198,10 @@ function InnerAdminView({
   const [updatedCreators, setUpdatedCreators] = useState<
     Record<string, WhitelistedCreator>
   >({});
-  const [filteredMetadata, setFilteredMetadata] =
-    useState<{
-      available: ParsedAccount<MasterEditionV1>[];
-      unavailable: ParsedAccount<MasterEditionV1>[];
-    }>();
+  const [filteredMetadata, setFilteredMetadata] = useState<{
+    available: ParsedAccount<MasterEditionV1>[];
+    unavailable: ParsedAccount<MasterEditionV1>[];
+  }>();
   const [loading, setLoading] = useState<boolean>();
   const { metadata, masterEditions } = useMeta();
   const state = useMeta();
@@ -375,7 +371,9 @@ function InnerAdminView({
         </>
       )}
       <Col>
-        <p style={{'marginTop': '30px'}}>Upgrade the performance of your existing auctions.</p>
+        <p style={{ marginTop: '30px' }}>
+          Upgrade the performance of your existing auctions.
+        </p>
         <Row>
           <Button
             disabled={loading}

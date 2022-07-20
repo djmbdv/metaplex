@@ -140,7 +140,7 @@ export const getFairLaunchState = async (
   const treasury = await program.provider.connection.getBalance(state.treasury);
 
   let lotteryData: Uint8Array = new Uint8Array([]);
-  let fairLaunchLotteryBitmap = (
+  const fairLaunchLotteryBitmap = (
     await getFairLaunchLotteryBitmap(
       //@ts-ignore
       state.tokenMint,
@@ -188,9 +188,8 @@ export const punchTicket = async (
 
   const ticket = fairLaunch.ticket.data;
 
-  const fairLaunchLotteryBitmap = ( //@ts-ignore
-    await getFairLaunchLotteryBitmap(fairLaunch.state.tokenMint)
-  )[0];
+  const fairLaunchLotteryBitmap = //@ts-ignore
+    (await getFairLaunchLotteryBitmap(fairLaunch.state.tokenMint))[0];
 
   const buyerTokenAccount = (
     await getAtaForMint(
@@ -521,7 +520,7 @@ export const purchaseTicket = async (
 
   if (ticket) {
     const fairLaunchLotteryBitmap = //@ts-ignore
-    (await getFairLaunchLotteryBitmap(fairLaunch.state.tokenMint))[0];
+      (await getFairLaunchLotteryBitmap(fairLaunch.state.tokenMint))[0];
     console.log(
       'Anchor wallet',
       anchorWallet.publicKey.toBase58(),
